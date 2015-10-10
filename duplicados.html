@@ -5,7 +5,7 @@
 
 <script type="text/template" id="person">
     <h1>
-        <a target="_blank" href="https://<%=instance%>.popit.mysociety.org/persons/<%=person.id%>"> <%=person.name%> </a>
+        <a target="_blank" href="https://<%=instance%>/persons/<%=person.id%>"> <%=person.name%> </a>
         <a target="_blank" href="http://beta.cargografias.org/<%=instance%>#/memberships-<%=person.id_sha1.substr(0,6)%>"> <%=person.id_sha1.substr(0,6)%> </a>
     </h1>
     <% repes.forEach(function(r){ %>
@@ -22,13 +22,13 @@
             <% r.forEach(function(m){ %>
                 <tr>    
                 <td>
-                    <a target="_blank" href="https://<%=instance%>.popit.mysociety.org/memberships/<%=m.id%>">popit</a>
+                    <a target="_blank" href="https://<%=instance%>/memberships/<%=m.id%>">popit</a>
                 </td>
                 <td><%=m.start_date%></td>
                 <td><%=m.end_date%></td>
                 <td><%=m.label%></td>
                 <td>
-                    <a target="_blank" href="https://<%=instance%>.popit.mysociety.org/organizations/<%=m.organization_id%>"><%=orgid[m.organization_id].name%></a>
+                    <a target="_blank" href="https://<%=instance%>/organizations/<%=m.organization_id%>"><%=orgid[m.organization_id].name%></a>
                 </td>
                 </tr>
             <% }) %>
