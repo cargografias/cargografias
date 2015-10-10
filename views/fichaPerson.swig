@@ -97,7 +97,7 @@
   $('.load-organization').each(function(ix, el){
     var instanceName = $(el).attr('data-instance-name')
     var organizationId = $(el).attr('data-organization-id')
-    var url = "https://" + instanceName + ".popit.mysociety.org/api/v0.1/organizations/" + organizationId
+    var url = "https://" + instanceName + "/api/v0.1/organizations/" + organizationId
     $(el).html('Loading...')
     $.getJSON(url, function(data){
       $(el).html(data.result.name)

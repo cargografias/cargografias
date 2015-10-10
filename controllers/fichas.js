@@ -4,7 +4,7 @@ function person(req, res){
 	var instanceName = req.params.instanceName;
 	var personId = req.params.personId;
 
-	var url = "https://" + instanceName + ".popit.mysociety.org/api/v0.1/persons/" + personId
+	var url = "https://" + instanceName + "/api/v0.1/persons/" + personId
 
 	request(url, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
@@ -25,7 +25,7 @@ function organization(req, res){
 	var instanceName = req.params.instanceName;
 	var organizationId = req.params.organizationId;
 
-	var url = "https://" + instanceName + ".popit.mysociety.org/api/v0.1/organizations/" + organizationId
+	var url = "https://" + instanceName + "/api/v0.1/organizations/" + organizationId
 
 	console.log(url);
 
