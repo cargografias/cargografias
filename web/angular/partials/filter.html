@@ -1,10 +1,10 @@
-
+<!--
 
 <div class="filter-container" ng-controller="filterController">
     <div role="tabpanel" id="advance-filter">
             <div>
                 <div class="search-row">
-                    <input id="nombre" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off" >    
+                    <input id="nombre" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off" >
                     <div class="opciones-busqueda buttons">
                         <div>
                             <a ng-click="switchSearch(true)" ng-hide="showBusAvanzado"><i class="fa fa-sliders"></i><span class="hideOnMobile"> {{customization.search}}</span></a>
@@ -21,17 +21,13 @@
 
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
-            <!-- Filter -->
+
             <div>
                 <div class="sharing buttons wow fadeIn" ng-show="showSharing">
                         <p><a ng-click="tweetThis()"><i class="fa fa-twitter"></i>{{customization.twitterLine}}</a></p>
-                        <!-- <p class="showOnMobile">
 
-                            <a href="whatsapp://send" data-text="{{shareCopy}}" data-href="{{currentLink()}}">
-                                <i class="fa fa-whatsapp"></i>WhatsAppea esta linea</a>
-                        </p> -->
 
                         <p><a href=""><i class="fa fa-link"></i>{{customization.copyLink}}</a></p>
                         <input type="text" value="{{currentLink()}}"/>
@@ -48,7 +44,7 @@
                     <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
                         <option value="">{{customization.selectPosition}}</option>
                     </select>
-                    
+
                     <select ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="
                         decade.key as decade.label for decade in getDecades()">
                         <option value="">{{customization.selectDecade}} </option>
@@ -58,50 +54,50 @@
               <p>{{customization.suggestSearch}}</p>
               <div class="">
                     <ul>
-                        <li ng-repeat="p in presets"> 
+                        <li ng-repeat="p in presets">
                           <p><a class="hand" ng-click="load(p.valores, true)">{{p.nombre}}</a></p>
                         </li>
 
                     </ul>
               </div>
             </div>
-               
+
                 <div id="resultadosBusqueda" ng-show="search && !showPresets">
                     <h3 id="quantiy-result" class="description">
 
-                        
-                        <span ng-hide="autoPersons.length == 0" >
-                            <i class="fa fa-users"></i> 
-                            {{customization.matches}}: {{autoPersons.length}} 
 
-                            
+                        <span ng-hide="autoPersons.length == 0" >
+                            <i class="fa fa-users"></i>
+                            {{customization.matches}}: {{autoPersons.length}}
+
+
                             <br><span ng-show='filterAdvance.name'>'{{filterAdvance.name}}'  </span>
-                <span ng-show='filterAdvance.territory'> 
+                <span ng-show='filterAdvance.territory'>
                     en {{filterAdvance.territory}}  </span>
                 <span ng-show='filterAdvance.jobTitle'>
                     como {{filterAdvance.jobTitle}}  </span>
                 <span ng-show='filterAdvance.decade'> durante {{filterAdvance.decade}} </span>
                         </span>
-                    
+
                         <div ng-show="autoPersons.length == 0 && search ">
                             <span >{{customization.notFound}}
-                              
+
                             </span>
                             <br>
-                              
+
                 <span ng-show='filterAdvance.name'>'{{filterAdvance.name}}'  </span>
-                <span ng-show='filterAdvance.territory'> 
+                <span ng-show='filterAdvance.territory'>
                     en {{filterAdvance.territory}}  </span>
                 <span ng-show='filterAdvance.jobTitle'>
                     como {{filterAdvance.jobTitle}}  </span>
                 <span ng-show='filterAdvance.decade'> durante {{filterAdvance.decade}} </span>
-                            
+
                         </div>
                         <div class="close">
                             <a ng-click="clearFilter()" alt="Limpiar filtro" ><i class="fa fa-times"></i></a>
                         </div>
                     </h3>
-                    
+
 
                     <div class="results" ng-hide="autoPersons.length == 0 && showBusAvanzado">
                         <div class="item" ng-repeat="item in autoPersons" >
@@ -112,8 +108,121 @@
                     </div>
                 </div>
             </div>
-            <!-- /Filter -->
         </div>
-    </div>
-</div>
+    </div> -->
 
+
+
+
+    <div class="filter-container" ng-controller="filterController">
+        <div role="tabpanel" id="advance-filter">
+                <div>
+                    <div class="search-row">
+                        <input id="nombre" class="openSearch" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off" >
+                        <!-- <div class="opciones-busqueda buttons">
+                            <div>
+                                <a ng-click="switchSearch(true)" ng-hide="showBusAvanzado"><i class="fa fa-sliders"></i><span class="hideOnMobile"> {{customization.search}}</span></a>
+                            </div>
+                            <div>
+                                <a ng-click="switchSearch(false)" ng-show="showBusAvanzado"><i class="fa fa-chevron-up"></i><span class="hideOnMobile">{{customization.basicSearch}}</span></a>
+                            </div>
+                            <div ng-class="showSharing ? 'active':''" >
+                            <a ng-click="switchSharing(true)" ng-hide="showSharing || activePersons.length == 0"><i class="fa fa-share-alt"></i>{{customization.share}}</a>
+                            <a ng-click="switchSharing(false)"  ng-show="showSharing && activePersons.length > 0"><i class="fa fa-share-alt"></i>{{customization.share}}</a>
+                            </div>
+                            <div>
+                                <a ng-click="clearEverthing()" ng-hide="activePersons.length == 0"><i class="fa fa-trash"></i>{{customization.clean}}<span class="hideOnMobile"> {{customization.selection}}</span></a>
+
+                            </div>
+                        </div> -->
+                        <div id="resultadosBusqueda" ng-show="search && !showPresets">
+                            <!-- <h3 id="quantiy-result" class="description">
+
+
+                                <span ng-hide="autoPersons.length == 0" >
+                                    <i class="fa fa-users"></i>
+                                    {{customization.matches}}: {{autoPersons.length}}
+
+
+                                    <br><span ng-show='filterAdvance.name'>'{{filterAdvance.name}}'  </span>
+                        <span ng-show='filterAdvance.territory'>
+                            en {{filterAdvance.territory}}  </span>
+                        <span ng-show='filterAdvance.jobTitle'>
+                            como {{filterAdvance.jobTitle}}  </span>
+                        <span ng-show='filterAdvance.decade'> durante {{filterAdvance.decade}} </span>
+                                </span>
+
+                                <div ng-show="autoPersons.length == 0 && search ">
+                                    <span >{{customization.notFound}}
+
+                                    </span>
+                                    <br>
+
+                        <span ng-show='filterAdvance.name'>'{{filterAdvance.name}}'  </span>
+                        <span ng-show='filterAdvance.territory'>
+                            en {{filterAdvance.territory}}  </span>
+                        <span ng-show='filterAdvance.jobTitle'>
+                            como {{filterAdvance.jobTitle}}  </span>
+                        <span ng-show='filterAdvance.decade'> durante {{filterAdvance.decade}} </span>
+
+                                </div>
+                                <div class="close">
+                                    <a ng-click="clearFilter()" alt="Limpiar filtro" ><i class="fa fa-times"></i></a>
+                                </div>
+                            </h3> -->
+
+
+                            <div class="results1" ng-hide="autoPersons.length == 0 && showBusAvanzado">
+                                <div class="item" ng-repeat="item in autoPersons" >
+                                    <a ng-click="add(item,item._id)" class="resultados-item" ng-class="item.styles">
+                                        <i ng-hide="item.agregada" class="fa fa-user-plus"></i> {{item.name}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div>
+                    <div class="sharing buttons wow fadeIn" ng-show="showSharing">
+                            <p><a ng-click="tweetThis()"><i class="fa fa-twitter"></i>{{customization.twitterLine}}</a></p>
+
+
+                            <p><a href=""><i class="fa fa-link"></i>{{customization.copyLink}}</a></p>
+                            <input type="text" value="{{currentLink()}}"/>
+                            <p><a href=""><i class="fa fa-globe"></i>{{customization.addLink}}</a></p>
+                            <input type="text" value="{{embedIframe()}}"/>
+
+                    </div>
+                </div> -->
+                <!-- <div>
+                    <div class="filters wow fadeIn" ng-show="showBusAvanzado">
+                        <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
+                            <option value="">{{customization.selectTerritory}}</option>
+                        </select>
+                        <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
+                            <option value="">{{customization.selectPosition}}</option>
+                        </select>
+
+                        <select ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="
+                            decade.key as decade.label for decade in getDecades()">
+                            <option value="">{{customization.selectDecade}} </option>
+                        </select>
+                    </div> -->
+                    <!-- <div ng-show="showPresets && presets.length">
+                  <p>{{customization.suggestSearch}}</p>
+                  <div class="">
+                        <ul>
+                            <li ng-repeat="p in presets">
+                              <p><a class="hand" ng-click="load(p.valores, true)">{{p.nombre}}</a></p>
+                            </li>
+
+                        </ul>
+                  </div>
+                </div>
+
+
+                </div> -->
+                <!-- /Filter -->
+            </div>
+        </div>

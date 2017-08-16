@@ -1,12 +1,34 @@
 
 <div class="module">
-	<div class="description">
+	<!-- <div class="description">
 		<h3><i class="fa fa-user"></i>{{customization.selectFunctionary}}: {{activePersons.length}}</h3>
+	</div> -->
+	<div ng-show="ready" class="col-xs-12
+			col-sm-12
+			col-md-12
+			col-lg-12
+			search-bar">
+			<div class="search-bar-1">
+					<a id="logotype" href="#"><img src="/img/v2/logo.png" alt=""></a>
+			</div>
+			<div class="search-bar-2">
+				<div  ng-include="'/angular/partials/filter.html'"></div>
+
+					<img src="/img/v2/filter-icon.png" alt="">
+					<p>Filtros Avanzados</p>
+					<img src="/img/v2/share-icon.png" alt="">
+					<p>Compartir</p>
+			</div>
+			<div class="search-bar-3">
+					<img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse">
+			</div>
 	</div>
+
 	<div ng-show="ready" ng-include="'/angular/partials/active-persons.html'"></div>
-	<div ng-show="ready" ng-include="'/angular/partials/filter.html'"></div>
 </div>
-<div class="module timeline">
+
+
+<!-- <div class="module timeline">
 	<div class="description">
 		<h3><i class="fa fa-tasks"></i>{{customization.timeline}}</h3>
 	</div>
@@ -18,4 +40,4 @@
 	</div>
 	<div ng-show="ready" ng-include="'/angular/partials/hall-of-shame.html'"></div>
 	<div ng-show="ready" ng-include="'/angular/partials/stats.html'"></div>
-</div>
+</div> -->

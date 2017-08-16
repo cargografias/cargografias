@@ -41,25 +41,34 @@
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
     <link href='//fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
-    
+
     <!-- V3 Styles -->
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/new-timeline.css" type="text/css">
+
     <!-- V4 Styles -->
-    <link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css">
-    
+      <link rel="stylesheet" href="/css/normalize.css" type="text/css">
+    {# <link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css"> #}
+
     <link rel="stylesheet" href="/css/cargo-base.css" type="text/css">
     <link rel="stylesheet" href="/css/animations.css" type="text/css">
     <link rel="stylesheet" href="/bower_components/wow.js/css/libs/animate.css" type="text/css">
-    
+
+    <!-- nuevo Cargografias Styles -->
+
+    <link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/nuevo-cargo-base.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+
+
     <!-- V2 Libs -->
     <script type="text/javascript" src="/js/lib/jquery-2.0.0.min.js"></script>
     <script type="text/javascript" src="/js/lib/underscore.min.js"></script>
     <script type="text/javascript" src="/js/lib/d3.min.js"></script>
 
-    
-    
+
+
     <!-- V3 Libs -->
     <!-- Angular Material Dependencies -->
     <script src="/bower_components/wow.js/dist/wow.min.js"></script>
@@ -80,9 +89,9 @@
     <script src="/bower_components/angular-moment/angular-moment.js"></script>
     <script src="/bower_components/moment/lang/es.js"></script>
 
-    <script src="/bower_components/filesaver.js//FileSaver.min.js"></script>    
+    <script src="/bower_components/filesaver.js//FileSaver.min.js"></script>
     <script src="/bower_components/blob/Blob.js"></script>
-    
+
     <style>
         {{customization.customCSS|safe}}
     </style>
@@ -90,9 +99,9 @@
 
     <script>
         window.__config = {
-           baseStaticPath: '{{config.baseStaticPath}}', 
-           lastUpdate: 0{{lastUpdate}} 
-        }    
+           baseStaticPath: '{{config.baseStaticPath}}',
+           lastUpdate: 0{{lastUpdate}}
+        }
     </script>
 
     <script>
@@ -112,8 +121,8 @@
 </head>
 
 <body>
-    <header>
-        <div class="row">
+  {#  <header>
+         <div class="row">
             <div class="info col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="box">
                         <div class="row">
@@ -128,13 +137,13 @@
                                     {% if customization.siteTitle %}{{customization.siteTitle}}{% endif %}
                                     {% if !customization.siteTitle %}Cargografías{% endif %}
                                     </h1>
-                                    <p> 
+                                    <p>
                                     {% if customization.subHeading %}{{customization.subHeading}}{% endif %}
                                     {% if !customization.subHeading %}{{customization.subtitle}}{% endif %}
                                     </p>
                                 </div>
                             </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -147,7 +156,7 @@
                         <i class="fa fa-globe"></i>{{customization.otherCountries}}</span>
                     </li>
 
-                    
+
                 </ul>
             </div>
             <div class="items col-xs-12 col-sm-2 col-md-2 col-lg-2">
@@ -169,22 +178,22 @@
                     <li>
                        <a href="#"><i class="fa fa-cog"></i></a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
-    </header>
+    </header>#}
  <!--    <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <a class="brand"><h3>{{customization.siteTitle}}</h3></a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                       
+
 
                     </ul>
                     <ul class="nav pull-right">
-                    {{customization.errorButton|safe}}   
+                    {{customization.errorButton|safe}}
                     {{customization.followButton|safe}}
                     {{customization.forkButton|safe}}
                     </ul>
@@ -196,7 +205,7 @@
             </div>
         </div>
     </div>
- --> 
+ -->
 
     <div class="main" >
          <div ng-controller="loaderController"  ng-include="'/angular/partials/loader.html'">
@@ -204,26 +213,25 @@
         <div>
             <div ng-view id="cargoContainer"></div>
         </div>
-        
     </div>
 
-    <footer class="well">
+    {# <footer class="well">
         <div class="main span5">{{customization.footerLeft|safe}}</div>
         <div class="row span6 sponsors">{{customization.footerRight|safe}}</div>
         <div class="clearfix"></div>
-    </footer>
-    
+    </footer> #}
+
     <script>
         window.customization = {{JSON.stringify(customization)}};
-    </script> 
-    
+    </script>
+
     <script src="/js/lib/v4/plugins/cargo.memberships.js"></script>
     <script src="/js/lib/v4/plugins/cargo.territory.js"></script>
     <script src="/js/lib/v4/cargo-timeline.js"></script>
     <script src="/js/lib/v2/cargo-bubbles.js"></script>
 
     <script src="/js/remove-diacritics.js"></script>
-    
+
     <script src="/angular/app.js"></script>
     <script src="/angular/controllers/controllers.js"></script>
     <script src="/angular/controllers/filterController.js"></script>
@@ -234,7 +242,11 @@
     <script src="/angular/factories/cargosLoaderFactory.js"></script>
     <script src="/angular/factories/cargosFactory.js"></script>
     <script src="/angular/factories/presetsFactory.js"></script>
+
+    <!--Import jQuery before materialize.js-->
+    {# <script src="bower_components/jquery/dist/jquery.min.js"></script> #}
+    {# <script src="/bower_components/materialize/dist/js/materialize.min.js"></script> #}
 </body>
-    
+
 </body>
 </html>

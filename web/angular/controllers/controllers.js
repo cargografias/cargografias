@@ -6,14 +6,14 @@ angular.module('cargoApp.controllers')
 
   var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').trim();
   instanceName = instanceName || 'cargografias';
-  
+
       /**
        * FromDecade
        * @type {number}
        */
       var fromDecade = 1900;
 
-      $scope.customization = window.customization 
+      $scope.customization = window.customization
 
 
     $scope.downloadNow = function(){
@@ -30,13 +30,13 @@ angular.module('cargoApp.controllers')
           m.before = null;
           m.organization.memberships =  null;
         };
-        
+
       };
 
       var innerText = cache[0].name;
       innerText += (cache.length == 1 ?  "" : " y otros" );
       var filename = "Cargografias de " + innerText + ".json";
-      
+
         var blob = new Blob([JSON.stringify(cache)], {
           type: "text/json;charset=utf-8"});
         saveAs(blob, filename);
@@ -70,11 +70,11 @@ angular.module('cargoApp.controllers')
       processParameters($routeParams.ids);
     }
 
-   
+
 
 
     $scope.load = function(params, hideAfterClick) {
-      
+
       processParameters(params);
       //light add all persons from url
       if (parsedParams) {
@@ -83,7 +83,7 @@ angular.module('cargoApp.controllers')
           var id = cargosFactory.mapId[index];
           $scope.lightAdd(cargosFactory.autoPersons[id], id);
         };
-        
+
         $scope.refreshAllVisualizations();
         $scope.search = true;
         $scope.showPresets = hideAfterClick ? false : $scope.showPresets;
@@ -133,14 +133,14 @@ angular.module('cargoApp.controllers')
       console.log($scope.activeYear);
       var maxYear = d3.max($scope.activePersons, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
       var minYear = d3.min($scope.activePersons, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
-    
+
 
       var diff = maxYear - minYear ;
       $scope.poderometroYears = [];
       for (var i = 0; i < diff;  i++) {
         $scope.poderometroYears.push(minYear + i);
       };
-      
+
       if (!$scope.activeYear){
         $scope.activeYear = minYear;
       }
@@ -163,13 +163,35 @@ angular.module('cargoApp.controllers')
       return req;
     }
 
+
+
+    function httpRequest(theUrl, callback)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+              var obj = JSON.parse(xmlHttp.response);
+              callback(obj);
+            }
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous
+        xmlHttp.send(null);
+    }
     $scope.filterAutoPersons = function(q) {
+      console.log("function: filterAutoPersons");
       if (q.length > 3) {
-        $scope.showPresets = false;
-        $scope.search = true;
-        $scope.filterAdvance.name = q;
-        $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
-        $scope.showResult = true;
+        var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + q + "/i"
+        httpRequest(url,function(res){
+          $scope.showPresets = false;
+          $scope.search = true;
+          $scope.filterAdvance.name = q;
+          //viejo cargografias:
+          // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
+          $scope.autoPersons = res.data;
+          $scope.showResult = true;
+          document.getElementById('resultadosBusqueda').style.display = 'block';
+        })
+
       } else {
         $scope.autoPersons = [];
         $scope.search = false;
@@ -185,17 +207,17 @@ angular.module('cargoApp.controllers')
 
     $scope.createEmbed = function(cb){
       $http.post('/createEmbedUrl', {
-        persons:  ( $scope.activePersons || [] ).map(function(person){ return {  popitID: person.popitID, id: person.id } }), 
+        persons:  ( $scope.activePersons || [] ).map(function(person){ return {  popitID: person.popitID, id: person.id } }),
         filter: $scope.filter
       })
       .success(function(result){
-        
+
         var embed = "/" + instanceName + "/embed/" + result.embed._id;
         $scope.embedAvailable = embed;
         if (cb){
-          cb(embed);  
+          cb(embed);
         }
-        
+
       })
     };
 
@@ -203,7 +225,7 @@ angular.module('cargoApp.controllers')
     $scope.tweetThis =function(){
       window.open('about:blank', 'twitter-share-dialog', 'width=626,height=436'); //To avoid the browser blocking the popup, open it first and update the url later
       $scope.createEmbed(function(embedUrl){
-        
+
         var urlToShorten = window.location.origin + embedUrl;
         $scope.embedUrl = urlToShorten;
         $http.post('/createShortUrl', {url: urlToShorten}).success(function(result){
@@ -211,23 +233,23 @@ angular.module('cargoApp.controllers')
 
           var prefix = data[0].name;
            var base ="https://twitter.com/intent/tweet?text=";
-            base += encodeURIComponent("Aca está línea de tiempo de " 
-            + prefix +  " via @cargografias " 
+            base += encodeURIComponent("Aca está línea de tiempo de "
+            + prefix +  " via @cargografias "
             +  result.shortUrl );
             base += "&url='" + encodeURIComponent(result.shortUrl);
            window.open(base,'twitter-share-dialog');
         })
-      }); 
+      });
     };
 
     $scope.shareIt = function(){
-      
+
       var urlToShorten = location.href;
       $http.post('/createShortUrl', {url: urlToShorten}).success(function(result){
         var text = "Linea de tiempo de politicos:"
         var sharedUrl = result.shortUrl;
         var url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&amp;tw_p=tweetbutton&amp;via=cargografias&amp;url=' + encodeURIComponent(sharedUrl)
-        window.open(url, 'twitterShareWindow')                
+        window.open(url, 'twitterShareWindow')
       })
     };
 
@@ -243,11 +265,11 @@ angular.module('cargoApp.controllers')
       $scope.filterAdvance.territory= null;
       $scope.filterAdvance.jobTitle = null;
       $scope.filterAdvance.decade = null;
-      $scope.search = false;  
+      $scope.search = false;
     };
 
     $scope.currentLink = function(){
-      return location.href;      
+      return location.href;
     }
     $scope.embedIframe = function(){
 
@@ -264,10 +286,10 @@ angular.module('cargoApp.controllers')
             var urlToShorten = window.location.origin + embedUrl;
             $scope.embedUrl = urlToShorten;
             $http.post('/createShortUrl', {url: urlToShorten}).success(function(result){
-              $scope.shortUrl = result.shortUrl;             
+              $scope.shortUrl = result.shortUrl;
             });
-        }); 
-        
+        });
+
       }
       else {
 
@@ -277,9 +299,9 @@ angular.module('cargoApp.controllers')
     $scope.switchSearch = function(v){
       $scope.showBusAvanzado = v;
       $scope.showSharing = false;
-      
+
       if (v){
-        
+
       }
       else {
 
@@ -339,18 +361,33 @@ angular.module('cargoApp.controllers')
     }
 
     $scope.lightAdd = function(autoPersona, id) {
-      if (!autoPersona || autoPersona.agregada) return;
+      console.log("function: lightAdd");
+
+      console.log(autoPersona.agregada);
+      console.log(autoPersona);
+
+      if (!autoPersona || autoPersona.agregada){ console.log("ya esta agregada");return;}
       else {
         $scope.autocomplete = " ";
         autoPersona.agregada = true;
         autoPersona.styles = "badge-selected"
-        var person = cargosFactory.getFullPerson(id);
+        console.log("aca se agrega");
+        console.log(autoPersona.agregada);
+        // var person = cargosFactory.getFullPerson(id) ;
+        // console.log(person);
+        // person.autoPersona = autoPersona;
+        // person.cargoProfileURL = $scope.generateUrlProfile(person);
+        // $scope.activePersons.unshift(person);
+        var person = autoPersona ;
+        console.log(person);
         person.autoPersona = autoPersona;
-        person.cargoProfileURL = $scope.generateUrlProfile(person);
+        // person.cargoProfileURL = $scope.generateUrlProfile(person);
         $scope.activePersons.unshift(person);
       }
     }
     $scope.add = function(autoPersona, id) {
+      document.getElementById('resultadosBusqueda').style.display = 'none';
+
       $scope.lightAdd(autoPersona, id);
       $scope.refreshAllVisualizations();
     };
@@ -358,7 +395,7 @@ angular.module('cargoApp.controllers')
     $scope.refreshAllVisualizations = function() {
 
 
-      
+
       //TODO: This should all go to observers.
       $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
       // $scope.redrawPoderometro();
@@ -392,7 +429,7 @@ angular.module('cargoApp.controllers')
     };
 
     $scope.clearAll = function() {
-      
+
       for (var i = 0; i < $scope.activePersons.length; i++) {
         $scope.activePersons[i].autoPersona.agregada = false;
         $scope.activePersons[i].autoPersona.styles = "";
@@ -401,7 +438,7 @@ angular.module('cargoApp.controllers')
       updateTheUrl();
       $scope.showPresets = true;
       $scope.refreshAllVisualizations();
-      
+
     }
 
       /**
@@ -415,7 +452,7 @@ angular.module('cargoApp.controllers')
           // $scope.filterAdvance.organization = null;
           // $scope.filterAdvance.jobTitle = null;
           // $scope.filterAdvance.decade = null;
-        
+
       }
 
       /**

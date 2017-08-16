@@ -4,8 +4,8 @@
 
 angular.module('cargoApp.factories')
 	.factory('cargosFactory', function($http, $filter, cargoLoaderFactory) {
-		
-    
+
+
 
     var factory ={};
     factory.mapId ={};
@@ -17,7 +17,7 @@ angular.module('cargoApp.factories')
     factory.weight= [];
     factory.autoPersons=[];
     factory.getFullPerson = function(id){
-      var p = this.persons[id]; 
+      var p = this.persons[id];
       if (!p.full){
 
         p.periods = this.getPeriods(p);
@@ -118,20 +118,20 @@ angular.module('cargoApp.factories')
           if (s.getNumber(first) > 0){
             hall.push({
                 titulo: s.name,
-                nombre: first.name, 
+                nombre: first.name,
                 medida: s.uom,
                 cantidad: s.getNumber(first),
               });
           }
         };
-      return hall; 
+      return hall;
     };
     factory.setWeight = function(person){
       for (var i = 0; i < person.memberships.length; i++) {
         var m = person.memberships[i];
-        if (m.label)        
+        if (m.label)
           for (var j = 0; j < this.weight.length; j++) {
-            
+
             var w = this.weight[j];
 
             if (w.cargo.toLowerCase() === m.label.toLowerCase()
@@ -139,7 +139,7 @@ angular.module('cargoApp.factories')
               m.weight = this.weight[j].representacion;
               m.hierarchy = this.weight[j].posicion;
             }
-          } 
+          }
         }
     };
 
@@ -151,13 +151,13 @@ angular.module('cargoApp.factories')
         var search = false;
         var autoPersonsResult = this.autoPersons;
         if( filter.name !== undefined && filter.name !== null) {
-          autoPersonsResult =  $filter('filter')(autoPersonsResult, 
-            {name: filter.name}, 
+          autoPersonsResult =  $filter('filter')(autoPersonsResult,
+            {name: filter.name},
           ignoreAccentsCompare);
           search = true;
-          
+
         }
-        
+
         if( filter.territory !== undefined && filter.territory !== null) {
             var territory = factory.getTerritoryByName(filter.territory);
 
@@ -239,7 +239,7 @@ angular.module('cargoApp.factories')
       var legistlativo = { name:"Legislativo", children: []};
       var judicial = { name:"Judicial", children: []};
       var data =  { name:"Argentina", children: []};
-      
+
 
 
       for (var i = 0; i < persons.length; i++) {
@@ -261,10 +261,10 @@ angular.module('cargoApp.factories')
               }
           }
       };
-      if (ejecutivo.children.length > 0){ data.children.push(ejecutivo);} 
-      if (legistlativo.children.length > 0){ data.children.push(legistlativo);} 
-      if (judicial.children.length > 0){ data.children.push(judicial);} 
-      
+      if (ejecutivo.children.length > 0){ data.children.push(ejecutivo);}
+      if (legistlativo.children.length > 0){ data.children.push(legistlativo);}
+      if (judicial.children.length > 0){ data.children.push(judicial);}
+
 
       return data;
     };
@@ -310,7 +310,7 @@ angular.module('cargoApp.factories')
               var m = memberships[j];
               if (year >= m.start && m.end >=year){
                 if (!m.organization){
-                  m.organization = this.getOrganization(m.organization_id); 
+                  m.organization = this.getOrganization(m.organization_id);
                 }
                 activeMembershipForYear = m;
                 break;
@@ -342,7 +342,7 @@ angular.module('cargoApp.factories')
               }else if (activeMembershipForYear.type == 'Judicial'){
                 judicial.push(item)
               }
-            
+
           }
           activeMembershipForYear= undefined;
       };
@@ -355,8 +355,8 @@ angular.module('cargoApp.factories')
         var p= positions[z]
         var treeData =[];
         var sorted = $filter('orderBy')(p, expression, false);
-        
-        
+
+
         for (var i = 0; i < sorted.length; i++) {
           var s = sorted[i];
           if (treeData.length === 0){
@@ -369,13 +369,13 @@ angular.module('cargoApp.factories')
           }
           else {
             this.processItemsTree(treeData, s);
-            
-          } 
+
+          }
         }
         positions[z] = treeData;
       }
-      
-     
+
+
       return positions;
     };
     factory.processItemsTree = function(treeData, s){
@@ -400,9 +400,9 @@ angular.module('cargoApp.factories')
                 break;
 
               }
-              else{ 
+              else{
                 factory.processItemsTree(treeData[j].children, s);
-                
+
               }
             }
     }
@@ -418,7 +418,7 @@ angular.module('cargoApp.factories')
         m.years = parseFloat(m.years.toFixed(2));
         yearsSum+= m.years;
       };
-      
+
       var expression = '-started';
       var a = $filter('orderBy')(person.memberships, expression, false);
        var resume = {
@@ -427,13 +427,13 @@ angular.module('cargoApp.factories')
             yearsCharges: 0,
             yearsPolitics:0,
         };
-      try{ 
+      try{
         resume = {
             started: moment(a[a.length-1].start_date),
             last: a[0].end_date ? moment(a[0].end_date) : undefined,
             yearsCharges: parseFloat(yearsSum.toFixed(2))
         };
-         var now =moment(); 
+         var now =moment();
         var years = 0;
         if (resume.last){
           //Si el periodo termina despues.
@@ -448,7 +448,7 @@ angular.module('cargoApp.factories')
           years = now.diff(resume.started , 'years', true);
 
         }
-        //Si el periodo ya termino.        
+        //Si el periodo ya termino.
         resume.yearsPolitics = parseFloat(years.toFixed(2));
 
         return resume ;
@@ -458,15 +458,15 @@ angular.module('cargoApp.factories')
         return resume;
       }
 
-     
+
 
     };
     factory.getSummary = function(person){
-      var summary = 
-      { 
+      var summary =
+      {
           executives: 0,
           legislative:0,
-          judiciary: 0, 
+          judiciary: 0,
           elected : 0 ,
           notElected: 0,
           reElected: 0
@@ -474,7 +474,7 @@ angular.module('cargoApp.factories')
       for (var i = 0; i < person.memberships.length; i++) {
 
         var m = person.memberships[i];
-        person.memberships[i].organization = this.getOrganization(m.organization_id); 
+        person.memberships[i].organization = this.getOrganization(m.organization_id);
         var cargo = person.memberships[i];
         if (cargo){
           if (cargo.class == 'Electivo'){
@@ -498,7 +498,7 @@ angular.module('cargoApp.factories')
 
     };
 
-    
+
 
     factory.getOrganization = function(organization_id){
 
@@ -526,7 +526,7 @@ angular.module('cargoApp.factories')
       }
       return undefined;
     }
-   
+
     factory.getOrganizationByName = function(organizationName){
 
       for (var i = 0; i < this.organizations.length; i++) {
@@ -554,11 +554,11 @@ angular.module('cargoApp.factories')
           var allTerritories = new Array();
           _.each(factory.persons, function(p, index) {
               _.each(p.memberships,function(m,i){
-                if(_.isString(m.area.name) && m.area.name !== '') {
-                  allTerritories.push(m.area.name);
-                }  
+                // if(_.isString(m.area.name) && m.area.name !== '') {
+                //   allTerritories.push(m.area.name);
+                // }
               });
-              
+
           });
           factory.territories = _.unique(allTerritories);
         }
@@ -568,14 +568,14 @@ angular.module('cargoApp.factories')
 
     factory.getJobTitle = function() {
         var allMemberships = new Array();
-        
+
         _.each(this.persons, function(p, index) {
             _.each(p.memberships,function(m,i){
               if(_.isString(m.label) && m.label !== '') {
                 allMemberships.push(m.label);
-              }  
+              }
             });
-            
+
         });
 
         return _.unique(allMemberships);
