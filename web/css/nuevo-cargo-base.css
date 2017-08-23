@@ -203,6 +203,7 @@ color: #ffffff;
 
 .visualization-bar {
   height: 3.375rem;
+  max-width: 100%;
   border-bottom: 1px solid #E2E2E2;
   display: flex;
 }
@@ -260,7 +261,10 @@ color: #ffffff;
 .view1 h3 {
   display: inline;
   font-size: 2.25rem;
-
+  font-weight: 300;
+}
+.view1 p {
+  margin-top: 1rem;
 }
 .view1 img{
   max-width: 2rem;
@@ -316,9 +320,10 @@ color: #ffffff;
     overflow: hidden;
 }
 .footer li {
-    padding: 1.25rem;
+    padding: 1.25rem 2rem;
     display:inline-block;
     text-align: left;
+    font-weight: 300;
 }
 
 .footer {

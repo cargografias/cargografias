@@ -45,7 +45,17 @@
       <li><a href="#">CARRERA</a></li>
   </ul>
 </div>
-<div class="main-visaulization" >
-  <div ng-hide="activePersons.length > 0" ng-include="'/angular/partials/visualization1.html'"></div>
+<!-- <div class="main-visaulization" >
+  <div ng-hide="activePersons.length > 0" ng-include="'/angular/partials/visualization1.swig'"></div>
+</div> -->
+<div class="row">
+  <div class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6" ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
+  <div class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v2/information.html'"></div>
+
 </div>
-<div ng-hide="activePersons.length > 0" ng-include="'/angular/partials/footer.html'"></div>

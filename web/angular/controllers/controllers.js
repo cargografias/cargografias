@@ -165,23 +165,12 @@ angular.module('cargoApp.controllers')
 
 
 
-    function httpRequest(theUrl, callback)
-    {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-              var obj = JSON.parse(xmlHttp.response);
-              callback(obj);
-            }
-        }
-        xmlHttp.open("GET", theUrl, true); // true for asynchronous
-        xmlHttp.send(null);
-    }
+
     $scope.filterAutoPersons = function(q) {
       console.log("function: filterAutoPersons");
       if (q.length > 3) {
-        var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + q + "/i"
-        httpRequest(url,function(res){
+        // var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + q + "/i"
+        searchModule('name',q,function(res){
           $scope.showPresets = false;
           $scope.search = true;
           $scope.filterAdvance.name = q;
@@ -191,6 +180,9 @@ angular.module('cargoApp.controllers')
           $scope.showResult = true;
           document.getElementById('resultadosBusqueda').style.display = 'block';
         })
+        // httpRequest(url,function(res){
+        //
+        // })
 
       } else {
         $scope.autoPersons = [];
@@ -383,6 +375,8 @@ angular.module('cargoApp.controllers')
         person.autoPersona = autoPersona;
         // person.cargoProfileURL = $scope.generateUrlProfile(person);
         $scope.activePersons.unshift(person);
+        console.log("active persons length");
+        console.log($scope.activePersons.length);
       }
     }
     $scope.add = function(autoPersona, id) {

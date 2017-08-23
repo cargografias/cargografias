@@ -1,3 +1,4 @@
+
 <div id="main-visualization" class="view1">
     <br>
       <div class="row">
@@ -17,28 +18,23 @@
       <div class="row child-container">
           <div class="col-xs-3">
             <a href="#"><div class="view1-box">
-              ESTA EN EL PODER
             </div></a>
             <p>Visita guiada por Cargografias</p>
           </div>
           <div class="col-xs-3">
             <a href="#!"><div class="view1-box">
-              CANDIDATOS
             </div></a>
             <p>Candidatos Presidenciales 2015</p>
           </div>
           <div class="col-xs-3">
             <a href="#"><div class="view1-box">
-              GABINETE
             </div></a>
             <p>Gabinete Presidencial</p>
           </div>
           <div class="col-xs-3">
             <a href="#"><div class="view1-box">
-              ENTRE RÍOS
             </div></a>
             <p>Funcionarios de Entre Ríos</p>
           </div>
-
       </div>
   </div>
