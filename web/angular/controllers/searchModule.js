@@ -11,9 +11,18 @@ function searchModule(option,parameter,callback) {
               //                       })
               console.log(obj);
               obj.data.map(function(p) {
-                // return p.data["memberships"] = "memberships";
+                // p.memberships = membershipsf(parameter)
                 p.memberships = ["memberships1","memberships2"]
               })
+              // obj.data.map(function(p) {
+              //    p.territory = terrytoryf(parameter)
+              // })
+              // obj.data.map(function(p) {
+              //    p.years = yearsf(parameter)
+              // })
+              // obj.data.map(function(p) {
+              //    p.institutions = institutionsf(parameter)
+              // })
               callback(obj);
             }
         }
@@ -24,6 +33,8 @@ function searchModule(option,parameter,callback) {
 
   }
 
+
+  //pegar aca territoryf, yearsf e institutionsf cuando funcione qqw
   // if(option === 'memberships'){
   //   console.log("BUSCA POR MEMBRESIA");
   //       var url = "https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/" + parameter + "/i"+"&offset=0"
