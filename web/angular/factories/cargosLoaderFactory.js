@@ -4,7 +4,7 @@
 
 angular.module('cargoApp.factories', [])
   .factory('cargoLoaderFactory', function($http, $filter) {
-    
+
     var datasources = [];
 
     var cargografiasSources = [];
@@ -12,7 +12,7 @@ angular.module('cargoApp.factories', [])
     var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '');
     instanceName = instanceName.split('/')[0];
     instanceName = instanceName || 'cargografias';
-    
+
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-persons.json' + '?v=' + window.__config.lastUpdate);
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-memberships.json' + '?v=' + window.__config.lastUpdate);
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-organizations.json' + '?v=' + window.__config.lastUpdate);
@@ -45,7 +45,7 @@ angular.module('cargoApp.factories', [])
                       catch(e){
                         console.log("Loading error", e, res.data[i].name, res.data[i].id_sha1);
                       }
-                      
+
                       factory.mapId[item.popitID] = i;
                       factory.autoPersons.push(item);
                     };
@@ -62,7 +62,7 @@ angular.module('cargoApp.factories', [])
 
   //Photo or default photo
   f.processImages = function(d){
-    
+
     try{
       d.image = d.images ? d.images[0].url :'/img/person.png'    // get popit picture
     }
@@ -74,8 +74,8 @@ angular.module('cargoApp.factories', [])
   //Initials for graphics
   f.setInitials = function(d){
     var splitedName =  d.given_name.split(' ')
-    d.initials = d.given_name ? splitedName.map(function(item){ return item.substr(0,1).toUpperCase() }).join('.') + "." : '-';  
-                    
+    d.initials = d.given_name ? splitedName.map(function(item){ return item.substr(0,1).toUpperCase() }).join('.') + "." : '-';
+
   }
 
   f.setShareableID = function(d){
@@ -94,15 +94,15 @@ angular.module('cargoApp.factories', [])
             }
           }
         }
-    
+
     }
   }
 
   f.processMemberships = function(d){
     var approved = [];
     d.chequeado = false;
-    
-    for (var i = 0; i < d.memberships.length; i++) {  
+
+    for (var i = 0; i < d.memberships.length; i++) {
 
       var m = d.memberships[i];
       //Remuevo los privados
@@ -113,7 +113,7 @@ angular.module('cargoApp.factories', [])
       }
     }
     d.memberships = approved;
-                 
+
   }
 
   f.extractArea = function(m){
@@ -124,9 +124,9 @@ angular.module('cargoApp.factories', [])
               z = z.replace(/ ,/g,' ')
             }
             m.area.id = toTitleCase(z);
-            m.area.name =  toTitleCase(z); 
+            m.area.name =  toTitleCase(z);
             //HACK: To use angular filter
-            m.area_name =  toTitleCase(z); 
+            m.area_name =  toTitleCase(z);
           }
         catch(e){
           console.log('No area found: memberships',m.id);
@@ -147,4 +147,3 @@ angular.module('cargoApp.factories', [])
 
 //TODO: this should be on popit, hard hack for Elections BA.
 var chequeados = ["2c109a", "55a99b","5928af", "1d3338", "f4b3f5"];
-

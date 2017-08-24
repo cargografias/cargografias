@@ -157,9 +157,9 @@
             <div>
                 <div ng-view id="cargoContainer"></div>
             </div>
-            <div ng-controller="loaderController" ng-include="'/angular/partials/loader.html'"></div>
+            {# <div ng-controller="loaderController" ng-include="'/angular/partials/loader.html'"></div> #}
 
-            <div ng-show="ready" id="main-visualization" class="view1">
+            <div  id="main-visualization" class="view1">
                 <div ng-hide="activePersons.length > 0">
                     <br>
                     <div class="row">
@@ -249,7 +249,7 @@
         {# VISUALIZATIONS #}
         <script src="/angular/Visualizations/v1/controller.js"></script>
         <script src="/angular/Visualizations/v2/controller.js"></script>
-        <script src="/angular/Visualizations/v2/controller.js"></script>
+        <script src="/angular/Visualizations/v3/controller.js"></script>
 
         <!--Import jQuery before materialize.js-->
         {# <script src="bower_components/jquery/dist/jquery.min.js"></script> #}

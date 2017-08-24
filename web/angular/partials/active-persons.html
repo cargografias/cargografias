@@ -50,6 +50,12 @@
 </div> -->
 <div class="row">
   <div class="col-xs-12
+  col-sm-12
+  col-md-12
+  col-lg-12"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v3/v3.html'"></div>
+</div>
+<div class="row">
+  <div class="col-xs-12
   col-sm-6
   col-md-6
   col-lg-6" ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
@@ -57,5 +63,4 @@
   col-sm-6
   col-md-6
   col-lg-6"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v2/information.html'"></div>
-
 </div>

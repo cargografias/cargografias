@@ -20,11 +20,11 @@ window.cargo.plugins.territory =  {
       //clear all;
       var territories = [];
       //find all other territories by region and province
-      var territoriesArray = data.map(function(d) {  
-      	var map = d.memberships.map( function(z){ 
+      var territoriesArray = data.map(function(d) {
+      	var map = d.memberships.map( function(z){
       		var area = z.area ? z.area.name : "AREA-NOT-FOUND";
       		return  area.capitalize() + "-" + z.role ;
-      }); 
+      });
       return map;
   	})
       //and now we remove duplicates
@@ -34,7 +34,7 @@ window.cargo.plugins.territory =  {
       });
       //now we order them
       territories.sort(function(a, b){ return d3.ascending(a, b);});
-      
+
       //now we count instances
       var counter = territories.reduce(function (acc, curr) {
       	var key  = curr.split('-')[0];
@@ -46,7 +46,7 @@ window.cargo.plugins.territory =  {
 		  return acc;
 		}, {});
 
-     
+
       this.data = territories.map(function(d,i){
       	var group = d.split('-')[0];
       	return {
@@ -58,15 +58,15 @@ window.cargo.plugins.territory =  {
 
       	});
       var i = 0;
-      for(x in counter){ 
+      for(x in counter){
       	this.counter.push({
       		label:x,
       		name: x,
       		index:i,
       		count:counter[x],
       		firstIndex: this.data.filter(
-      			function(d,i) { 
-      				if (d.label === x)  
+      			function(d,i) {
+      				if (d.label === x)
       				return d;
       		})[0].index
       	});
@@ -91,7 +91,7 @@ window.cargo.plugins.territory =  {
 	},
 	updateBoxes: function(d,i){
 		this.setBoxHeight();
-		
+
             //Overwrites years
             //depends on total of type of memberships
 		 scales.indexes = d3.scale.linear()
@@ -106,7 +106,7 @@ window.cargo.plugins.territory =  {
 
 	},
 updatePreviouslGraphs:function(){
-	  
+
 	  this.setBoxHeight();
 
 
@@ -116,7 +116,7 @@ updatePreviouslGraphs:function(){
 	  }
 
 
-	  var groupBackgrounds = 
+	  var groupBackgrounds =
 	  backgroundG.selectAll('rect.backgroundGroup')
 	    .data(this.counter, function(d,i){ return d.index;});
 
@@ -125,9 +125,9 @@ updatePreviouslGraphs:function(){
 	    .attr('class', 'backgroundGroup')
       	.attr("x", function(){ return padding.left / 8.5 ;})
 		.attr("y", function(d,i) {return (d.firstIndex)*(barHeight) + padding.top;})
-	    
-	  
-	 
+
+
+
 
 	 groupBackgrounds
 	 	.transition()
@@ -152,14 +152,14 @@ updatePreviouslGraphs:function(){
 
 },
 updateAdditionalGraphs:function(d,context){
-		
+
 
 		if (controls.height != "memberships" && controls.height != "territory"){
         	$("svg.vis path").css('opacity',0);
         	return;
         }
         else if (controls.height == "territory"){
-			
+
 
 
 			var curves = d3.select(context)
@@ -177,7 +177,7 @@ updateAdditionalGraphs:function(d,context){
 
 	        var controlLenght = 20;
 
-        	
+
 
 
 	        curves
@@ -189,7 +189,7 @@ updateAdditionalGraphs:function(d,context){
 		        		return "";
 		        	}
 		        //Scale Left
-		          var fromX = scales.years(d.end) ;	
+		          var fromX = scales.years(d.end) ;
 		          var fromY = scales.indexes(d.territoryPosition) + barHeight /2;
 
 				//Jump!
@@ -197,7 +197,7 @@ updateAdditionalGraphs:function(d,context){
 		          var control1Y = fromY;
 
 		        //Scale Right
-		          var toX = scales.years(d.after.start) - 2;	
+		          var toX = scales.years(d.after.start) - 2;
 		          var toY = scales.indexes(d.after.territoryPosition) + barHeight /2;
 		        //Jump!
 		          var contorl2X = toX - controlLenght;
@@ -220,18 +220,18 @@ updateAdditionalGraphs:function(d,context){
 	updateLabels: function(){
 
 	  this.setBoxHeight();
-        
+
 	  var labels = vis.selectAll('text.territoryLabel')
 	    .data(this.counter, function(d,i){ return d.name;});
 
 	  labels.enter()
 	    .append('text')
-	    .attr('class', 'territoryLabel')	    
+	    .attr('class', 'territoryLabel')
       	.attr("x", function(d,i){ return padding.left / 7;})
 		.attr("y", function(d,i) {return (d.firstIndex)*(barHeight) + padding.top;})
-	    
-	  
-	 
+
+
+
 
 	 labels
 	 	.transition()
@@ -248,14 +248,14 @@ updateAdditionalGraphs:function(d,context){
       	.attr("x", function(){ return padding.left / 7;})
       	.attr("y", function(d,i) {return (d.firstIndex)*(barHeight) + barHeight/2+ padding.top;})
       	.text(function(d,i) {
-      		if (controls.height == "territory"){ 
+      		if (controls.height == "territory"){
       			return d.label;
       		}
       		else {
       			return "";
       		}
-          	
-	    	
+
+
 	    });
 
 
@@ -263,19 +263,19 @@ updateAdditionalGraphs:function(d,context){
 	 labels.exit().remove();
 
 
-	  		
-		    
-	  		
+
+
+
 	},
 	updateIndexLabel: function(){
 		return '';
 	},
 	getYearTickPosition: function(){
-		return padding.left;     
+		return padding.left;
 	},
 	showOnlyHim: function(e,i){
 		if (controls.height == "territory" || controls.height =="memberships"){
-			
+
 			$("svg.vis path[index!=" + i + "]").css('opacity',0.2);
   			$("svg.vis path[index=" + i + "]").css('opacity',1);
   		}
@@ -288,7 +288,7 @@ updateAdditionalGraphs:function(d,context){
 			$("svg.vis path").css('opacity',1);
 		}
 		else {
-			
+
 			$("svg.vis path").css('opacity',0);
 		}
 	},
