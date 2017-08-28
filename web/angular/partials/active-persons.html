@@ -20,35 +20,44 @@
 </div> -->
 
 <!-- <div class="" ng-show="activePersons.length > 0"> -->
-  <div  id="personas-seleccionadas-box" ng-show="activePersons.length > 0">
-  <div class="full-width persons" >
-    <div class="photo-box-wrapper wow slideInLeft" ng-repeat="active in activePersons">
-      <div class="photo-box">
-        <div class="chequeado" ng-show="active.chequeado"> <a href="http://chequeado.com" target="_blank"><i class="fa fa-check"></i> {{customization.checked}} </a></div>
-        <a ng-click="remove(active)" class="crucecita"><i class="fa fa-times"></i></a>
-        <a ng-href="{{generateUrlProfile(active)}}" target="_blank">
-            <div class="photo-frame" ng-style="{'background-image':'url(' +active.image +')'}">
 
-            </div>
-        </a>
-      </div>
-      <p>{{active.family_name}}</p>
-    </div>
+
+
+
+
+
+
+
+<!-- ACTIVAAAAAAAAAAAAAAR
+
+<div class="photo-box-wrapper" ng-repeat="active in activePersons">
+  <div class="photo-box">
+    <div class="chequeado" ng-show="active.chequeado"> <a href="http://chequeado.com" target="_blank"><i class="fa fa-check"></i> {{customization.checked}} </a></div>
+    <a ng-click="remove(active)" class="crucecita"><i class="fa fa-times"></i></a>
+    <a ng-href="{{generateUrlProfile(active)}}" target="_blank">
+        <div class="photo-frame" ng-style="{'background-image':'url(' +active.image +')'}">
+
+        </div>
+    </a>
   </div>
-</div>
-<div class="row visualization-bar" id="timeline-nondisplay">
-  <ul>
-      <li><img src="/img/v2/linetime.png" alt=""><a href="#" style="color:#000">Linea de tiempo</a></li>
-      <li><a href="#">NOMBRE</a></li>
-      <li><a href="#">ROL</a></li>
-      <li><a href="#">TERRITORIO</a></li>
-      <li><a href="#">CARRERA</a></li>
-  </ul>
-</div>
+  <p>{{active.family_name}}</p>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <div class="main-visaulization" >
   <div ng-hide="activePersons.length > 0" ng-include="'/angular/partials/visualization1.swig'"></div>
 </div> -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-12
   col-sm-12
   col-md-12
@@ -63,4 +72,4 @@
   col-sm-6
   col-md-6
   col-lg-6"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v2/information.html'"></div>
-</div>
+</div> -->

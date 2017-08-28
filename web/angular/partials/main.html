@@ -1,4 +1,3 @@
-
 <div class="module">
 	<!-- <div class="description">
 		<h3><i class="fa fa-user"></i>{{customization.selectFunctionary}}: {{activePersons.length}}</h3>
@@ -8,26 +7,126 @@
 			col-md-12
 			col-lg-12
 			search-bar">
-			<div class="search-bar-1">
-					<a id="logotype" href="/"><img src="/img/v2/logo.png" alt=""></a>
+		<div class="search-bar-1">
+			<a id="logotype" href="/"><img src="/img/v2/logo.png" alt=""></a>
+			<img id="place" src="/img/v2/argentina.png" alt="">
+		</div>
+		<div class="search-bar-3">
+			<div id="burger" data-activates="slide-out" class="button-collapse">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
-			<div class="search-bar-2">
+			<!-- <img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse"> -->
+		</div>
+		<!-- <div class="search-bar-2">
 				<div  ng-include="'/angular/partials/filter.html'"></div>
 
 					<img src="/img/v2/filter-icon.png" alt="">
 					<p>Filtros Avanzados</p>
 					<img src="/img/v2/share-icon.png" alt="">
 					<p>Compartir</p>
+			</div> -->
+
+		<!-- <ul id="slide-out" class="side-nav">
+				<img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse">
+	 <li><div class="user-view">
+		 <div class="background">
+			 <img src="images/office.jpg">
+		 </div>
+		 <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+		 <a href="#!name"><span class="white-text name">John Doe</span></a>
+		 <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+	 </div></li>
+	 <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+	 <li><a href="#!">Second Link</a></li>
+	 <li><div class="divider"></div></li>
+	 <li><a class="subheader">Subheader</a></li>
+	 <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+
+ </ul> -->
+
+		<div id="slide-out" class="side-nav">
+			<div id="choise-places">
+				<img src="/img/v2/argentina.png" alt="">
+				<p>Argentina</p>
+				</li>
 			</div>
-			<div class="search-bar-3">
-					<img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse">
-			</div>
+
+			<ul id="side-nav-options">
+				<li>
+					<p>Visita guiada</p>
+				</li>
+				<li>
+					<p>Colaboradores</p>
+				</li>
+				<li>
+					<p>Fuentes de información</p>
+				</li>
+				<li>
+					<p>Nuestras histórias</p>
+				</li>
+				<li>
+					<p>Acerca de Cargografías</p>
+				</li>
+				<li>
+					<p>Changelog</p>
+				</li>
+			</ul>
+			<br>
+			<br>
+			<ul id="social-icons-nav">
+				<li>
+					<a href="#"><img src="/img/v2/facebook.png" alt=""></a>
+				</li>
+				<li>
+					<a href="#"><img src="/img/v2/twitter.png" alt=""></a>
+				</li>
+				<li>
+					<a href="#"><img src="/img/v2/github.png" alt=""></a>
+				</li>
+				<li>
+					<a href="#"><img src="/img/v2/mail.png" alt=""></a>
+				</li>
+			</ul>
+			<br>
+			<a href="#">
+				<p>AYUDANOS A MEJORAR</p>
+			</a>
+			<br>
+			<ul id="other-icons">
+				<li>
+					<a href="#"><img src="/img/v2/icon1.png" alt=""></a>
+				</li>
+				<li>
+					<a href="#"><img src="/img/v2/icon2.png" alt=""></a>
+				</li>
+				<li>
+					<a href="#"><img src="/img/v2/icon3.png" alt=""></a>
+				</li>
+			</ul>
+		</div>
 	</div>
 
-	<div  ng-include="'/angular/partials/active-persons.html'"></div>
 </div>
 
+<script type="text/javascript">
+	$('#burger').click(function() {
+		$(this).toggleClass('open');
+	});
+	$(".button-collapse").sideNav();
 
+
+	$('.button-collapse').sideNav({
+		menuWidth: 444,
+		edge: 'right',
+		closeOnClick: true,
+		draggable: true,
+		onOpen: function(el) {}, // A function to be called when sideNav is opened
+		onClose: function(el) {}, // A function to be called when sideNav is closed
+	});
+</script>
 <!-- <div class="module timeline">
 	<div class="description">
 		<h3><i class="fa fa-tasks"></i>{{customization.timeline}}</h3>

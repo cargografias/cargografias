@@ -112,14 +112,12 @@
     </div> -->
 
 
-
-
-    <div class="filter-container" ng-controller="filterController">
-        <div role="tabpanel" id="advance-filter">
-                <div>
-                    <div class="search-row">
-                        <input id="nombre" class="openSearch" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off" >
-                        <!-- <div class="opciones-busqueda buttons">
+<div class="filter-container" ng-controller="filterController">
+    <div role="tabpanel" id="advance-filter">
+        <div class="search-row">
+            <input class="openSearch search-row-nombre" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
+        </div>
+            <!-- <div class="opciones-busqueda buttons">
                             <div>
                                 <a ng-click="switchSearch(true)" ng-hide="showBusAvanzado"><i class="fa fa-sliders"></i><span class="hideOnMobile"> {{customization.search}}</span></a>
                             </div>
@@ -135,8 +133,32 @@
 
                             </div>
                         </div> -->
-                        <div id="resultadosBusqueda" ng-show="search && !showPresets">
-                            <!-- <h3 id="quantiy-result" class="description">
+            <!-- <div id="resultadosBusqueda" ng-show="search && !showPresets"> -->
+              <div id="resultadosBusqueda">
+              <div id="addAllButton" class="col-xs-12">
+                <h4>{{autoPersons.length}} resultados</h4>
+                <div  ng-click="addAll(autoPersons)"><span>+</span>AGREGAR TODOS</div>
+              </div>
+                <div id="selected-wrapper" class="col-xs-12">
+                    <div class="results1 photo-box-wrapper" ng-hide="autoPersons.length == 0 && showBusAvanzado">
+                        <div class="item" ng-repeat="item in autoPersons">
+                            <div class="photo-box">
+                                <div class="chequeado" ng-show="item.chequeado"> <a href="http://chequeado.com" target="_blank"><i class="fa fa-check"></i> {{customization.checked}} </a></div>
+                                <!-- <a ng-click="remove(item)" class="crucecita"><i class="fa fa-times"></i></a> -->
+                                <a class="crucecita"><i class="fa fa-times"></i></a>
+                                <a ng-href="{{generateUrlProfile(item)}}" target="_blank">
+                                    <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
+
+                                    </div>
+                                </a>
+                            </div>
+                            <a ng-click="add(item,item._id)" class="resultados-item" ng-class="item.styles">
+                                <i ng-hide="item.agregada" class="fa fa-user-plus"></i> {{item.name}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <h3 id="quantiy-result" class="description">
 
 
                                 <span ng-hide="autoPersons.length == 0" >
@@ -172,18 +194,45 @@
                             </h3> -->
 
 
-                            <div class="results1" ng-hide="autoPersons.length == 0 && showBusAvanzado">
+                <!-- <div class="results1" ng-hide="autoPersons.length == 0 && showBusAvanzado">
                                 <div class="item" ng-repeat="item in autoPersons" >
                                     <a ng-click="add(item,item._id)" class="resultados-item" ng-class="item.styles">
                                         <i ng-hide="item.agregada" class="fa fa-user-plus"></i> {{item.name}}
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
+
+
+
+            </div>
+
+        <div id="selected-active-wrapper" class="col-xs-12">
+          <div id="deleteAllButton" class="col-xs-12">
+            <h4>{{activePersons.length}} seleccionados</h4>
+            <div ng-click="deleteAll(autoPersons)"><span>-</span>ELIMINAR TODOS</div>
+            <button type="button" name="button" ng-click="activeVisualizations(); refreshAllVisualizations()" ng-disabled="activePersons.length == 0">COMPRAR SELECCION</button>
+          </div>
+
+
+            <div id="personas-seleccionadas-box" ng-show="activePersons.length > 0">
+                <div class="full-width persons">
+                    <div class="photo-box-wrapper wow slideInLeft" ng-repeat="active in activePersons">
+                        <div class="photo-box">
+                            <div class="chequeado" ng-show="active.chequeado"> <a href="http://chequeado.com" target="_blank"><i class="fa fa-check"></i> {{customization.checked}} </a></div>
+                            <a ng-click="remove(active)" class="crucecita"><i class="fa fa-times"></i></a>
+                            <a ng-href="{{generateUrlProfile(active)}}" target="_blank">
+                                <div class="photo-frame" ng-style="{'background-image':'url(' +active.image +')'}">
+
+                                </div>
+                            </a>
                         </div>
+                        <p>{{active.family_name}}</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- <div>
+        </div>
+        <!-- <div>
                     <div class="sharing buttons wow fadeIn" ng-show="showSharing">
                             <p><a ng-click="tweetThis()"><i class="fa fa-twitter"></i>{{customization.twitterLine}}</a></p>
 
@@ -195,7 +244,7 @@
 
                     </div>
                 </div> -->
-                <!-- <div>
+        <!-- <div>
                     <div class="filters wow fadeIn" ng-show="showBusAvanzado">
                         <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
                             <option value="">{{customization.selectTerritory}}</option>
@@ -209,7 +258,7 @@
                             <option value="">{{customization.selectDecade}} </option>
                         </select>
                     </div> -->
-                    <!-- <div ng-show="showPresets && presets.length">
+        <!-- <div ng-show="showPresets && presets.length">
                   <p>{{customization.suggestSearch}}</p>
                   <div class="">
                         <ul>
@@ -223,6 +272,6 @@
 
 
                 </div> -->
-                <!-- /Filter -->
-            </div>
-        </div>
+        <!-- /Filter -->
+    </div>
+</div>

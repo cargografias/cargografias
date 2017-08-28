@@ -590,9 +590,9 @@ a.boton:hover{
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 	}
-	div.main div.module div.search-row{
+	/*div.main div.module div.search-row{
 		  padding-bottom: 0.5em;
-	}
+	}*/
 
     .hideOnMobile{
     	display: inherit;

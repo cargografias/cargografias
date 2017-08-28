@@ -1,0 +1,62 @@
+<div class="filter-container" ng-controller="filterController" >
+    <div role="tabpanel" id="advance-filter">
+        <div class="search-row">
+            <input id="nombre" class="openSearch search-row-nombre" type="search" placeholder='{{customization.enterName}}' ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
+            <div class="results2" ng-hide="autoPersons.length == 0 && showBusAvanzado">
+                <div class="item2" ng-repeat="item2 in autoPersons">
+                    <a ng-click="add(item2,item2._id)" class="resultados-item" ng-class="item.styles">
+                        <i ng-hide="item.agregada" class="fa fa-user-plus"></i> {{item2.name}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div  id="personas-seleccionadas-box" ng-show="activePersons.length > 0">
+<div class="full-width persons light" >
+  <div class="photo-box-wrapper wow slideInLeft" ng-repeat="active in activePersons">
+    <div class="photo-box">
+      <div class="chequeado" ng-show="active.chequeado"> <a href="http://chequeado.com" target="_blank"><i class="fa fa-check"></i> {{customization.checked}} </a></div>
+      <a ng-click="remove(active)" class="crucecita"><i class="fa fa-times"></i></a>
+      <a ng-href="{{generateUrlProfile(active)}}" target="_blank">
+          <div class="photo-frame" ng-style="{'background-image':'url(' +active.image +')'}">
+
+          </div>
+      </a>
+    </div>
+    <p>{{active.family_name}}</p>
+  </div>
+</div>
+</div>
+<div class="row visualization-bar" id="timeline-nondisplay">
+  <ul>
+      <li><img src="/img/v2/linetime.png" alt=""><a href="#" style="color:#000">Linea de tiempo</a></li>
+      <li><a href="#">{{customization.name ? 'customization.name' : 'Undefined'}}</a></li>
+      <li><a href="#">{{customization.role ? 'customization.role' : 'Undefined'}}</a></li>
+      <li><a href="#">{{customization.territory ? 'customization.territory' : 'Undefined'}}</a></li>
+      <li><a href="#">{{customization.career ? 'customization.career' : 'Undefined'}}</a></li>
+  </ul>
+</div>
+{{customization.name}}
+
+ <!-- <div class="row">
+  <div class="col-xs-12
+  col-sm-12
+  col-md-12
+  col-lg-12"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v3/v3.html'"></div>
+</div> -->
+<div class="row">
+  <div class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6" ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
+  <!-- <div class="col-xs-12
+  col-sm-6
+  col-md-6
+  col-lg-6"ng-hide="activePersons.length < 1" ng-include="'/angular/visualizations/v2/information.html'"></div>
+</div> -->

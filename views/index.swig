@@ -127,7 +127,7 @@
         href="http://www.google.com/recaptcha/mailhide/d?k=01C7lOvjG_N7EaBpT3Yp2Lmw==&amp;c=so8gSuVp-5Xe2ocyAzNPdAZ8Uq5kd15DyhceyfZw3qY="
         onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501C7lOvjG_N7EaBpT3Yp2Lmw\75\75\46c\75so8gSuVp-5Xe2ocyAzNPdAZ8Uq5kd15DyhceyfZw3qY\075', '',
         'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address"><i class="fa fa-envelope-o"></i></a> </li> <li> <a href="#"><i class="fa fa-cog"></i></a> </li> </ul>
-        </div> </div> </header>#}
+        </div> </div> </header> #}
 
         <!--    <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -152,70 +152,25 @@
         </div>
     </div>
  -->
+ <div>
+     <div ng-view id="cargoContainer"></div>
+ </div>
+ <div class="main">
 
-        <div class="main">
-            <div>
-                <div ng-view id="cargoContainer"></div>
-            </div>
-            {# <div ng-controller="loaderController" ng-include="'/angular/partials/loader.html'"></div> #}
+ <!-- <div ng-controller="loaderController" ng-include="'/angular/partials/loader.html'"></div> -->
+{# <div ng-controller="loaderController" ng-include="'/angular/partials/filter.html'"></div>  #}
 
-            <div  id="main-visualization" class="view1">
-                <div ng-hide="activePersons.length > 0">
-                    <br>
-                    <div class="row">
-                        <div class="col-xs-12
-                          col-sm-12
-                          col-md-12
-                          col-lg-12
-                          child-container">
-                            <h3>
-                                {% if customization.siteTitle %}{{customization.siteTitle}}{% endif %}
-                                {% if !customization.siteTitle %}Cargografías{% endif %}
-                            </h3>
-                            <p>
-                                {% if customization.subHeading %}{{customization.subHeading}}{% endif %}
-                                {% if !customization.subHeading %}{{customization.subtitle}}{% endif %}
-                            </p>
+<div ng-hide="showme"  ng-include="'/angular/partials/presets.html'"></div>
+<div ng-hide="showme"  ng-include="'/angular/partials/footer.html'"></div>
+<div ng-hide="showVis">
+  <div ng-show="showme"  ng-include="'/angular/partials/filter.html'"></div>
+</div>
+<div ng-hide="showVis" ng-include="'/angular/partials/active-persons.html'"></div>
+<div ng-show="showVis" ng-include="'/angular/partials/onVisualization.html'"></div>
 
-                            <img src="/img/v2/argentina.png" alt="">
-                            <i class="right"></i>
-                            <i class="left"></i>
 
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="row child-container">
-                        <div class="col-xs-3">
-                            <a href="#">
-                                <div class="view1-box"></div>
-                            </a>
-                            <p>Visita guiada por Cargografias</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#!">
-                                <div class="view1-box"></div>
-                            </a>
-                            <p>Candidatos Presidenciales 2015</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#">
-                                <div class="view1-box"></div>
-                            </a>
-                            <p>Gabinete Presidencial</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#">
-                                <div class="view1-box"></div>
-                            </a>
-                            <p>Funcionarios de Entre Ríos</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div >
-            <div ng-hide="activePersons.length > 0" ng-include="'/angular/partials/footer.html'"></div>
-        </div>
+ </div>
+
         {# <footer class="well">
         <div class="main span5">{{customization.footerLeft|safe}}</div>
         <div class="row span6 sponsors">{{customization.footerRight|safe}}</div>
@@ -252,8 +207,8 @@
         <script src="/angular/Visualizations/v3/controller.js"></script>
 
         <!--Import jQuery before materialize.js-->
-        {# <script src="bower_components/jquery/dist/jquery.min.js"></script> #}
-        {# <script src="/bower_components/materialize/dist/js/materialize.min.js"></script> #}
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+     <script src="/bower_components/materialize/dist/js/materialize.min.js"></script>
     </body>
 
 </body>

@@ -4,6 +4,10 @@
 angular.module('cargoApp.controllers')
   .controller('homeController', function($rootScope, $q, $scope,presetsFactory, cargosFactory, $filter, $cookies, $routeParams, $location, $route, $timeout, $http) {
 
+
+
+
+
   var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').trim();
   instanceName = instanceName || 'cargografias';
 
@@ -14,6 +18,23 @@ angular.module('cargoApp.controllers')
       var fromDecade = 1900;
 
       $scope.customization = window.customization
+
+      $scope.activeButton = function() {
+        $scope.showme = true
+      }
+      $scope.activeVisualizations = function(){
+        $scope.showVis = true
+      }
+      $scope.addAll = function(q){
+        for (var i = 0; i < q.length; i++) {
+          $scope.add(q[i],q[i]._id)
+        }
+      }
+      $scope.deleteAll = function(q){
+        for (var i = 0; i < q.length; i++) {
+          $scope.remove(q[i])
+        }
+      }
 
 
     $scope.downloadNow = function(){
@@ -167,7 +188,7 @@ angular.module('cargoApp.controllers')
 
 
     $scope.filterAutoPersons = function(q) {
-      console.log("function: filterAutoPersons");
+
       if (q.length > 3) {
         // var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + q + "/i"
         searchModule('name',q,function(res){
@@ -353,51 +374,42 @@ angular.module('cargoApp.controllers')
     }
 
     $scope.lightAdd = function(autoPersona, id) {
-      console.log("function: lightAdd");
-
-      console.log(autoPersona.agregada);
-      console.log(autoPersona);
-
       if (!autoPersona || autoPersona.agregada){ console.log("ya esta agregada");return;}
       else {
         $scope.autocomplete = " ";
         autoPersona.agregada = true;
         autoPersona.styles = "badge-selected"
-        console.log("aca se agrega");
-        console.log(autoPersona.agregada);
+
         // var person = cargosFactory.getFullPerson(id) ;
         // console.log(person);
         // person.autoPersona = autoPersona;
         // person.cargoProfileURL = $scope.generateUrlProfile(person);
         // $scope.activePersons.unshift(person);
         var person = autoPersona ;
-        console.log(person);
+
         person.autoPersona = autoPersona;
         // person.cargoProfileURL = $scope.generateUrlProfile(person);
         $scope.activePersons.unshift(person);
-        console.log("active persons length");
-        console.log($scope.activePersons.length);
       }
     }
     $scope.add = function(autoPersona, id) {
-      document.getElementById('resultadosBusqueda').style.display = 'none';
+      // document.getElementById('resultadosBusqueda').style.display = 'none';
 
       $scope.lightAdd(autoPersona, id);
       $scope.refreshAllVisualizations();
     };
 
     $scope.refreshAllVisualizations = function() {
+      $rootScope.estaEnElPoder()
 
-
-
-      //TODO: This should all go to observers.
-      $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
-      // $scope.redrawPoderometro();
-      data = $scope.activePersons;
-
-      reloadCargoTimeline($scope.filter);
-      //Updates Url
-      updateTheUrl();
+      // // //TODO: This should all go to observers.
+      // $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
+      // // $scope.redrawPoderometro();
+      // data = $scope.activePersons;
+      //
+      // reloadCargoTimeline($scope.filter);
+      // //Updates Url
+      // updateTheUrl();
     }
 
 
