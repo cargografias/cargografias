@@ -5,7 +5,7 @@ angular.module('cargoApp.controllers')
   .controller('homeController', function($rootScope, $q, $scope,presetsFactory, cargosFactory, $filter, $cookies, $routeParams, $location, $route, $timeout, $http) {
 
 
-
+  $scope.presets = JSON.parse(window.customization.predefinedSearches);
 
 
   var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').trim();

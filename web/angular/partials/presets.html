@@ -8,6 +8,7 @@
               col-lg-12
               child-container">
                 <h3>
+
                   {{customization.siteTitle ? 'customization.siteTitle' : 'Cargografías'}}
                     <!-- {% if  %}{{customization.siteTitle}}{% endif %}
                     {% if !customization.siteTitle %}Cargografías{% endif %} -->
@@ -27,33 +28,13 @@
         </div>
         <br><br>
         <div class="row child-container">
+
             <div class="col-xs-12
-                col-md-3">
+                col-md-3" ng-repeat="preset in presets">
                 <a href="#">
-                    <div class="view1-box"></div>
+                    <div class="view1-box"><img ng-src="{{preset.imagen}}"></div>
                 </a>
-                <p>Visita guiada por Cargografias</p>
-            </div>
-            <div class="col-xs-12
-                col-md-3">
-                <a href="#!">
-                    <div class="view1-box"></div>
-                </a>
-                <p>Candidatos Presidenciales 2015</p>
-            </div>
-            <div class="col-xs-12
-                col-md-3">
-                <a href="#">
-                    <div class="view1-box"></div>
-                </a>
-                <p>Gabinete Presidencial</p>
-            </div>
-            <div class="col-xs-12
-                col-md-3">
-                <a href="#">
-                    <div class="view1-box"></div>
-                </a>
-                <p>Funcionarios de Entre Ríos</p>
+                <p><a ng-href="preset.valores">{{preset.nombre}}</a></p>
             </div>
         </div>
     </div>
