@@ -29,11 +29,38 @@ function searchModule(option,parameter,callback) {
         xmlHttp.open("GET", url, true); // true for asynchronous
         xmlHttp.send(null);
 
-
-
   }
 
 
+  if(option === 'territory'){
+        var url = "https://quienesquienapi.herokuapp.com/v1/organizations?country=Argentina&offset=0"
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+              var obj = JSON.parse(xmlHttp.response);
+              callback(obj);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+
+  }
+
+  if(option === 'role'){
+        var url = "https://quienesquienapi.herokuapp.com/v1/contracts?terrytory=/" + parameter + "/i"
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+              var obj = JSON.parse(xmlHttp.response);
+              callback(obj);
+            }
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+
+  }
   //pegar aca territoryf, yearsf e institutionsf cuando funcione qqw
   // if(option === 'memberships'){
   //   console.log("BUSCA POR MEMBRESIA");

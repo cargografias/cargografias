@@ -1,4 +1,4 @@
-<div  id="main-visualization" class="view1">
+<div  id="main-visualization" class="view1" ng-controller="loaderController">
     <div ng-hide="showme">
         <br>
         <div class="row">
@@ -8,15 +8,8 @@
               col-lg-12
               child-container">
                 <h3>
-
-                  {{customization.siteTitle ? 'customization.siteTitle' : 'Cargografías'}}
-                    <!-- {% if  %}{{customization.siteTitle}}{% endif %}
-                    {% if !customization.siteTitle %}Cargografías{% endif %} -->
+                  {{customization.siteTitle ? customization.siteTitle : 'Cargografías'}}
                 </h3>
-                <!-- <p>
-                    {% if customization.subHeading %}{{customization.subHeading}}{% endif %}
-                    {% if !customization.subHeading %}{{customization.subtitle}}{% endif %}
-                </p> -->
 
               <div class="">
               <i class="right"></i>
@@ -31,10 +24,11 @@
 
             <div class="col-xs-12
                 col-md-3" ng-repeat="preset in presets">
-                <a href="#">
-                    <div class="view1-box"><img ng-src="{{preset.imagen}}"></div>
-                </a>
-                <p><a ng-href="preset.valores">{{preset.nombre}}</a></p>
+
+                    <img ng-src="{{preset.imagen}}" ng-click="loadMyPresets($index);activeVisualizations();refreshAllVisualizations();activeButton()">
+
+                <button type="button" name="button" ng-click="loadMyPresets($index);activeVisualizations();refreshAllVisualizations();activeButton()" >{{preset.nombre}} </button>
+                <!-- <p><a ng-href="preset.valores">{{preset.nombre}}</a></p> -->
             </div>
         </div>
     </div>

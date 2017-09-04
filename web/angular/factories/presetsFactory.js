@@ -4,7 +4,7 @@
 
 angular.module('cargoApp.factories')
   .factory('presetsFactory', function($http, $filter) {
-    
+
     var factory ={};
     factory.presets = [];
 

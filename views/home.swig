@@ -96,6 +96,8 @@ Cargografías
   new WOW().init();
   </script> #}
 
+<div id="home-container" class="">
+  <div id="home-1" class="">
   <div class="row">
     <div class="col-xs-12
           col-sm-12
@@ -104,9 +106,9 @@ Cargografías
           logotype">
         <div><img src="/img/v2/logo.png" alt=""></div>
     </div>
-</div>
+  </div>
 
-<div class="row ">
+  <div class="row ">
     <div class="col-xs-12
             col-sm-12
             col-md-12
@@ -139,60 +141,62 @@ Cargografías
             </li>
         </ul>
     </div>
-</div>
+  </div>
+  </div>
 
 <!-- <div ng-view></div> -->
 
 
 <div class="row footer">
-    <div class="col-xs-12
-          col-sm-12
-          col-md-4
-          col-lg-4
-          column-1">
-        <ul>
-            <li>
-                <a href="#"><img src="/img/v2/facebook.png" alt=""></a>
-            </li>
-            <li>
-                <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&region=follow_link&screen_name=Cargografias&tw_p=followbutton&variant=2.0" target="_blank"><img src="/img/v2/twitter.png" alt=""></a>
-            </li>
-            <li>
-                <a href="https://github.com/cargografias" target="_blank"><img src="/img/v2/github.png" alt=""></a>
-            </li>
-            <li>
-                <a href="https://docs.google.com/forms/d/1NoOYENvhHXqpLO3WpB8l6R8ofJkJiShLlx2A_DfrNd0/viewform?embedded=true&amp;hl=es" target="_blank"><img src="/img/v2/mail.png" alt=""></a>
-            </li>
-        </ul>
-    </div>
+  <div class="col-xs-12
+        col-sm-12
+        col-md-4
+        col-lg-4
+        column-1">
+      <ul>
+          <li>
+              <a href="#"><img src="/img/v2/facebook.png" alt=""></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&region=follow_link&screen_name=Cargografias&tw_p=followbutton&variant=2.0" target="_blank"><img src="/img/v2/twitter.png" alt=""></a>
+          </li>
+          <li>
+              <a href="https://github.com/cargografias" target="_blank"><img src="/img/v2/github.png" alt=""></a>
+          </li>
+          <li>
+              <a href="https://docs.google.com/forms/d/1NoOYENvhHXqpLO3WpB8l6R8ofJkJiShLlx2A_DfrNd0/viewform?embedded=true&amp;hl=es" target="_blank"><img src="/img/v2/mail.png" alt=""></a>
+          </li>
+      </ul>
+  </div>
 
-    <div class="col-xs-12
-          col-sm-12
-          col-md-4
-          col-lg-4
-          column-2">
-        <p>Cargografías es una línea de tiempo que muestra los cargos públicos que tuvo cada funcionario a lo largo de su vida. También utilizada como herramienta de consulta ya que facilita el análisis y comprensión de la historia reciente.</p>
-        <ul>
-            <li>
-                <a href="#"><img src="/img/v2/icon1.png" alt=""></a>
-            </li>
-            <li>
-                <a href="#"><img src="/img/v2/icon2.png" alt=""></a>
-            </li>
-            <li>
-                <a href="#"><img src="/img/v2/icon3.png" alt=""></a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-xs-12
-          col-sm-12
-          col-md-4
-          col-lg-4
-          column-3">
-        <a href="https://docs.google.com/forms/d/1NoOYENvhHXqpLO3WpB8l6R8ofJkJiShLlx2A_DfrNd0/viewform?embedded=true&amp;hl=es" target="_blank"><img src="/img/v2/icon4.png" alt="">
-            <p>AYUDANOS A MEJORAR</p>
-        </a>
-    </div>
+  <div class="col-xs-12
+        col-sm-12
+        col-md-4
+        col-lg-4
+        column-2">
+      <p>Cargografías es una línea de tiempo que muestra los cargos públicos que tuvo cada funcionario a lo largo de su vida. También utilizada como herramienta de consulta ya que facilita el análisis y comprensión de la historia reciente.</p>
+      <ul>
+          <li>
+              <a href="#"><img src="/img/v2/icon1.png" alt=""></a>
+          </li>
+          <li>
+              <a href="#"><img src="/img/v2/icon2.png" alt=""></a>
+          </li>
+          <li>
+              <a href="#"><img src="/img/v2/icon3.png" alt=""></a>
+          </li>
+      </ul>
+  </div>
+  <div class="col-xs-12
+        col-sm-12
+        col-md-4
+        col-lg-4
+        column-3">
+      <a href="https://docs.google.com/forms/d/1NoOYENvhHXqpLO3WpB8l6R8ofJkJiShLlx2A_DfrNd0/viewform?embedded=true&amp;hl=es" target="_blank"><img src="/img/v2/icon4.png" alt="">
+          <p>AYUDANOS A MEJORAR</p>
+      </a>
+  </div>
+</div>
 </div>
 
 <script>

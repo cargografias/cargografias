@@ -129,53 +129,10 @@
         'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address"><i class="fa fa-envelope-o"></i></a> </li> <li> <a href="#"><i class="fa fa-cog"></i></a> </li> </ul>
         </div> </div> </header> #}
 
-        <!--    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand"><h3>{{customization.siteTitle}}</h3></a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-
-
-                    </ul>
-                    <ul class="nav pull-right">
-                    {{customization.errorButton|safe}}
-                    {{customization.followButton|safe}}
-                    {{customization.forkButton|safe}}
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-        <!--             {% if customization.subHeading %}
-                <div style="display: block;float: left;padding: 0px 29px 6px;font-size: 15px;font-weight: 200;color: #fff;width: 100%; background: black;">{{customization.subHeading}}</div>
-                {% endif %}
-            </div>
+        <div class="main">
+          <div ng-view id="cargoContainer"></div>
         </div>
-    </div>
- -->
- <div>
-     <div ng-view id="cargoContainer"></div>
- </div>
- <div class="main">
 
- <!-- <div ng-controller="loaderController" ng-include="'/angular/partials/loader.html'"></div> -->
-{# <div ng-controller="loaderController" ng-include="'/angular/partials/filter.html'"></div>  #}
-
-<div ng-hide="showme"  ng-include="'/angular/partials/presets.html'"></div>
-<div ng-hide="showme"  ng-include="'/angular/partials/footer.html'"></div>
-<div ng-hide="showVis">
-  <div ng-show="showme"  ng-include="'/angular/partials/filter.html'"></div>
-</div>
-<div ng-hide="showVis" ng-include="'/angular/partials/active-persons.html'"></div>
-<div ng-show="showVis" ng-include="'/angular/partials/onVisualization.html'"></div>
-
-
- </div>
-
-        {# <footer class="well">
-        <div class="main span5">{{customization.footerLeft|safe}}</div>
-        <div class="row span6 sponsors">{{customization.footerRight|safe}}</div>
-        <div class="clearfix"></div>
-    </footer> #}
 
         <script>
             window.customization = {{JSON.stringify(customization)}};
@@ -208,7 +165,7 @@
 
         <!--Import jQuery before materialize.js-->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
-     <script src="/bower_components/materialize/dist/js/materialize.min.js"></script>
+        <script src="/bower_components/materialize/dist/js/materialize.min.js"></script>
     </body>
 
 </body>

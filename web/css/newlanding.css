@@ -1,8 +1,16 @@
-html {
+html,body {
 height: 100%;
 }
 body{
   width: 100%;
+}
+#home-container{
+  display: flex;
+flex-direction: column;
+height: 100%;
+}
+#home-1{
+  flex: 1;
 }
 .logotype img{
   max-width: 12.1875rem;
@@ -15,8 +23,6 @@ body{
 .footer {
   background: #000000;
 padding:4rem 0 4rem 0;
-position: fixed;
-bottom: 0;
 color: #ffffff;
 }
 

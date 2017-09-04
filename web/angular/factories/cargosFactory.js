@@ -148,9 +148,11 @@ angular.module('cargoApp.factories')
     };
 
     factory.getAutoPersonsAdvance = function(filter,name){
+			console.log(filter);
+
         var search = false;
         var autoPersonsResult = this.autoPersons;
-        if( filter.name !== undefined && filter.name !== null) {
+        if( filter.name !== undefined || filter.name !== null) {
           autoPersonsResult =  $filter('filter')(autoPersonsResult,
             {name: filter.name},
           ignoreAccentsCompare);
@@ -186,6 +188,7 @@ angular.module('cargoApp.factories')
         }
 
         if( filter.decade !== undefined && filter.decade !== null) {
+					console.log("In decade!");
             var inDecade = false;
 
             var autoPersonsResult = _.filter(autoPersonsResult, function(data){

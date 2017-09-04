@@ -1,7 +1,5 @@
 <div class="module">
-	<!-- <div class="description">
-		<h3><i class="fa fa-user"></i>{{customization.selectFunctionary}}: {{activePersons.length}}</h3>
-	</div> -->
+
 	<div class="col-xs-12
 			col-sm-12
 			col-md-12
@@ -18,34 +16,7 @@
 				<span></span>
 				<span></span>
 			</div>
-			<!-- <img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse"> -->
 		</div>
-		<!-- <div class="search-bar-2">
-				<div  ng-include="'/angular/partials/filter.html'"></div>
-
-					<img src="/img/v2/filter-icon.png" alt="">
-					<p>Filtros Avanzados</p>
-					<img src="/img/v2/share-icon.png" alt="">
-					<p>Compartir</p>
-			</div> -->
-
-		<!-- <ul id="slide-out" class="side-nav">
-				<img id="burger" src="/img/v2/burger.png" alt="" data-activates="slide-out" class="button-collapse">
-	 <li><div class="user-view">
-		 <div class="background">
-			 <img src="images/office.jpg">
-		 </div>
-		 <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-		 <a href="#!name"><span class="white-text name">John Doe</span></a>
-		 <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-	 </div></li>
-	 <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-	 <li><a href="#!">Second Link</a></li>
-	 <li><div class="divider"></div></li>
-	 <li><a class="subheader">Subheader</a></li>
-	 <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-
- </ul> -->
 
 		<div id="slide-out" class="side-nav">
 			<div id="choise-places">
@@ -110,6 +81,16 @@
 	</div>
 
 </div>
+
+
+<div ng-hide="showme" id="presets" ng-include="'/angular/partials/presets.html'"></div>
+<div ng-hide="showme" ng-include="'/angular/partials/footer.html'"></div>
+<div ng-hide="showVis" id="filter-wrapper">
+		<div id="filter-container" ng-show="showme" ng-include="'/angular/partials/filter.html'"></div>
+</div>
+<!-- <div ng-hide="showVis" ng-include="'/angular/partials/active-persons.html'"></div> -->
+<div ng-show="showVis" ng-include="'/angular/partials/onVisualization.html'"></div>
+
 
 <script type="text/javascript">
 	$('#burger').click(function() {

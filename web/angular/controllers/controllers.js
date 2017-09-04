@@ -5,11 +5,16 @@ angular.module('cargoApp.controllers')
   .controller('homeController', function($rootScope, $q, $scope,presetsFactory, cargosFactory, $filter, $cookies, $routeParams, $location, $route, $timeout, $http) {
 
 
-  $scope.presets = JSON.parse(window.customization.predefinedSearches);
+  // $scope.presets = JSON.parse(window.customization.predefinedSearches);
+  $scope.loadMyPresets = function(preset){
+    if ($scope.presets.length) {
+      $scope.load($scope.presets[preset].valores); //Default load 1st preset
+    }
+  }
 
 
   var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').trim();
-  instanceName = instanceName || 'cargografias';
+  instanceName = instanceName || 'cargografías';
 
       /**
        * FromDecade
@@ -20,10 +25,13 @@ angular.module('cargoApp.controllers')
       $scope.customization = window.customization
 
       $scope.activeButton = function() {
+        console.log("activeButton");
         $scope.showme = true
       }
       $scope.activeVisualizations = function(){
-        $scope.showVis = true
+        console.log("activeVisualizations");
+        if($scope.showVis) $scope.showVis = false
+        else $scope.showVis = true
       }
       $scope.addAll = function(q){
         for (var i = 0; i < q.length; i++) {
@@ -31,7 +39,11 @@ angular.module('cargoApp.controllers')
         }
       }
       $scope.deleteAll = function(q){
-        for (var i = 0; i < q.length; i++) {
+        console.log(q.length);
+        for (var i = 0; i < q.length +1; i++) {
+          console.log(q);
+          console.log("deleteall");
+          console.log($scope.remove(q[i]));
           $scope.remove(q[i])
         }
       }
@@ -138,39 +150,39 @@ angular.module('cargoApp.controllers')
         $scope.refreshAllVisualizations();
       } else {
         //Initial load without data in the url
-        presetsLoader.then(function() {
-          if ($scope.presets.length) {
-            $scope.load($scope.presets[0].valores); //Default load 1st preset
-          }
-        });
+        // presetsLoader.then(function() {
+        //   if ($scope.presets.length) {
+        //     $scope.load($scope.presets[0].valores); //Default load 1st preset
+        //   }
+        // });
       }
 
     };
 
 
 
-    $scope.redrawPoderometro = function() {
-      $scope.activeYear = $("#years").val();
-      console.log($scope.activeYear);
-      var maxYear = d3.max($scope.activePersons, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
-      var minYear = d3.min($scope.activePersons, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
-
-
-      var diff = maxYear - minYear ;
-      $scope.poderometroYears = [];
-      for (var i = 0; i < diff;  i++) {
-        $scope.poderometroYears.push(minYear + i);
-      };
-
-      if (!$scope.activeYear){
-        $scope.activeYear = minYear;
-      }
-      for (var i = 0; i < $rootScope.yearObserver.length; i++) {
-        var observer = $rootScope.yearObserver[i];
-        var poderometro = cargosFactory.getPoderometroAnimado($scope.activeYear, $scope.activePersons);
-        observer(poderometro);
-      };
-    }
+    // $scope.redrawPoderometro = function() {
+    //   $scope.activeYear = $("#years").val();
+    //   console.log($scope.activeYear);
+    //   var maxYear = d3.max($scope.activePersons, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
+    //   var minYear = d3.min($scope.activePersons, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
+    //
+    //
+    //   var diff = maxYear - minYear ;
+    //   $scope.poderometroYears = [];
+    //   for (var i = 0; i < diff;  i++) {
+    //     $scope.poderometroYears.push(minYear + i);
+    //   };
+    //
+    //   if (!$scope.activeYear){
+    //     $scope.activeYear = minYear;
+    //   }
+    //   for (var i = 0; i < $rootScope.yearObserver.length; i++) {
+    //     var observer = $rootScope.yearObserver[i];
+    //     var poderometro = cargosFactory.getPoderometroAnimado($scope.activeYear, $scope.activePersons);
+    //     observer(poderometro);
+    //   };
+    // }
 
     function loadPresets() {
       var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '') ;
@@ -179,6 +191,8 @@ angular.module('cargoApp.controllers')
       var req = $http.get(locdataPath);
       req.then(function(res) {
         $scope.presets = JSON.parse(res.data.predefinedSearches || "[]");
+        console.log(res.data);
+        window.customization = res.data;
         $scope.showPresets = $scope.presets && $scope.presets.length;
       });
       return req;
@@ -194,22 +208,41 @@ angular.module('cargoApp.controllers')
         searchModule('name',q,function(res){
           $scope.showPresets = false;
           $scope.search = true;
-          $scope.filterAdvance.name = q;
+          $scope.filterAdvance.name = q
+          $scope.filterAdvance.territory
+          $scope.filterAdvance.role
+          $scope.filterAdvance.decade
           //viejo cargografias:
-          // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
           $scope.autoPersons = res.data;
+          // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
           $scope.showResult = true;
           document.getElementById('resultadosBusqueda').style.display = 'block';
         })
-        // httpRequest(url,function(res){
-        //
-        // })
-
       } else {
         $scope.autoPersons = [];
         $scope.search = false;
       }
     };
+
+    $scope.filterTerritory = function () {
+      searchModule('territory','Argentina', function(res){
+        $scope.territories = res.data;
+        console.log("territories");
+        console.log($scope.territories);
+      })
+    }
+    $scope.filterTerritory()
+
+    $scope.filterRole = function () {
+      searchModule('role','Argentina', function(res){
+        $scope.role = res.data;
+        console.log("roles");
+        console.log($scope.role);
+      })
+    }
+    $scope.filterRole()
+
+
 
     $scope.filterAutoPersonsAdvance = function () {
         $scope.showPresets = false;
@@ -217,6 +250,7 @@ angular.module('cargoApp.controllers')
         $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
         $scope.showResult = true;
     };
+
 
     $scope.createEmbed = function(cb){
       $http.post('/createEmbedUrl', {
@@ -421,10 +455,12 @@ angular.module('cargoApp.controllers')
 
 
     $scope.remove = function(person) {
+      console.log("remove");
       var indexOf = $scope.activePersons.indexOf(person);
       if (indexOf > -1) {
         $scope.activePersons.splice(indexOf, 1);
       }
+
       person.autoPersona.agregada = false;
       person.autoPersona.styles = "";
       if ($scope.activePersons.length == 0 && !$scope.search) {
@@ -495,7 +531,9 @@ angular.module('cargoApp.controllers')
         }
         return decades;
       }
-
+      $scope.decades = $scope.getDecades()
+      console.log("decades");
+      console.log($scope.decades);
 
 
       //Notifcation manager

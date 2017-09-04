@@ -1,12 +1,33 @@
-<div class="row our-visiualization">
+<div class="row our-visiualization" ng-controller="loaderController">
     <div class="col-xs-12
           our-visiualization-1">
           <ul>
-              <li><h3>Creá tu <br>visualización <br> en 3 pasos</h3></li>
-              <li><span>1</span>Buscá funcionarios --</li>
-              <li><span>2</span>Buscá funcionarios --</li>
-              <li><span>3</span>Buscá funcionarios --</li>
-              <li><button type="button" name="button" ng-click="activeButton()">CREAR VISUALIZACIÓN</button></li>
+            <!-- <li><h3>Creá tu <br>visualización <br> en 3 pasos</h3></li>
+            <li><span>1</span>Buscá funcionarios --</li>
+            <li><span>2</span>Buscá funcionarios --</li>
+            <li><span>3</span>Buscá funcionarios --</li>
+            <li><button type="button" name="button" ng-click="activeButton()">CREAR VISUALIZACIÓN</button></li> -->
+              <li><h3>{{customization.createVisualization ? customization.createVisualization : 'Undefined'}}</h3></li>
+              <li><span>1</span>{{customization.searchPeople ? customization.searchPeople : 'Undefined'}} --</li>
+              <li><span>2</span>{{customization.addPeople ? customization.addPeople : 'Undefined'}} --</li>
+              <li><span>3</span>{{customization.comparePeople ? customization.comparePeople : 'Undefined'}} --</li>
+              <li><button type="button" name="button" ng-click="activeButton()">{{customization.createVisualizationButton ? customization.createVisualizationButton : 'Undefined'}}
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
+
+                    <defs></defs>
+                    <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="1--Landing-País" transform="translate(-1225.000000, -653.000000)">
+                            <g id="Group-15" transform="translate(1035.000000, 640.000000)">
+                                <g id="ic_arrow_forward_black_24px" transform="translate(186.000000, 9.000000)">
+                                    <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                    <polygon id="Shape" fill="#FFFFFF" fill-rule="nonzero" points="12 4 10.59 5.41 16.17 11 4 11 4 13 16.17 13 10.59 18.59 12 20 20 12"></polygon>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+              </button></li>
           </ul>
 
 

@@ -237,8 +237,8 @@ div.main{
   background-color: #222222;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
   max-width: 100%;
   display: inline-flex;
   overflow-x: auto;
@@ -247,6 +247,11 @@ div.main{
 }
 .full-width .persons{
     padding-top: 1em;
+}
+.selection{
+  flex: 1;
+display: flex;
+justify-content: flex-end;
 }
 .label.full-width{
   width: 100%;
