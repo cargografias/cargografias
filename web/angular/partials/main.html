@@ -83,13 +83,10 @@
 </div>
 
 
-<div ng-hide="showme" id="presets" ng-include="'/angular/partials/presets.html'"></div>
-<div ng-hide="showme" ng-include="'/angular/partials/footer.html'"></div>
-<div ng-hide="showVis" id="filter-wrapper">
-		<div id="filter-container" ng-show="showme" ng-include="'/angular/partials/filter.html'"></div>
-</div>
-<!-- <div ng-hide="showVis" ng-include="'/angular/partials/active-persons.html'"></div> -->
-<div ng-show="showVis" ng-include="'/angular/partials/onVisualization.html'"></div>
+<div ng-show="showPresetsView" id="presets" ng-include="'/angular/partials/presets.html'"></div>
+<div ng-show="showPresetsView" ng-include="'/angular/partials/footer.html'"></div>
+<div ng-show="showFilterView" id="filter-container" ng-include="'/angular/partials/filter.html'"></div>
+<div ng-show="showVisualizationView" ng-include="'/angular/partials/onVisualization.html'"></div>
 
 
 <script type="text/javascript">

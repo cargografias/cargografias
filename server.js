@@ -14,7 +14,7 @@ swig.setDefaults({
     cache: false,
     locals: {
         config: {
-            baseStaticPath: process.env.BASE_STATIC_PATH 
+            baseStaticPath: process.env.BASE_STATIC_PATH
         }
     }
 });
@@ -47,19 +47,19 @@ app.get('/about', aboutController.index);
 app.use(express.static(__dirname + '/web'));
 
 app.get('/:instanceName', instanceRouteHandler);
-        
+
 function instanceRouteHandler(req, res) {
 
     var instances = conn.getDb().collection('cargoinstances');
     instances.find({instanceName: req.params.instanceName}).toArray(function(err, instances) {
         if (err) {
             res.send('error');
-            console.log(err); 
+            console.log(err);
         } else {
             if(instances.length > 0){
-                res.render('index', instances[0]) 
+                res.render('index', instances[0])
             }else{
-                res.status(404).render('instancenotfound'); 
+                res.status(404).render('instancenotfound');
             }
         }
     });
@@ -72,12 +72,12 @@ app.get('/d/:instanceName', function(req, res) {
     instances.find({instanceName: req.params.instanceName}).toArray(function(err, instances) {
         if (err) {
             res.send('error');
-            console.log(err); 
+            console.log(err);
         } else {
             if(instances.length > 0){
-                res.send(instances[0]) 
+                res.send(instances[0])
             }else{
-                res.status(404).render('instancenotfound'); 
+                res.status(404).render('instancenotfound');
             }
         }
     });
@@ -97,4 +97,3 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
-

@@ -35,7 +35,7 @@ flex-direction: column;
   flex:1;
 }
 #filter-container{
-  flex:0;
+  flex:1;
   height: 100%;
 display: flex;
 flex-direction: column;
@@ -267,6 +267,7 @@ align-items: center;
     display: flex;
     flex-direction: column;
     background: #222222;
+    min-height: 5.125rem;
 }
 .search-row-nombre{
   background: #222222;
@@ -725,6 +726,7 @@ justify-content: space-between;
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
 }
 .our-visiualization-1 svg{
   margin-left: 0.8125rem;

@@ -70,7 +70,7 @@
         <h4><span>{{activePersons.length}}</span> {{customization.selectedPeople ? customization.selectedPeople : 'Undefined'}}</h4>
         <div id="deleteAllButtonInfo" ng-click="deleteAll(autoPersons)"><span>-</span>{{customization.deleteAllButton ? customization.deleteAllButton : 'Undefined'}}</div>
         <div class="selection">
-            <button type="button" name="button" ng-click="activeVisualizations(); refreshAllVisualizations()" ng-disabled="activePersons.length == 0">
+            <button type="button" name="button" ng-click="showVisualizationFunction()" ng-disabled="activePersons.length == 0">
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1">
                     <defs>
@@ -98,7 +98,7 @@
         <div class="results1 photo-box-wrapper-selected">
             <div class="item wow slideInLeft" ng-repeat="item in activePersons">
                 <div class="photo-box">
-                    <a ng-click="remove(item)" class="crucecita">-</i></a>
+                    <a ng-click="remove(item)" class="crucecita"> - </i></a>
                     <a ng-href="{{generateUrlProfile(item)}}" target="_blank">
                         <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
                         </div>

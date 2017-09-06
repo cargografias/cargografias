@@ -18,6 +18,8 @@ angular.module('cargoApp.factories', [])
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-organizations.json' + '?v=' + window.__config.lastUpdate);
 
     var currentDataSource = cargografiasSources;
+    // console.log("currentDataSource");
+    // console.log(currentDataSource);
 
     var f = {};
 
@@ -26,11 +28,15 @@ angular.module('cargoApp.factories', [])
                 .then(function(res){
                 $rootScope.estado = "Representatividad";
                 factory.weight = res.data;
+                // console.log("CARGOS POPIT: ");
+                // console.log(res.data);
               });
               $http.get(currentDataSource[0])
                  .then(function(res){
                   $rootScope.estado = "Personas";
                   factory.persons = res.data;
+                  // console.log("PERSONAS POPIT: ");
+                  // console.log(factory.persons);
                     for (var i = 0; i < res.data.length; i++) {
                       //Search Index
                       var item = res.data[i]
@@ -54,6 +60,8 @@ angular.module('cargoApp.factories', [])
                     .then(function(res){
                       $rootScope.estado = "Organizaciones";
                       factory.organizations = res.data;
+                      // console.log("ORGANIZACIONES POPIT: ");
+                      // console.log(factory.organizations);
                       //TODO: Why is this here? Shouldn't go to organization level attribute?
                       //nivel: res.data[i].name === 'Argentina' ? 'nacional' : 'provincial'
                   }).then(callback);
@@ -61,6 +69,7 @@ angular.module('cargoApp.factories', [])
   };
 
   //Photo or default photo
+  // console.log("processImages POPIT: ");
   f.processImages = function(d){
 
     try{
@@ -72,12 +81,14 @@ angular.module('cargoApp.factories', [])
   };
 
   //Initials for graphics
+  // console.log("obtengo las iniciales de las personas");
+  // console.log("d.initials: ");
   f.setInitials = function(d){
     var splitedName =  d.given_name.split(' ')
     d.initials = d.given_name ? splitedName.map(function(item){ return item.substr(0,1).toUpperCase() }).join('.') + "." : '-';
 
   }
-
+  // console.log("d.popitID, obtengo los 6 primeros caracteres del id completo");
   f.setShareableID = function(d){
     d.popitID = d.id_sha1.substring(0,6);
   }
@@ -129,7 +140,7 @@ angular.module('cargoApp.factories', [])
             m.area_name =  toTitleCase(z);
           }
         catch(e){
-          console.log('No area found: memberships',m.id);
+          // console.log('No area found: memberships',m.id);
             m.area ={
               id: "AREA-NOT-FOUND",
               name: "AREA-NOT-FOUND",
