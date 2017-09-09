@@ -7,12 +7,14 @@ angular.module('cargoApp.controllers').controller('estaEnPoderCtrl',
           $scope.estaenElPoder= $scope.activePersons.slice()
           // console.log($scope.activePersons.length);
           for (var i = 0; i < $scope.activePersons.length; i++) {
-            if ($scope.activePersons[i].memberships.indexOf("2011") != -1) {
-              $scope.estaenElPoder[i].remainsInPower = "SI";
-            }
-            else {
-              $scope.estaenElPoder[i].remainsInPower = "NO";
-            }
+            $scope.estaenElPoder[i].remainsInPower = "NO";
+
+            // if ($scope.activePersons[i].membership.data[0].end_date.indexOf("2011") != -1) {
+            //   $scope.estaenElPoder[i].remainsInPower = "SI";
+            // }
+            // else {
+            //   $scope.estaenElPoder[i].remainsInPower = "NO";
+            // }
           };
         }
     }

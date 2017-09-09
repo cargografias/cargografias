@@ -6,14 +6,6 @@ function searchModule(option,parameter,callback) {
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
               var obj = JSON.parse(xmlHttp.response);
-              // obj.memberships =   searchModule('memberships',q,function(res){
-              //                         return res
-              //                       })
-              console.log(obj);
-              obj.data.map(function(p) {
-                // p.memberships = membershipsf(parameter)
-                p.memberships = ["memberships1","memberships2"]
-              })
               // obj.data.map(function(p) {
               //    p.territory = terrytoryf(parameter)
               // })
@@ -22,7 +14,20 @@ function searchModule(option,parameter,callback) {
               // })
               // obj.data.map(function(p) {
               //    p.institutions = institutionsf(parameter)
-              // })
+              // }
+              // console.log("antes");
+              // console.log(obj);
+              obj.data.map(function(p) {
+                var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.name + '/i'
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                       p.membership  = JSON.parse(xmlHttp.response);
+                    }
+                }
+                xmlHttp.open("GET", url, true); // true for asynchronous
+                xmlHttp.send(null);
+              })
               callback(obj);
             }
         }
@@ -77,19 +82,3 @@ function searchModule(option,parameter,callback) {
   //       xmlHttp.send(null);
   // }
 }
-
-
-
-//viejo buscador, busca por nombre y funciona bien
-// function httpRequest(theUrl, callback)
-// {
-//     var xmlHttp = new XMLHttpRequest();
-//     xmlHttp.onreadystatechange = function() {
-//         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-//           var obj = JSON.parse(xmlHttp.response);
-//           callback(obj);
-//         }
-//     }
-//     xmlHttp.open("GET", theUrl, true); // true for asynchronous
-//     xmlHttp.send(null);
-// }

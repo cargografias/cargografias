@@ -38,11 +38,6 @@ angular.module('cargoApp.controllers')
 
         }
 
-        // $scope.activeVisualizations = function() {
-        //     console.log("activeVisualizations");
-        //     if ($scope.showVis) $scope.showVis = false
-        //     else $scope.showVis = true
-        // }
         $scope.addAll = function(q) {
             for (var i = 0; i < q.length; i++) {
                 $scope.add(q[i], q[i]._id)
@@ -483,7 +478,7 @@ angular.module('cargoApp.controllers')
             // // $scope.redrawPoderometro();
             // data = $scope.activePersons;
             //
-            // reloadCargoTimeline($scope.filter);
+            reloadCargoTimeline('name');
             // //Updates Url
             // updateTheUrl();
         }
