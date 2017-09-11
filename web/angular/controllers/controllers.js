@@ -181,28 +181,6 @@ angular.module('cargoApp.controllers')
 
 
 
-        // $scope.redrawPoderometro = function() {
-        //   $scope.activeYear = $("#years").val();
-        //   console.log($scope.activeYear);
-        //   var maxYear = d3.max($scope.activePersons, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
-        //   var minYear = d3.min($scope.activePersons, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
-        //
-        //
-        //   var diff = maxYear - minYear ;
-        //   $scope.poderometroYears = [];
-        //   for (var i = 0; i < diff;  i++) {
-        //     $scope.poderometroYears.push(minYear + i);
-        //   };
-        //
-        //   if (!$scope.activeYear){
-        //     $scope.activeYear = minYear;
-        //   }
-        //   for (var i = 0; i < $rootScope.yearObserver.length; i++) {
-        //     var observer = $rootScope.yearObserver[i];
-        //     var poderometro = cargosFactory.getPoderometroAnimado($scope.activeYear, $scope.activePersons);
-        //     observer(poderometro);
-        //   };
-        // }
 
         function loadPresets() {
             var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '');
