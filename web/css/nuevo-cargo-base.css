@@ -68,7 +68,7 @@ flex-direction: column;
   padding: 0;
 }
 #side-nav-options {
-  margin: 25% 0; 
+  margin: 25% 0;
 }
 #slide-out li{
   text-decoration: none;
@@ -574,8 +574,18 @@ color: #ffffff;
 .visualization-bar {
   height: 3.375rem;
   max-width: 100%;
-  border-bottom: 1px solid #E2E2E2;
+  /*border-bottom: 1px solid #E2E2E2;*/
+  margin: 1.25rem;
+  background:#F6F6F6;
   display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.menuVisualization{
+  padding-right: 1rem;
+}
+.menuVisualization svg{
+  padding-left: 1rem;
 }
 #main-visualization{
   width: 80%;
