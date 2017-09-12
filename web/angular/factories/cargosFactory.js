@@ -552,36 +552,49 @@ angular.module('cargoApp.factories')
 
         return _.unique(allOrganizations);
     }
-      factory.getTerritories = function() {
-        if (factory.territories.length === 0){
-          var allTerritories = new Array();
-          _.each(factory.persons, function(p, index) {
-              _.each(p.memberships,function(m,i){
-                // if(_.isString(m.area.name) && m.area.name !== '') {
-                //   allTerritories.push(m.area.name);
-                // }
-              });
 
-          });
-          factory.territories = _.unique(allTerritories);
-        }
+      factory.getTerritories = function() {
+        // if (factory.territories.length === 0){
+        //   var allTerritories = new Array();
+        //   _.each(factory.persons, function(p, index) {
+        //       _.each(p.memberships,function(m,i){
+        //         // if(_.isString(m.area.name) && m.area.name !== '') {
+        //         //   allTerritories.push(m.area.name);
+        //         // }
+        //       });
+				//
+        //   });
+        //   factory.territories = _.unique(allTerritories);
+        // }
+				searchModule('territory', 'Argentina', function(res) {
+						factory.territories = res.data;
+						// console.log("territories");
+						// console.log($scope.territories);
+				})
 
       return factory.territories;
     }
 
     factory.getJobTitle = function() {
-        var allMemberships = new Array();
+        var allMemberships;
+				//
+        // _.each(this.persons, function(p, index) {
+        //     _.each(p.memberships,function(m,i){
+        //       if(_.isString(m.label) && m.label !== '') {
+        //         allMemberships.push(m.label);
+        //       }
+        //     });
+				//
+        // });
+				searchModule('role', 'Argentina', function(res) {
+					factory.role = res.data;
+						// $scope.territories = res.data;
+						// console.log("territories");
+						// console.log($scope.territories);
+				})
 
-        _.each(this.persons, function(p, index) {
-            _.each(p.memberships,function(m,i){
-              if(_.isString(m.label) && m.label !== '') {
-                allMemberships.push(m.label);
-              }
-            });
-
-        });
-
-        return _.unique(allMemberships);
+        // return _.unique(allMemberships);
+				return factory.role
     }
 
     factory.getDecades = function(from) {

@@ -1,4 +1,4 @@
-<div class="module">
+<div class="module" ng-controller="loaderController">
 
 	<div class="col-xs-12
 			col-sm-12
@@ -6,10 +6,20 @@
 			col-lg-12
 			search-bar">
 		<div class="search-bar-1">
-			<a id="logotype" href="/"><img src="/img/v2/logo.png" alt=""></a>
-			<img id="place" src="/img/v2/argentina.png" alt="">
+				<a id="logotype" href="/"><img src="/img/v2/logo.png" alt=""></a>
+				<!-- <img id="place" src="/img/v2/argentina.png" alt=""> -->
+				<h3>
+					{{customization.siteTitle ? customization.siteTitle : 'Undefined'}}
+				</h3>
 		</div>
-		<div class="search-bar-3">
+		<div class="search-bar-2">
+			<a href="/">
+
+				CAMBIAR PAIS</a>
+			<a href="/">ACERCA DE</a>
+		</div>
+	</div>
+		<!-- <div class="search-bar-3">
 			<div id="burger" data-activates="slide-out" class="button-collapse">
 				<span></span>
 				<span></span>
@@ -80,7 +90,7 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 
 </div>
 

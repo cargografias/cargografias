@@ -20,15 +20,32 @@
         </svg>
         </input>
 
-        <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="data.model">
-          <option value="" disabled selected>{{customization.searchByTerritory ? customization.searchByTerritory : 'Undefined'}}</option>
-          <option ng-repeat="option in territories" value="{{option.name}}" ng-model="filterAdvance.territory">{{option.address.city}}</option>
+        <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
+            <option value="">{{customization.selectTerritory}}</option>
+        </select>
+        <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
+            <option value="">{{customization.selectPosition}}</option>
         </select>
 
-        <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="filterAdvance.role">
-          <option value="" disabled selected>{{customization.searchByRole ? customization.searchByRole : 'Undefined'}}</option>
-          <option ng-repeat="option in role" value="{{option._id}}">{{option.title}}</option>
+        <select ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="
+            decade.key as decade.label for decade in getDecades()">
+            <option value="">{{customization.selectDecade}} </option>
+        </select> -->
+
+        <!-- <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="data.model">
+          <option value="" disabled selected>{{customization.searchByTerritory ? customization.searchByTerritory : 'Undefined'}}</option>
+          <option ng-repeat="option in territories" value="{{option.name}}" ng-model="filterAdvance.territory">{{option}}</option>
+        </select> -->
+        <select class="openSearch search-row-nombre" ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
+            <option value="">{{customization.selectTerritory}}</option>
         </select>
+        <select class="openSearch search-row-nombre" ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle.role | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
+            <option value="">{{customization.selectPosition}}</option>
+        </select>
+        <!-- <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="filterAdvance.role">
+          <option  value="" disabled selected>{{customization.searchByRole ? customization.searchByRole : 'Undefined'}}</option>
+          <option  ng-repeat="option in role" value="{{option._id}}">{{option.role}}</option>
+        </select> -->
 
         <select class="openSearch last-search-row-nombre" name="" ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="decade.key as decade.label for decade in getDecades()">
             <option value="" disabled selected>{{customization.searchByDecade ? customization.searchByDecade : 'Undefined'}}</option>

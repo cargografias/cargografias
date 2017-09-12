@@ -121,6 +121,7 @@ angular.module('cargoApp.controllers')
         }
 
         // Presets
+
         $scope.loadMyPresets = function(preset) {
             if ($scope.presets.length) {
                 for (var i = 0; i < $scope.presets[preset].valores.length; i++) {
@@ -223,6 +224,7 @@ angular.module('cargoApp.controllers')
 
         $scope.filterTerritory = function() {
             searchModule('territory', 'Argentina', function(res) {
+              console.log(res);
                 $scope.territories = res.data;
                 // console.log("territories");
                 // console.log($scope.territories);
@@ -240,12 +242,14 @@ angular.module('cargoApp.controllers')
         $scope.filterRole()
 
         $scope.filterAutoPersonsAdvance = function() {
-            $scope.showPresets = false;
-            $scope.search = true;
-            $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
-            $scope.showResult = true;
+          console.log("filterAutoPersonsAdvance");
+          console.log($scope.filterAdvance);
+            // $scope.showPresets = false;
+            // $scope.search = true;
+            // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
+            // $scope.showResult = true;
         };
-
+$scope.filterAutoPersonsAdvance()
         $scope.createEmbed = function(cb) {
             $http.post('/createEmbedUrl', {
                     persons: ($scope.activePersons || []).map(function(person) {
@@ -536,9 +540,11 @@ angular.module('cargoApp.controllers')
              * Get all Organizations
              * @returns {*}
              */
+
         $scope.getTerritories = function() {
                 return cargosFactory.getTerritories();
             }
+
             /**
              * get All JobTitles
              * @returns {*}

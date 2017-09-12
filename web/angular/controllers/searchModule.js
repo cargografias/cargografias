@@ -18,7 +18,8 @@ function searchModule(option,parameter,callback) {
               // console.log("antes");
               // console.log(obj);
               obj.data.map(function(p) {
-                var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.name + '/i'
+                var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.simple + '/i'
+                // var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.name + '/i'
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function() {
                     if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
@@ -38,8 +39,8 @@ function searchModule(option,parameter,callback) {
 
 
   if(option === 'territory'){
-        var url = "https://quienesquienapi.herokuapp.com/v1/organizations?country=Argentina&offset=0"
-
+        // var url = "https://quienesquienapi.herokuapp.com/v1/organizations?country=Argentina&offset=0"
+        var url = "https://quienesquienapi.herokuapp.com/v1/memberships/distinct/territory"
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
@@ -53,7 +54,8 @@ function searchModule(option,parameter,callback) {
   }
 
   if(option === 'role'){
-        var url = "https://quienesquienapi.herokuapp.com/v1/contracts?terrytory=/" + parameter + "/i"
+        // var url = "https://quienesquienapi.herokuapp.com/v1/contracts?terrytory=/" + parameter + "/i"
+        var url = "https://quienesquienapi.herokuapp.com/v1/memberships?post_type&fields=role"
 
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {

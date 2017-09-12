@@ -19,12 +19,26 @@ height: 100%;
   margin-right: auto;
   padding: 4.25rem 0 2.75rem 0;
 }
-
-.footer {
-  background: #000000;
-padding:4rem 0 4rem 0;
-color: #ffffff;
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+.text p {
+  max-width: 33rem;
+  margin: 5rem;
+  color: #222222;
+  text-align: center;
+}
+.text button{
+  border: none;
+  background: #ffffff;
+  color: #222222;
+  outline: none;
+  BORDER: NONE;
+}
+
 
 .choise-places {
     margin: 0 auto;
@@ -52,7 +66,11 @@ color: #ffffff;
   max-width: 3.75rem;
   padding: 0;
 }
-
+.footer {
+  background: #000000;
+padding:1rem 0 4rem 0;
+color: #ffffff;
+}
 .column-1 li {
   margin: 0.5rem;
 }
@@ -60,15 +78,13 @@ color: #ffffff;
 .column-2 li {
   margin: 0.3rem;
 }
-.column-2 {
 
-}
-.column-2 p {
+/*.column-2 p {
   text-align: center;
   font-size: 0.875rem;
   color: #ffffff;
   margin: 0 0 2rem 0;
-}
+}*/
 
 .column-3 {
   text-align: center;
