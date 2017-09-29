@@ -43,11 +43,6 @@ angular.module('cargoApp.controllers')
                 $scope.add(q[i], q[i]._id)
             }
         }
-        $scope.deleteAll = function(q) {
-            for (var i = 0; i < q.length + 1; i++) {
-                $scope.remove(q[i])
-            }
-        }
 
 
         $scope.downloadNow = function() {
@@ -208,13 +203,25 @@ angular.module('cargoApp.controllers')
                     $scope.filterAdvance.role
                     $scope.filterAdvance.decade
                     $scope.autoPersons = res.data;
-                    console.log("AUTO PERSONS no presets");
-                    console.log($scope.autoPersons);
+
+                    for (var i = 0; i < $scope.autoPersons.length; i++) {
+                      console.log($scope.autoPersons[i]);
+                      // var indexOf = $scope.activePersons.indexOf($scope.autoPersons[i]);
+                      // console.log(indexOf);
+                      // if (indexOf > -1) {
+                      //   console.log("ESTA: " + i);
+                      // //   $scope.autoPersons[i].agregada = true;
+                      // //   $scope.autoPersons[i].styles = "badge-selected";
+                      // }
+                    };
+
+
+
+
                     // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
                     $scope.showResult = true;
                     document.getElementById('resultadosBusqueda').style.display = 'block';
                     $scope.refreshAllVisualizations();
-                    // $scope.add(q,'3003')
                 })
             } else {
                 $scope.autoPersons = [];
@@ -224,7 +231,6 @@ angular.module('cargoApp.controllers')
 
         $scope.filterTerritory = function() {
             searchModule('territory', 'Argentina', function(res) {
-              console.log(res);
                 $scope.territories = res.data;
                 // console.log("territories");
                 // console.log($scope.territories);
@@ -416,7 +422,10 @@ $scope.filterAutoPersonsAdvance()
 
         $scope.lightAdd = function(autoPersona, id) {
             console.log("running lightAdd");
-            // console.log(autoPersona);
+            console.log("$scope.autoPersons");
+            console.log($scope.autoPersons);
+            console.log("$scope.activePersons");
+            console.log($scope.activePersons);
             if (!autoPersona || autoPersona.agregada) {
                 console.log("ya esta agregada");
                 return;
@@ -437,17 +446,9 @@ $scope.filterAutoPersonsAdvance()
                 // person.cargoProfileURL = $scope.generateUrlProfile(person);
 
                 $scope.activePersons.unshift(person);
-                console.log("$scope.autoPersons");
-                console.log($scope.autoPersons);
-                console.log("$scope.activePersons");
-                console.log($scope.activePersons);
-                console.log("person.autoPersona");
-                console.log(person.autoPersona);
             }
         }
         $scope.add = function(autoPersona, id) {
-
-            console.log("$SCOPE.ADD()");
             $scope.lightAdd(autoPersona, id);
             $scope.refreshAllVisualizations();
         };
@@ -477,28 +478,21 @@ $scope.filterAutoPersonsAdvance()
         }
 
         $scope.remove = function(person) {
-            console.log("remove person");
-            console.log("$scope.autoPersons");
-            console.log($scope.autoPersons);
-            console.log("$scope.activePersons");
-            console.log($scope.activePersons);
-            console.log("person.autoPersona");
-            console.log(person.autoPersona);
+            //quito el estado activo en autoPersons
+            if(person.autoPersona != 'undefined'){
+              person.autoPersona.agregada = false
+              person.autoPersona.styles = ""
+            }
             var indexOf = $scope.activePersons.indexOf(person);
             if (indexOf > -1) {
                 $scope.activePersons.splice(indexOf, 1);
             }
-
-            if (person.autoPersona != 'undefined') {
-                person.autoPersona.agregada = false
-                person.autoPersona.styles = "";
-            }
-
+            console.log("LUEGO DE BORRAR UNA AUTOPERSONS");
+            console.log($scope.activePersons);
             if ($scope.activePersons.length == 0 && !$scope.search) {
                 $scope.showPresets = true;
             }
             $scope.refreshAllVisualizations();
-
         };
 
 

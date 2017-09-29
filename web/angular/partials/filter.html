@@ -85,7 +85,7 @@
 <div id="selected-active-wrapper" class="col-xs-12" ng-controller="loaderController">
     <div id="deleteAllButton" class="col-xs-12">
         <h4><span>{{activePersons.length}}</span> {{customization.selectedPeople ? customization.selectedPeople : 'Undefined'}}</h4>
-        <div id="deleteAllButtonInfo" ng-click="deleteAll(autoPersons)"><span>-</span>{{customization.deleteAllButton ? customization.deleteAllButton : 'Undefined'}}</div>
+        <div id="deleteAllButtonInfo" ng-click="clearAll(activePersons)"><span>-</span>{{customization.deleteAllButton ? customization.deleteAllButton : 'Undefined'}}</div>
         <div class="selection">
             <button type="button" name="button" ng-click="showVisualizationFunction()" ng-disabled="activePersons.length == 0">
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>

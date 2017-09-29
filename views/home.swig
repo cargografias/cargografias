@@ -27,6 +27,7 @@ Cargografías
           col-lg-12
           logotype">
         <div><img src="/img/v2/logo.png" alt=""></div>
+        <p class="choise-place">Seleccionar instancia:</p>
     </div>
   </div>
 
@@ -65,7 +66,10 @@ Cargografías
     </div>
     <div class="col-xs-12 text">
     <p>Cargografías es una línea de tiempo que muestra los cargos públicos que tuvo cada funcionario a lo largo de su vida. </p>
-    <button type="button" name="button">ACERCA DE</button>
+    <div class="about-us">
+      <img src="/img/v2/about.png" alt="">
+      <button type="button" name="button">ACERCA DE</button>
+    </div>
     </div>
   </div>
   </div>

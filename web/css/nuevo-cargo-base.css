@@ -141,12 +141,20 @@ align-items: center;
 }
 .search-bar-2{
   margin-right: 2rem;
+  display: flex;
 }
 .search-bar-2 a{
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
   color: #ffffff;
   margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-bar-2 img{
+  max-width: 1.5rem;
+  margin-right: .5rem;
 }
 #place {
   width: 100%;
@@ -821,8 +829,9 @@ margin-right: auto;
 }*/
 .footer {
   background: #000000;
-padding:1rem 0 4rem 0;
-color: #ffffff;
+  padding:1rem 0;
+  color: #ffffff;
+  margin: 0;
 }
 .column-1 ul, .column-2 ul {
     list-style-type: none;

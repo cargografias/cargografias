@@ -694,7 +694,6 @@ function setControls(o){
   }
   // 'timeline' filterLine('display','timeline')
   else{
-    console.log("timeline-name");
       controls['display'] = 'timeline';
       controls['height'] = 'contiguous';
       controls['group'] = 'name';
