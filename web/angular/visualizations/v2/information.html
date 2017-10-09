@@ -1,14 +1,15 @@
-<div class="" ng-controller="informationCtrl" style="background: gray;min-height:10rem;margin-bottom: 1rem">
+<script type="text/javascript">
 
-    <button type="button" name="button" ng-click="logInformation()">Comparar resultados</button>
-    <h1 style="color:white;text-align:center">Información</h1>
-    <div class="row">
-        <div class="col-xs-12" ng-repeat="inform in information" style="padding:1rem">
-            <div class="" style="background:#222222;text-align:center;color:white;padding:1rem">
-                <h1 style="margin:0">{{inform.name}}</h1>
-                {{inform.memberships}}
-            </div>
-        </div>
-    </div>
+var event = new Event('build');
+var elem= document.getElementById("selected-wrapper-2");
 
+elem.addEventListener('build', function (e) {
+  console.log('REFRESH VISUALIZATION')
+}, false);
+
+elem.dispatchEvent(event);
+</script>
+
+<div class="" style="background: gray;min-height:10rem;margin-bottom: 1rem">
+    <h1>information</h1>
 </div>
