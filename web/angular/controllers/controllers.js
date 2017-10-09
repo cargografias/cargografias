@@ -447,20 +447,11 @@ angular.module('cargoApp.controllers')
             $scope.lightAdd(autoPersona, id);
             $scope.refreshAllVisualizations();
         };
-        
-        var event = new Event('build');
+        var event = new CustomEvent('build', { detail: [] }) ;
+
         $scope.refreshAllVisualizations = function() {
-            $rootScope.estaEnElPoder()
+            event.detail = $scope.autoPersons;
             elem.dispatchEvent(event);
-
-            // // //TODO: This should all go to observers.
-            // $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
-            // // $scope.redrawPoderometro();
-            // data = $scope.activePersons;
-            // // //
-            // reloadCargoTimeline('name');
-            // //Updates Url
-
             updateTheUrl();
         }
 
