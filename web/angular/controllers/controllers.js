@@ -447,10 +447,12 @@ angular.module('cargoApp.controllers')
             $scope.lightAdd(autoPersona, id);
             $scope.refreshAllVisualizations();
         };
-
+        var event = new Event('build');
 
         $scope.refreshAllVisualizations = function() {
             $rootScope.estaEnElPoder()
+            elem.dispatchEvent(event);
+
             // // //TODO: This should all go to observers.
             // $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
             // // $scope.redrawPoderometro();
@@ -458,6 +460,7 @@ angular.module('cargoApp.controllers')
             // // //
             // reloadCargoTimeline('name');
             // //Updates Url
+
             updateTheUrl();
         }
 
@@ -482,6 +485,7 @@ angular.module('cargoApp.controllers')
                 $scope.activePersons.splice(indexOf, 1);
             }
             updateTheUrl();
+            $scope.refreshAllVisualizations();
             //quito el estado activo en autoPersons
             // var indexOf = $scope.autoPersons.indexOf(person);
             // if (indexOf > -1) {
