@@ -160,8 +160,6 @@
 
         {# VISUALIZATIONS #}
         <script src="/angular/Visualizations/v1/controller.js"></script>
-        <script src="/angular/Visualizations/v2/controller.js"></script>
-        <script src="/angular/Visualizations/v3/controller.js"></script>
 
         <!--Import jQuery before materialize.js-->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>

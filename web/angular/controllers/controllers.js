@@ -1,4 +1,5 @@
 'use strict';
+var activePersons = '';
 
 /* Controllers */
 angular.module('cargoApp.controllers')
@@ -23,14 +24,12 @@ angular.module('cargoApp.controllers')
 
 
         $scope.showFilterFunction = function() {
-          console.log("SHOW FILTER FUNCTION");
           if($scope.showPresetsView) $scope.showPresetsView  = false
           if($scope.showVisualizationView) $scope.showVisualizationView  = false
 
           if(!$scope.showFilterView) $scope.showFilterView  = true
         }
         $scope.showVisualizationFunction = function() {
-          console.log("SHOW VISUALIZATION FUNCTION");
           if($scope.showPresetsView) $scope.showPresetsView  = false
           if($scope.showFilterView) $scope.showFilterView  = false
 
@@ -94,44 +93,62 @@ angular.module('cargoApp.controllers')
 
             }
             //Load initial ids from the url
-        if ($routeParams.ids) {
-            processParameters($routeParams.ids);
-        }
+        // if ($routeParams.ids) {
+        //     processParameters($routeParams.ids);
+        // }
 
-        $scope.load = function(params, hideAfterClick) {
-            console.log("$scope.loadddddd");
-            processParameters(params);
-            //light add all persons from url
-            if (parsedParams) {
-                for (var i = 0; i < parsedParams.length; i++) {
-                    var index = parsedParams[i];
-                    var id = cargosFactory.mapId[index];
-                    $scope.lightAdd(cargosFactory.autoPersons[id], id);
-                };
-
-                $scope.refreshAllVisualizations();
-                $scope.search = true;
-                $scope.showPresets = hideAfterClick ? false : $scope.showPresets;
-            }
-        }
+        // $scope.load = function(params, hideAfterClick) {
+        //     processParameters(params);
+        //     //light add all persons from url
+        //     if (parsedParams) {
+        //         for (var i = 0; i < parsedParams.length; i++) {
+        //             var index = parsedParams[i];
+        //             var id = cargosFactory.mapId[index];
+        //             $scope.lightAdd(cargosFactory.autoPersons[id], id);
+        //         };
+        //
+        //         $scope.refreshAllVisualizations();
+        //         $scope.search = true;
+        //         $scope.showPresets = hideAfterClick ? false : $scope.showPresets;
+        //     }
+        // }
 
         // Presets
-
+        // function constructObject(name) {
+        //   console.log("El nombre que vamos a armar");
+        //   console.log(name);
+        //   searchModule('toActivePerson', name, function(res) {
+        //     //ver que hacer con res
+        //     // $scope.activePersons.unshift(res);
+        //     $scope.autoPersons.unshift(res)
+        //   })
+        // }
         $scope.loadMyPresets = function(preset) {
             if ($scope.presets.length) {
                 for (var i = 0; i < $scope.presets[preset].valores.length; i++) {
                     if ($scope.presets[preset].valores[i].length > 3) {
-                        searchModule('name', $scope.presets[preset].valores[i], function(res) {
-                            $scope.showPresets = false;
-                            $scope.search = true;
-                            $scope.filterAdvance.name = $scope.presets[preset].valores[i]
-                            $scope.autoPersons.push(res.data[0])
-                            // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
-                            $scope.showResult = true;
-                            document.getElementById('resultadosBusqueda').style.display = 'block';
-                            $scope.addAll(res.data)
-
+                        searchModule('toActivePerson',$scope.presets[preset].valores[i],function(res) {
+                          console.log("BUSQUEDA: ");
+                          console.log(res);
+                          $scope.autoPersons.unshift(res)
+                          $scope.showPresets = false;
+                          $scope.search = true;
+                          $scope.filterAdvance.name = $scope.presets[preset].valores[i]
+                          // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
+                          $scope.showResult = true;
+                          document.getElementById('resultadosBusqueda').style.display = 'block';
+                          $scope.addAll(res.data)
                         })
+                        // searchModule('name', $scope.presets[preset].valores[i], function(res) {
+                        //     $scope.showPresets = false;
+                        //     $scope.search = true;
+                        //     $scope.filterAdvance.name = $scope.presets[preset].valores[i]
+                        //     $scope.autoPersons.push(res.data[0])
+                        //     // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
+                        //     $scope.showResult = true;
+                        //     document.getElementById('resultadosBusqueda').style.display = 'block';
+                        //     $scope.addAll(res.data)
+                        // })
                     } else {
                         $scope.autoPersons = [];
                         $scope.search = false;
@@ -143,40 +160,37 @@ angular.module('cargoApp.controllers')
 
         var presetsLoader = loadPresets();
 
-        var onDataLoaded = function() {
-
-            $rootScope.estado = "Motor de Visualizacion";
-            for (var i = 0; i < $rootScope.observers.length; i++) {
-                var observer = $rootScope.observers[i];
-                observer();
-            };
-            $rootScope.estado = "Listo!";
-            $rootScope.ready = true;
-
-            if (parsedParams && parsedParams.length == 1 && parsedParams[0] == '') {
-                parsedParams.pop(); //Remove spurius parsing
-            }
-            if (parsedParams && parsedParams.length) {
-                //Initial load with parameters in the URL
-                for (var i = 0; i < parsedParams.length; i++) {
-                    var index = parsedParams[i];
-                    var id = cargosFactory.mapId[index];
-                    $scope.lightAdd(cargosFactory.autoPersons[id], id);
-                };
-                $scope.refreshAllVisualizations();
-            } else {
-                //Initial load without data in the url
-                // presetsLoader.then(function() {
-                //   if ($scope.presets.length) {
-                //     $scope.load($scope.presets[0].valores); //Default load 1st preset
-                //   }
-                // });
-            }
-
-        };
-
-
-
+        // var onDataLoaded = function() {
+        //
+        //     $rootScope.estado = "Motor de Visualizacion";
+        //     for (var i = 0; i < $rootScope.observers.length; i++) {
+        //         var observer = $rootScope.observers[i];
+        //         observer();
+        //     };
+        //     $rootScope.estado = "Listo!";
+        //     $rootScope.ready = true;
+        //
+        //     if (parsedParams && parsedParams.length == 1 && parsedParams[0] == '') {
+        //         parsedParams.pop(); //Remove spurius parsing
+        //     }
+        //     if (parsedParams && parsedParams.length) {
+        //         //Initial load with parameters in the URL
+        //         for (var i = 0; i < parsedParams.length; i++) {
+        //             var index = parsedParams[i];
+        //             var id = cargosFactory.mapId[index];
+        //             $scope.lightAdd(cargosFactory.autoPersons[id], id);
+        //         };
+        //         $scope.refreshAllVisualizations();
+        //     } else {
+        //         //Initial load without data in the url
+        //         // presetsLoader.then(function() {
+        //         //   if ($scope.presets.length) {
+        //         //     $scope.load($scope.presets[0].valores); //Default load 1st preset
+        //         //   }
+        //         // });
+        //     }
+        //
+        // };
 
         function loadPresets() {
             var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '');
@@ -185,7 +199,6 @@ angular.module('cargoApp.controllers')
             var req = $http.get(locdataPath);
             req.then(function(res) {
                 $scope.presets = JSON.parse(res.data.predefinedSearches || "[]");
-                console.log(res.data);
                 window.customization = res.data;
                 $scope.showPresets = $scope.presets && $scope.presets.length;
             });
@@ -193,9 +206,8 @@ angular.module('cargoApp.controllers')
         }
 
         $scope.filterAutoPersons = function(q) {
-            console.log(q);
             if (q.length > 3) {
-                searchModule('name', q, function(res) {
+                searchModule('toActivePerson', q, function(res) {
                     $scope.showPresets = false;
                     $scope.search = true;
                     $scope.filterAdvance.name = q
@@ -203,25 +215,11 @@ angular.module('cargoApp.controllers')
                     $scope.filterAdvance.role
                     $scope.filterAdvance.decade
                     $scope.autoPersons = res.data;
-
-                    for (var i = 0; i < $scope.autoPersons.length; i++) {
-                      console.log($scope.autoPersons[i]);
-                      // var indexOf = $scope.activePersons.indexOf($scope.autoPersons[i]);
-                      // console.log(indexOf);
-                      // if (indexOf > -1) {
-                      //   console.log("ESTA: " + i);
-                      // //   $scope.autoPersons[i].agregada = true;
-                      // //   $scope.autoPersons[i].styles = "badge-selected";
-                      // }
-                    };
-
-
-
-
+                    console.log("autoPersons");
+                    console.log($scope.autoPersons);
                     // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
                     $scope.showResult = true;
                     document.getElementById('resultadosBusqueda').style.display = 'block';
-                    $scope.refreshAllVisualizations();
                 })
             } else {
                 $scope.autoPersons = [];
@@ -236,11 +234,13 @@ angular.module('cargoApp.controllers')
                 // console.log($scope.territories);
             })
         }
+
         $scope.filterTerritory()
 
         $scope.filterRole = function() {
             searchModule('role', 'Argentina', function(res) {
                 $scope.role = res.data;
+                console.log($scope.role);
                 // console.log("roles");
                 // console.log($scope.role);
             })
@@ -248,34 +248,32 @@ angular.module('cargoApp.controllers')
         $scope.filterRole()
 
         $scope.filterAutoPersonsAdvance = function() {
-          console.log("filterAutoPersonsAdvance");
-          console.log($scope.filterAdvance);
             // $scope.showPresets = false;
             // $scope.search = true;
-            // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
+            $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
             // $scope.showResult = true;
         };
-$scope.filterAutoPersonsAdvance()
-        $scope.createEmbed = function(cb) {
-            $http.post('/createEmbedUrl', {
-                    persons: ($scope.activePersons || []).map(function(person) {
-                        return {
-                            popitID: person.popitID,
-                            id: person.id
-                        }
-                    }),
-                    filter: $scope.filter
-                })
-                .success(function(result) {
 
-                    var embed = "/" + instanceName + "/embed/" + result.embed._id;
-                    $scope.embedAvailable = embed;
-                    if (cb) {
-                        cb(embed);
-                    }
-
-                })
-        };
+        // $scope.createEmbed = function(cb) {
+        //     $http.post('/createEmbedUrl', {
+        //             persons: ($scope.activePersons || []).map(function(person) {
+        //                 return {
+        //                     popitID: person.popitID,
+        //                     id: person.id
+        //                 }
+        //             }),
+        //             filter: $scope.filter
+        //         })
+        //         .success(function(result) {
+        //
+        //             var embed = "/" + instanceName + "/embed/" + result.embed._id;
+        //             $scope.embedAvailable = embed;
+        //             if (cb) {
+        //                 cb(embed);
+        //             }
+        //
+        //         })
+        // };
 
         // $scope.tweetThis = function() {
         //     window.open('about:blank', 'twitter-share-dialog', 'width=626,height=436'); //To avoid the browser blocking the popup, open it first and update the url later
@@ -327,50 +325,50 @@ $scope.filterAutoPersonsAdvance()
             $scope.search = false;
         };
 
-        $scope.currentLink = function() {
-            return location.href;
-        }
-
-        $scope.embedIframe = function() {
-
-            var iframe = '<iframe width="560" height="315" src="' + $scope.embedUrl + '" frameborder="0" ></iframe>'
-            return iframe;
-        }
-
-        $scope.switchSharing = function(v) {
-            $scope.showSharing = v;
-            if (v) {
-                var prefix = data[0].name;
-                $scope.sharingCopy = "Aca está línea de tiempo de " + prefix + " via @cargografias ";
-                $scope.createEmbed(function(embedUrl) {
-                    var urlToShorten = window.location.origin + embedUrl;
-                    $scope.embedUrl = urlToShorten;
-                    $http.post('/createShortUrl', {
-                        url: urlToShorten
-                    }).success(function(result) {
-                        $scope.shortUrl = result.shortUrl;
-                    });
-                });
-
-            } else {
-
-            }
-
-        };
-
-        $scope.switchSearch = function(v) {
-            $scope.showBusAvanzado = v;
-            $scope.showSharing = false;
-
-            if (v) {
-
-            } else {
-
-                $scope.filterAdvance.territory = null;
-                $scope.filterAdvance.jobTitle = null;
-                $scope.filterAdvance.decade = null;
-            }
-        }
+        // $scope.currentLink = function() {
+        //     return location.href;
+        // }
+        //
+        // $scope.embedIframe = function() {
+        //
+        //     var iframe = '<iframe width="560" height="315" src="' + $scope.embedUrl + '" frameborder="0" ></iframe>'
+        //     return iframe;
+        // }
+        //
+        // $scope.switchSharing = function(v) {
+        //     $scope.showSharing = v;
+        //     if (v) {
+        //         var prefix = data[0].name;
+        //         $scope.sharingCopy = "Aca está línea de tiempo de " + prefix + " via @cargografias ";
+        //         $scope.createEmbed(function(embedUrl) {
+        //             var urlToShorten = window.location.origin + embedUrl;
+        //             $scope.embedUrl = urlToShorten;
+        //             $http.post('/createShortUrl', {
+        //                 url: urlToShorten
+        //             }).success(function(result) {
+        //                 $scope.shortUrl = result.shortUrl;
+        //             });
+        //         });
+        //
+        //     } else {
+        //
+        //     }
+        //
+        // };
+        //
+        // $scope.switchSearch = function(v) {
+        //     $scope.showBusAvanzado = v;
+        //     $scope.showSharing = false;
+        //
+        //     if (v) {
+        //
+        //     } else {
+        //
+        //         $scope.filterAdvance.territory = null;
+        //         $scope.filterAdvance.jobTitle = null;
+        //         $scope.filterAdvance.decade = null;
+        //     }
+        // }
 
         $scope.clearEverthing = function() {
             $scope.filterAdvance.name = null;
@@ -402,50 +400,47 @@ $scope.filterAutoPersonsAdvance()
         }
 
 
-        cargosFactory.load($scope, onDataLoaded, $rootScope);
+        // cargosFactory.load($scope, onDataLoaded, $rootScope);
 
-        var lastRoute = $route.current;
-        $scope.$on('$locationChangeSuccess', function(event) {
-            // If same controller, then ignore the route change.
-            if (lastRoute.controller == $route.current.controller) {
-                $route.current = lastRoute;
-
-            }
-        });
+        // var lastRoute = $route.current;
+        // $scope.$on('$locationChangeSuccess', function(event) {
+        //     // If same controller, then ignore the route change.
+        //     if (lastRoute.controller == $route.current.controller) {
+        //         $route.current = lastRoute;
+        //
+        //     }
+        // });
 
         function updateTheUrl() {
             //Update the URL
             $location.path("/" + $scope.filter + "-" + $scope.activePersons.map(function(p) {
-                return p.autoPersona.popitID
+                // return p.autoPersona.popitID
+                console.log(p._id);
+
+                return p._id
             }).join('-'));
         }
 
+
         $scope.lightAdd = function(autoPersona, id) {
-            console.log("running lightAdd");
-            console.log("$scope.autoPersons");
-            console.log($scope.autoPersons);
-            console.log("$scope.activePersons");
-            console.log($scope.activePersons);
             if (!autoPersona || autoPersona.agregada) {
                 console.log("ya esta agregada");
                 return;
             } else {
-                $scope.autocomplete = " ";
-                autoPersona.agregada = true;
-                autoPersona.styles = "badge-selected"
-
-                // var person = cargosFactory.getFullPerson(id) ;
+              $scope.autocomplete = " ";
+              autoPersona.agregada = true;
+              autoPersona.styles = "badge-selected"
+              $scope.activePersons.unshift(autoPersona)
+              console.log($scope.activePersons);
+              updateTheUrl();
+                // var person = autoPersona;
+                //var person = cargosFactory.getFullPerson(id) ;
                 // console.log(person);
                 // person.autoPersona = autoPersona;
                 // person.cargoProfileURL = $scope.generateUrlProfile(person);
-                // $scope.activePersons.unshift(person);
-                var person = autoPersona;
-                // console.log("person in lightAdd()---->");
-                // console.log(person);
-                person.autoPersona = autoPersona;
-                // person.cargoProfileURL = $scope.generateUrlProfile(person);
 
-                $scope.activePersons.unshift(person);
+
+
             }
         }
         $scope.add = function(autoPersona, id) {
@@ -453,17 +448,17 @@ $scope.filterAutoPersonsAdvance()
             $scope.refreshAllVisualizations();
         };
 
+
         $scope.refreshAllVisualizations = function() {
             $rootScope.estaEnElPoder()
-
             // // //TODO: This should all go to observers.
             // $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
             // // $scope.redrawPoderometro();
             // data = $scope.activePersons;
-            //
-            reloadCargoTimeline('name');
+            // // //
+            // reloadCargoTimeline('name');
             // //Updates Url
-            // updateTheUrl();
+            updateTheUrl();
         }
 
         $scope.filterLine = function(f) {
@@ -472,36 +467,55 @@ $scope.filterAutoPersonsAdvance()
             updateTheUrl();
         }
 
-        $scope.logautoPersons = function() {
-            console.log("autoPersons");
-            console.log($scope.autoPersons);
-        }
+
 
         $scope.remove = function(person) {
-            //quito el estado activo en autoPersons
-            if(person.autoPersona != 'undefined'){
-              person.autoPersona.agregada = false
-              person.autoPersona.styles = ""
-            }
+            console.log(person);
+            $scope.autoPersons.map(function(o){
+              if(o.simple === person.simple){
+                o.agregada = false
+                o.styles = ""
+              }
+            })
             var indexOf = $scope.activePersons.indexOf(person);
             if (indexOf > -1) {
                 $scope.activePersons.splice(indexOf, 1);
             }
-            console.log("LUEGO DE BORRAR UNA AUTOPERSONS");
-            console.log($scope.activePersons);
-            if ($scope.activePersons.length == 0 && !$scope.search) {
-                $scope.showPresets = true;
-            }
-            $scope.refreshAllVisualizations();
+            updateTheUrl();
+            //quito el estado activo en autoPersons
+            // var indexOf = $scope.autoPersons.indexOf(person);
+            // if (indexOf > -1) {
+            //     // $scope.activePersons.splice(indexOf, 1);
+            //     console.log("hola");
+            //     console.log($scope.activePersons.splice(indexOf, 1));
+            // }
+
+            // if(person.agregada != 'undefined'){
+            //   autoPersona.agregada = false
+            //   autoPersona.styles = ""
+            // }
+            // var indexOf = $scope.autoPersons.indexOf(person);
+            // if (indexOf > -1) {
+            //     $scope.activePersons.splice(indexOf, 1);
+            // }
+
+            // if ($scope.activePersons.length == 0 && !$scope.search) {
+            //     $scope.showPresets = true;
+            // }
+            // $scope.refreshAllVisualizations();
         };
 
 
         $scope.clearAll = function() {
 
-            for (var i = 0; i < $scope.activePersons.length; i++) {
-                $scope.activePersons[i].autoPersona.agregada = false;
-                $scope.activePersons[i].autoPersona.styles = "";
-            };
+          for (var i = 0; i < $scope.activePersons.length; i++) {
+              $scope.activePersons[i].agregada = false;
+              $scope.activePersons[i].styles = "";
+          };
+          for (var i = 0; i < $scope.autoPersons.length; i++) {
+              $scope.autoPersons[i].agregada = false;
+              $scope.autoPersons[i].styles = "";
+          };
             $scope.activePersons = [];
             updateTheUrl();
             $scope.showPresets = true;
@@ -512,24 +526,24 @@ $scope.filterAutoPersonsAdvance()
         /**
          * Clean advance filter
          */
-        $scope.cleanAdvanceFilter = function() {
-            // $scope.autoPersons = [];
-            // $("#nombre").val('');
-            // console.log('clearFilter');
-            // $scope.filterAdvance.name = null;
-            // $scope.filterAdvance.organization = null;
-            // $scope.filterAdvance.jobTitle = null;
-            // $scope.filterAdvance.decade = null;
-
-        }
+        // $scope.cleanAdvanceFilter = function() {
+        //     // $scope.autoPersons = [];
+        //     // $("#nombre").val('');
+        //     // console.log('clearFilter');
+        //     // $scope.filterAdvance.name = null;
+        //     // $scope.filterAdvance.organization = null;
+        //     // $scope.filterAdvance.jobTitle = null;
+        //     // $scope.filterAdvance.decade = null;
+        //
+        // }
 
         /**
          * Get all Organizations
          * @returns {*}
          */
         $scope.getOrganizations = function() {
-                return cargosFactory.getOrganizations();
-            }
+          return cargosFactory.getOrganizations();
+        }
             /**
              * Get all Organizations
              * @returns {*}
@@ -538,6 +552,7 @@ $scope.filterAutoPersonsAdvance()
         $scope.getTerritories = function() {
                 return cargosFactory.getTerritories();
             }
+
 
             /**
              * get All JobTitles
@@ -554,7 +569,7 @@ $scope.filterAutoPersonsAdvance()
         var decades = [];
         $scope.getDecades = function() {
             if (decades.length === 0) {
-                decades = cargosFactory.getDecades(fromDecade);;
+                decades = cargosFactory.getDecades(fromDecade);
             }
             return decades;
         }
@@ -567,7 +582,7 @@ $scope.filterAutoPersonsAdvance()
         var communicationProxy = {
             remove: function(p) {
                 $scope.$apply(function() {
-                    $scope.remove(p);
+                    (p);
                 });
             }
         }

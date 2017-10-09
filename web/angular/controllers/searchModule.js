@@ -1,3 +1,6 @@
+
+
+
 function searchModule(option,parameter,callback) {
   if(option === 'name'){
         var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + parameter + "/i"
@@ -6,24 +9,15 @@ function searchModule(option,parameter,callback) {
         xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
               var obj = JSON.parse(xmlHttp.response);
-              // obj.data.map(function(p) {
-              //    p.territory = terrytoryf(parameter)
-              // })
-              // obj.data.map(function(p) {
-              //    p.years = yearsf(parameter)
-              // })
-              // obj.data.map(function(p) {
-              //    p.institutions = institutionsf(parameter)
-              // }
-              // console.log("antes");
-              // console.log(obj);
               obj.data.map(function(p) {
                 var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.simple + '/i'
                 // var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.name + '/i'
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function() {
                     if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-                       p.membership  = JSON.parse(xmlHttp.response);
+                       p.memberships  = JSON.parse(xmlHttp.response);
+                       p.end = ''
+                       p.start = ''
                     }
                 }
                 xmlHttp.open("GET", url, true); // true for asynchronous
@@ -36,6 +30,79 @@ function searchModule(option,parameter,callback) {
         xmlHttp.send(null);
 
   }
+
+  if(option === 'toActivePerson'){
+
+      var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + parameter + "/i"
+
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+            var obj = JSON.parse(xmlHttp.response);
+            obj.data.map(function(p) {
+              p.distinctRoles = []
+              p.distinctYears = []
+              p.distinctOrganizations = []
+              p.distinctTerritories = []
+
+              var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.simple + '/i'
+              // var url = 'https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/'+ p.name + '/i'
+              var xmlHttp = new XMLHttpRequest();
+              xmlHttp.onreadystatechange = function() {
+                  if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                    var activeMemberships = JSON.parse(xmlHttp.response);
+                    p.memberships  = activeMemberships.data
+                    p.memberships.map(function(o){
+                    p.distinctRoles.push(o.role)
+                    p.distinctYears.push(o.start_date)
+                    p.distinctOrganizations.push(o.sob_org)
+                    p.distinctTerritories.push(o.territory)
+
+                      // activeRoles.push(o.role)
+                      // obj.Roles = activeRoles
+                      //
+                      // activeYears.push(o.start_date)
+                      // obj.activeYears = activeYears
+                      //
+                      // activeOrganizations.push(o.sob_org)
+                      // obj.activeOrganizations = activeOrganizations
+                      //
+                      // activeTerritories.push(o.territory)
+                      // obj.activeTerritories = activeTerritories
+                      //
+                      // obj.created_at = obj.data[0].created_at
+                      // obj.family_name = obj.data[0].family_name
+                      // obj.first_name = obj.data[0].first_name
+                      // obj.names = obj.data[0].names
+                      // obj.name = obj.data[0].name
+                      // obj.simple = obj.data[0].simple
+                      // obj.user_id = obj.data[0].user_id
+                      // obj._id = obj.data[0]._id
+                      // obj.agregada = true
+                      // p.territories = activeTerritories
+                     //  if (p.activeOrganizations.indexOf(p.sob_org) === -1) {p.activeOrganizations.push(p.sob_org)}
+                     //  if (p.activeRoles.indexOf(p.role) === -1) {p.activeRoles.push(p.role)}
+                     //  if (p.activeYears.indexOf(p.start_date) === -1) {p.activeYears.push(p.start_date)}
+                     //  if (p.activeTerritories.indexOf(p.territory) === -1) {p.activeTerritories.push(p.territory)}
+                    })
+                     obj.end = ''
+                     obj.start = ''
+
+                  }
+              }
+              xmlHttp.open("GET", url, true); // true for asynchronous
+              xmlHttp.send(null);
+            })
+
+            callback(obj);
+          }
+      }
+      xmlHttp.open("GET", url, true); // true for asynchronous
+      xmlHttp.send(null);
+
+
+}
+
 
 
   if(option === 'territory'){
@@ -68,19 +135,4 @@ function searchModule(option,parameter,callback) {
         xmlHttp.send(null);
 
   }
-  //pegar aca territoryf, yearsf e institutionsf cuando funcione qqw
-  // if(option === 'memberships'){
-  //   console.log("BUSCA POR MEMBRESIA");
-  //       var url = "https://quienesquienapi.herokuapp.com/v1/memberships?person_id=/" + parameter + "/i"+"&offset=0"
-  //       console.log(url);
-  //       var xmlHttp = new XMLHttpRequest();
-  //       xmlHttp.onreadystatechange = function() {
-  //           if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-  //             var obj = JSON.parse(xmlHttp.response);
-  //             callback(obj);
-  //           }
-  //       }
-  //       xmlHttp.open("GET", url, true); // true for asynchronous
-  //       xmlHttp.send(null);
-  // }
 }

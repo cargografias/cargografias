@@ -148,7 +148,10 @@ angular.module('cargoApp.factories')
     };
 
     factory.getAutoPersonsAdvance = function(filter,name){
+			console.log("filter");
 			console.log(filter);
+			console.log("name");
+			console.log(name);
 
         var search = false;
         var autoPersonsResult = this.autoPersons;
@@ -161,6 +164,7 @@ angular.module('cargoApp.factories')
         }
 
         if( filter.territory !== undefined && filter.territory !== null) {
+					console.log("FILTRANDO TERRITORIO");
             var territory = factory.getTerritoryByName(filter.territory);
 
             if(territory !== undefined) {
@@ -169,11 +173,17 @@ angular.module('cargoApp.factories')
                         area_name: territory,
                     }
                   };
+
                 if(filter.jobTitle !== undefined && filter.jobTitle !== null) {
                   params.memberships.label = filter.jobTitle;
                 }
+								console.log("autoPersonsResult");
+								console.log(autoPersonsResult);
+								console.log(params);
                 autoPersonsResult = $filter('filter')(autoPersonsResult, params);
                 search = true;
+								console.log("autoPersonsResult");
+								console.log(autoPersonsResult);
             }
         }
         else if(filter.jobTitle !== undefined && filter.jobTitle !== null) {
@@ -520,7 +530,6 @@ angular.module('cargoApp.factories')
     }
 
     factory.getTerritoryByName = function(territoryName){
-
       for (var i = 0; i < factory.territories.length; i++) {
         var o = factory.territories[i];
         if (o === territoryName){
