@@ -39,6 +39,10 @@ function searchModule(option,parameter,callback) {
       xmlHttp.onreadystatechange = function() {
           if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
             var obj = JSON.parse(xmlHttp.response);
+            distinctRoles = []
+            distinctYears = []
+            distinctOrganizations = []
+            distinctTerritories = []
             obj.data.map(function(p) {
               p.distinctRoles = []
               p.distinctYears = []
@@ -53,11 +57,48 @@ function searchModule(option,parameter,callback) {
                     var activeMemberships = JSON.parse(xmlHttp.response);
                     p.memberships  = activeMemberships.data
                     p.memberships.map(function(o){
+                    if(o.start_date !== undefined) {
+                      o.start = o.start_date.slice(0, 4)
+                    }else{
+                      o.start = 1970
+                    }
+                    if(o.end_date !== undefined){
+                      o.end = o.end_date.slice(0,4)
+                    }else{
+                      o.end = 1971
+                    }
+                    o.area = {'name':o.sob_org,'id':o.sob_org}
+                    p.initials=' '
+                    o.cargoProfileURL = 'undefined'
+
+                    o.area_name=o.territory
+                    o.class = 'electivo'
                     p.distinctRoles.push(o.role)
                     p.distinctYears.push(o.start_date)
                     p.distinctOrganizations.push(o.sob_org)
                     p.distinctTerritories.push(o.territory)
 
+                    distinctRoles.push(o.role)
+                    distinctYears.push(o.start_date)
+                    distinctOrganizations.push(o.sob_org)
+                    distinctTerritories.push(o.territory)
+
+                    p.biography = 'undefined'
+                    p.birth_date = 'undefined'
+                    p.birth_place = 'undefined'
+                    p.cargoProfileURL = 'undefined'
+                    p.chequeado = false
+                    p.contact_details = 'undefined'
+                    p.death_date = null
+                    p.full = true
+                    p.given_name = 'undefined'
+                    p.html_url = 'undefined'
+
+                    p.images = []
+                    p.index = 3309
+                    p.periods = []
+                    p.sumary = []
+                    p.url = 'undefined'
                       // activeRoles.push(o.role)
                       // obj.Roles = activeRoles
                       //

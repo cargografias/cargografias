@@ -4,10 +4,17 @@ var elem= document.getElementById("selected-wrapper-2");
 
 elem.addEventListener('build', function (e) {
   console.log('REFRESH VISUALIZATION')
+  var visPersons = e.detail
+  for (var i = 0; i < visPersons.length; i++) {
+    console.log(visPersons[i].simple);
+    document.getElementById("nuevodiv").innerHTML += visPersons[i].simple + '<br/>'
+  }
 }, false);
 
 </script>
 
 <div class="" style="background: gray;min-height:10rem;margin-bottom: 1rem">
     <h1>information</h1>
+    <div id="nuevodiv">
+    </div>
 </div>

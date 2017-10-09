@@ -1,6 +1,6 @@
 var elem= document.getElementById("selected-wrapper-2");
 elem.addEventListener('build', function (e) {
-  console.log('REFRESH VISUALIZATION',e);
+  // console.log('REFRESH VISUALIZATION',e);
 
   runViz(e);
 }, false);

@@ -27,6 +27,8 @@ var notify = {
     observers.push(o);
   },
   remove: function(a){
+    console.log("observers.length");
+    console.log(observers.length);
     for (var i = 0; i < observers.length; i++) {
       observers[i].remove(a);
     };
@@ -118,8 +120,14 @@ function setBasicsParams(){
  ***********************************************************/
 
 function processData() {
-    maxYear = d3.max(data, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end;    }) });
-    minYear = d3.min(data, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
+    console.log("DATA length");
+    console.log(data.length);
+    console.log("DATA");
+    console.log(data);
+    if(data.length > 0 ){
+      maxYear = d3.max(data, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
+      minYear = d3.min(data, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
+    }else{console.log("CAGA FUEGO");}
     scales.years = d3.scale.linear()
       .domain([ minYear - yearsPadding ,maxYear + yearsPadding])
       .range([ padding.left, wid - padding.right ]);
@@ -165,12 +173,14 @@ function processData() {
     var y_popPercent = padding.top;
 
     var counter = 0;
+    console.log("data 2 length");
+    console.log(data.length);
     for(i = 0; i < data.length; i++) {
 
       data[i].position = i;
       //Check sort by date
       d = data[i].memberships = data[i].memberships.sort(function(a, b){ return d3.ascending(a.start, b.start); });
-
+      console.log("memberships data length",d);
       for (var j = 0; j < d.length; j++) {
 
 
@@ -228,7 +238,9 @@ function processData() {
  ***********************************************************/
 
 function refreshGraph() {
+
   if (data.length == 0){
+    console.log("REMOVE GRAPH");
       d3.selectAll("div.vis svg").remove();
 
       started = false;
@@ -333,7 +345,7 @@ function refreshGraph() {
 
 
   var names = vis.selectAll("g.group")
-    .data(data, function(d){return d.id;});
+    .data(data, function(d){return d._id;});
 
   var gg = names.enter().append("g")
     .attr('class', 'group');
@@ -345,7 +357,7 @@ function refreshGraph() {
       var memberships =
           d3.select(this)
             .selectAll("g.barGroup")
-            .data(politician.memberships, function(d,i){ return d.id;});
+            .data(politician.memberships, function(d,i){ return d._id;});
 
 
       ///Set current height
@@ -361,7 +373,15 @@ function refreshGraph() {
       memberships.enter()
             .append("g")
             .attr("class", function(d) {
-              return "barGroup bar " + d.type.toLowerCase()  + " " + d.organization.level.toLowerCase() + " " + d.role.toLowerCase();
+	      if(!d.type){
+		return "barGroup bar";
+	      }
+              if(d.organization){
+                return "barGroup bar " + d.type.toLowerCase()  + " " + d.organization.level.toLowerCase() + " " + d.role.toLowerCase();
+              }else{
+                return "barGroup bar " + d.type.toLowerCase()  + " " + d.role.toLowerCase();
+
+              }
             })
             .style("fill-opacity", function(d) {
                 return 1;
@@ -378,7 +398,16 @@ function refreshGraph() {
             .attr("membership", function(d, i) { return i; })
             .attr("class", function(d) {
               //TODO: change to type and region?
+		if(!d.type){
+			return "barGroup bar";
+		}
+            if(d.organization){
               return "barGroup bar " + d.type.toLowerCase()  + " " + d.organization.level.toLowerCase() + " " + d.role.toLowerCase();
+
+            }else{
+              return "barGroup bar " + d.type.toLowerCase()  +  " " + d.role.toLowerCase();
+
+            }
             })
             .style("fill-opacity", function(d) {
                 return 1;
@@ -513,7 +542,9 @@ function refreshGraph() {
                 return d.role; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
               }
               else {
-                return d.area.name ; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
+
+		              return d.area; //TODO: uncomment after sinar test
+                //return d.area.name ; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
               }
         })
 
@@ -586,7 +617,14 @@ function refreshGraph() {
           //Memberships.IndexLabel
           if (controls.height == "memberships"){ return window.cargo.plugins.memberships.updateIndexLabel();}
           else if (controls.height == "territory"){ return window.cargo.plugins.territory.updateIndexLabel();}
-          else{ return d.initials +  " " + d.family_name;}
+          else{
+            if(d.family_name){
+              return d.initials +  " " + d.family_name;
+            }else{
+              return d.initials;
+            }
+
+          }
         }).on('click',function(d,i){
            window.open(d.cargoProfileURL);
         });
@@ -622,6 +660,7 @@ function refreshGraph() {
   /************************************************************
   * Add Years Labels
   ***********************************************************/
+
 
 
   var yearLabelsSelection =
@@ -666,7 +705,8 @@ function refreshGraph() {
 
 //In order to isolate order/filtering this method will execute everthing
 function reloadCargoTimeline(o){
-
+  console.log("filter");
+  console.log(o);
   setControls(o);
   reloadTimeline();
 
@@ -676,7 +716,6 @@ function setControls(o){
 
   //Membership.Action
   if (o ==="memberships"){
-
        controls['display'] = 'timeline';
        controls['height'] = 'memberships';
   }
@@ -776,8 +815,26 @@ function showInfoBox(e, i, j) {
     }
     info += "<p class='title'>" + politician.name + "</p>";
     info += "<p class='mid'>" + membership.role  + "</p>";
-    info += "<p class='sub'>" + membership.organization.name  + "</p>";
-    info += "<p  class='mid'>" + membership.area.name  + "</p>";
+    //console.log(membership);
+    if(membership.organization){
+        info += "<p class='sub'>" + membership.organization.name  + "</p>";
+    }
+    if(membership.area){
+      // info += "<p  class='mid'>" + membership.area.name  + "</p>";
+      info += "<p  class='mid'>" + membership.area_name  + "</p>";
+    }else{
+      if(membership.organization){
+        if(membership.organization.area){
+          info += "<p  class='mid'>" + membership.organization.area  + "</p>";
+        }else{
+          info += "<p  class='mid'>" + "Area not defined"  + "</p>";
+        }
+      }else{
+        info += "<p  class='mid'>" + "Organization not defined"  + "</p>";
+        info += "<p  class='mid'>" + "Area not defined"  + "</p>";
+      }
+    }
+
     info += "<p class='mid'>" + formatYear(membership.start) + " - " + formatYear(membership.end) + "</p>";
     if (politician.chequeado){
       info += "<p class='checkeado' > <i class='fa fa-check'></i> Chequeado</p>";
@@ -792,7 +849,18 @@ function showInfoBox(e, i, j) {
     if (i <= data.length/2) infoPos = { left: e.pageX, top: e.pageY };
     else infoPos = { left: e.pageX-200, top: e.pageY-80 };
 
-    var classes = "bar " + membership.type.toLowerCase()  + " " + membership.organization.level.toLowerCase() + " " + membership.role.toLowerCase();
+    var classes = "bar ";
+    if(membership.type){
+      classes += membership.type.toLowerCase();
+    }
+    if(membership.organization){
+      if(membership.organization.level){
+          classes += " " + membership.organization.level.toLowerCase();
+      }
+    }
+    if(membership.role){
+      classes += " " + membership.role.toLowerCase();
+    }
     //clear all clases
     document.getElementById('infobox').className = '';
 

@@ -128,8 +128,6 @@ angular.module('cargoApp.controllers')
                 for (var i = 0; i < $scope.presets[preset].valores.length; i++) {
                     if ($scope.presets[preset].valores[i].length > 3) {
                         searchModule('toActivePerson',$scope.presets[preset].valores[i],function(res) {
-                          console.log("BUSQUEDA: ");
-                          console.log(res);
                           $scope.autoPersons.unshift(res)
                           $scope.showPresets = false;
                           $scope.search = true;
@@ -138,6 +136,16 @@ angular.module('cargoApp.controllers')
                           $scope.showResult = true;
                           document.getElementById('resultadosBusqueda').style.display = 'block';
                           $scope.addAll(res.data)
+                          console.log("roles distintos");
+                          console.log(distinctRoles);
+                          $scope.distinctRoles = distinctRoles
+                          $scope.distinctYears = distinctYears
+                          $scope.distinctOrganizations = distinctOrganizations
+                          $scope.distinctTerritories = distinctTerritories
+                          console.log(distinctYears);
+                          console.log(distinctOrganizations);
+                          console.log(distinctTerritories);
+
                         })
                         // searchModule('name', $scope.presets[preset].valores[i], function(res) {
                         //     $scope.showPresets = false;
@@ -415,7 +423,6 @@ angular.module('cargoApp.controllers')
             //Update the URL
             $location.path("/" + $scope.filter + "-" + $scope.activePersons.map(function(p) {
                 // return p.autoPersona.popitID
-                console.log(p._id);
 
                 return p._id
             }).join('-'));
@@ -447,17 +454,23 @@ angular.module('cargoApp.controllers')
             $scope.lightAdd(autoPersona, id);
             $scope.refreshAllVisualizations();
         };
-        var event = new CustomEvent('build', { detail: [] }) ;
+        var event = new CustomEvent('build', { detail: $scope.activePersons }) ;
 
         $scope.refreshAllVisualizations = function() {
-            event.detail = $scope.autoPersons;
+            // event.detail = $scope.autoPersons;
+            console.log("event.detail");
             elem.dispatchEvent(event);
             updateTheUrl();
+            data = $scope.activePersons;
+            console.log("data -->");
+            console.log(data);
+            reloadCargoTimeline('name');
+
         }
 
         $scope.filterLine = function(f) {
             $scope.filter = f;
-            reloadCargoTimeline(f);
+            // reloadCargoTimeline(f);
             updateTheUrl();
         }
 
