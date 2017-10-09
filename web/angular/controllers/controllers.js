@@ -447,8 +447,8 @@ angular.module('cargoApp.controllers')
             $scope.lightAdd(autoPersona, id);
             $scope.refreshAllVisualizations();
         };
+        
         var event = new Event('build');
-
         $scope.refreshAllVisualizations = function() {
             $rootScope.estaEnElPoder()
             elem.dispatchEvent(event);
