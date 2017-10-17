@@ -1,18 +1,18 @@
 var elem= document.getElementById("selected-wrapper-2");
 elem.addEventListener('build', function (e) {
-  // console.log('REFRESH VISUALIZATION',e);
+   console.log('REFRESH VISUALIZATION',e);
 
   runViz(e);
 }, false);
 
-var data = [4, 8, 15, 16, 23, 42];
+var datas = [4, 8, 15, 16, 23, 42];
 
-var runViz = function(data){
+var runViz = function(datas){
 var x = d3.scale.linear()
-    .domain([0, d3.max(data)])
+    .domain([0, d3.max(datas)])
     .range([0, 420]);
 var y = d3.scale.ordinal()
-    .domain(data)
+    .domain(datas)
     .rangeBands([0, 120]);
 
 var chart = d3.select(".content")
@@ -43,14 +43,14 @@ chart.selectAll("text.rule")
     .text(String);
 
 chart.selectAll("rect")
-    .data(data)
+    .data(datas)
   .enter().append("svg:rect")
     .attr("y", y)
     .attr("width", x)
     .attr("height", y.rangeBand());
 
 chart.selectAll("text.bar")
-    .data(data)
+    .data(datas)
   .enter().append("svg:text")
     .attr("class", "bar")
     .attr("x", x)
@@ -68,4 +68,4 @@ chart.append("svg:line")
 
 
 }
-runViz(data);
+runViz(datas);

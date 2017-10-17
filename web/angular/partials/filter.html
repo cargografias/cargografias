@@ -20,36 +20,43 @@
         </svg>
         </input>
 
-        <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
-            <option value="">{{customization.selectTerritory}}</option>
-        </select>
-        <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
+        <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'" class="openSearch search-row-nombre">
             <option value="">{{customization.selectPosition}}</option>
         </select>
 
         <select ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="
-            decade.key as decade.label for decade in getDecades()">
+            decade.key as decade.label for decade in getDecades()" class="openSearch search-row-nombre">
             <option value="">{{customization.selectDecade}} </option>
-        </select> -->
+        </select>
 
-        <!-- <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="data.model">
+        <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" name="repeatSelect1" class="openSearch search-row-nombre" >
           <option value="" disabled selected>{{customization.searchByTerritory ? customization.searchByTerritory : 'Undefined'}}</option>
           <option ng-repeat="option in territories" value="{{option.name}}" ng-model="filterAdvance.territory">{{option}}</option>
         </select> -->
-        <select class="openSearch search-row-nombre" ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
+
+        <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
+            <option value="">{{customization.selectTerritory}}</option>
+        </select> -->
+       <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'" class="openSearch search-row-nombre" >
             <option value="">{{customization.selectTerritory}}</option>
         </select>
-        <select class="openSearch search-row-nombre" ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle.role | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
+
+        <!-- <select class="openSearch search-row-nombre" ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle.role | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
             <option value="">{{customization.selectPosition}}</option>
-        </select>
+        </select> -->
+
         <!-- <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="filterAdvance.role">
           <option  value="" disabled selected>{{customization.searchByRole ? customization.searchByRole : 'Undefined'}}</option>
           <option  ng-repeat="option in role" value="{{option._id}}">{{option.role}}</option>
         </select> -->
 
+
+        <!-- SI UTILIZAMOS QQW -->
+        <!-- <select class="openSearch search-row-nombre" ng-model="filterTerritory" ng-change="selectArtist(filterTerritory)" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'"></select>
+        <select class="openSearch search-row-nombre" ng-model="filterRole" ng-change="selectGenre(filterRole)" ng-options="jobTitle as jobTitle.role for jobTitle in getJobTitle() | orderBy:'toString()'"></select>
         <select class="openSearch last-search-row-nombre" name="" ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="decade.key as decade.label for decade in getDecades()">
             <option value="" disabled selected>{{customization.searchByDecade ? customization.searchByDecade : 'Undefined'}}</option>
-        </select>
+        </select> -->
     </div>
 </div>
 
@@ -60,7 +67,7 @@
     </div>
     <div id="selected-wrapper" class="col-xs-12">
         <div class="results1 photo-box-wrapper" ng-hide="autoPersons.length == 0 && showBusAvanzado">
-            <div class="item" ng-repeat="item in autoPersons" >
+            <!-- <div class="item" ng-repeat="item in autoPersons" >
                 <div class="photo-box">
 
                     <a ng-click="add(item,item._id)" class="redraw crucecita" ng-class="item.styles">
@@ -73,7 +80,23 @@
                     </a>
                 </div>
                 <a class="resultados-item" ng-class="item.styles">{{item.name}}</a>
-            </div>
+            </div> -->
+
+            <!-- <div class="item" ng-repeat="item in autoPersons | filter:{ encontrado: 'true'}" > -->
+            <div class="item" ng-repeat="item in autoPersons" >
+                  <div class="photo-box" ng-style="{'background-image':'url(' +item.image +')'}">
+
+                      <a ng-click="add(item,item._id)" class="redraw crucecita" ng-class="item.styles">
+                                  +
+                              </a>
+                      <a ng-href="{{generateUrlProfile(item)}}" target="_blank">
+                          <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
+
+                          </div>
+                      </a>
+                  </div>
+                  <a class="resultados-item" ng-class="item.styles">{{item.name}}</a>
+              </div>
         </div>
     </div>
 
@@ -110,11 +133,11 @@
 
     <div id="selected-wrapper-2" class="col-xs-12">
         <div class="results1 photo-box-wrapper-selected">
-            <div class="item " ng-repeat="item in activePersons">
-                <div class="photo-box">
+            <div class="item wow slideInLeft" ng-repeat="item in activePersons">
+                <div class="photo-box" ng-style="{'background-image':'url(' +item.image +')'}">
                     <a ng-click="remove(item)" class="crucecita"> - </i></a>
                     <!-- <a ng-href="{{generateUrlProfile(item)}}" target="_blank"> -->
-                        <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
+                        <div class="photo-frame" >
                         </div>
 
                 </div>

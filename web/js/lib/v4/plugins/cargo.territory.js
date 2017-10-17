@@ -15,7 +15,6 @@ window.cargo.plugins.territory =  {
 	processData: function(){
 	  this.counter =[];
 	  this.data = [];
-	  console.log('process')
 	  //territories.processData
       //clear all;
       var territories = [];

@@ -27,6 +27,8 @@ var notify = {
     observers.push(o);
   },
   remove: function(a){
+    console.log("observers.length");
+    console.log(observers.length);
     for (var i = 0; i < observers.length; i++) {
       observers[i].remove(a);
     };
@@ -118,10 +120,14 @@ function setBasicsParams(){
  ***********************************************************/
 
 function processData() {
-
-  console.log("processData",data);
-    maxYear = d3.max(data, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
-    minYear = d3.min(data, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
+    console.log("DATA length");
+    console.log(data.length);
+    console.log("DATA");
+    console.log(data);
+    if(data.length > 0 ){
+      maxYear = d3.max(data, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
+      minYear = d3.min(data, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
+    }else{console.log("CAGA FUEGO");}
     scales.years = d3.scale.linear()
       .domain([ minYear - yearsPadding ,maxYear + yearsPadding])
       .range([ padding.left, wid - padding.right ]);
@@ -167,12 +173,14 @@ function processData() {
     var y_popPercent = padding.top;
 
     var counter = 0;
+    console.log("data 2 length");
+    console.log(data.length);
     for(i = 0; i < data.length; i++) {
 
       data[i].position = i;
       //Check sort by date
       d = data[i].memberships = data[i].memberships.sort(function(a, b){ return d3.ascending(a.start, b.start); });
-
+      console.log("memberships data length",d);
       for (var j = 0; j < d.length; j++) {
 
 
@@ -230,7 +238,9 @@ function processData() {
  ***********************************************************/
 
 function refreshGraph() {
+
   if (data.length == 0){
+    console.log("REMOVE GRAPH");
       d3.selectAll("div.vis svg").remove();
 
       started = false;
@@ -335,7 +345,7 @@ function refreshGraph() {
 
 
   var names = vis.selectAll("g.group")
-    .data(data, function(d){return d.id;});
+    .data(data, function(d){return d._id;});
 
   var gg = names.enter().append("g")
     .attr('class', 'group');
@@ -347,7 +357,7 @@ function refreshGraph() {
       var memberships =
           d3.select(this)
             .selectAll("g.barGroup")
-            .data(politician.memberships, function(d,i){ return d.id;});
+            .data(politician.memberships, function(d,i){ return d._id;});
 
 
       ///Set current height
@@ -652,6 +662,7 @@ function refreshGraph() {
   ***********************************************************/
 
 
+
   var yearLabelsSelection =
     vis.selectAll("text.rule")
       .data(yearsNumbers, function(d,i){ return i;});
@@ -694,7 +705,8 @@ function refreshGraph() {
 
 //In order to isolate order/filtering this method will execute everthing
 function reloadCargoTimeline(o){
-  console.log("redibujando");
+  console.log("filter");
+  console.log(o);
   setControls(o);
   reloadTimeline();
 
@@ -808,7 +820,8 @@ function showInfoBox(e, i, j) {
         info += "<p class='sub'>" + membership.organization.name  + "</p>";
     }
     if(membership.area){
-      info += "<p  class='mid'>" + membership.area.name  + "</p>";
+      // info += "<p  class='mid'>" + membership.area.name  + "</p>";
+      info += "<p  class='mid'>" + membership.area_name  + "</p>";
     }else{
       if(membership.organization){
         if(membership.organization.area){

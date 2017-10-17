@@ -103,7 +103,7 @@ $('#openResults').toggle();
 <div id="selected-wrapper-2" class="col-xs-12 light" ng-show="activePersons.length > 0">
     <div class="results1 photo-box-wrapper-selected" ng-hide="autoPersons.length == 0 && showBusAvanzado">
         <div class="refreshvisualizations item wow slideInLeft" ng-repeat="item in activePersons">
-            <div class="photo-box">
+            <div class="photo-box" ng-style="{'background-image':'url(' +item.image +')'}">
               <a ng-click="remove(item)" class="crucecita">-</i></a>
                 <a ng-href="{{generateUrlProfile(item)}}" target="_blank">
                     <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
@@ -178,8 +178,8 @@ $('#openResults').toggle();
 {{customization.name}}
 
 
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
-  <div class="col-xs-12" ng-include="'/angular/partials/linea.html'"></div>
-  <div class="col-xs-12" ng-include="'/angular/visualizations/v2/template-angular.html'"></div>
-  <div class="col-xs-12" ng-include="'/angular/visualizations/v2/template-js.html'"></div>
-  <div class="col-xs-12" ng-include="'/angular/visualizations/v2/information.html'"></div>
+  <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div> -->
+  <div ng-include="'/angular/partials/linea.html'"></div>
+  <!-- <div class="col-xs-12" ng-include="'/angular/visualizations/v2/template-angular.html'"></div> -->
+  <!-- <div class="col-xs-12" ng-include="'/angular/visualizations/v2/template-js.html'"></div> -->
+  <!-- <div class="col-xs-12" ng-include="'/angular/visualizations/v2/information.html'"></div> -->

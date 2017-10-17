@@ -559,9 +559,11 @@ margin: 0 20px;
   min-width: 4rem;
   max-width: 4rem;
   height: 4rem;
-  background: #EEEEEE;
+  background-color: #EEEEEE;
   border-radius: 4px;
   margin-right: 10px;
+  background-size: cover;
+  background-position: 50% 3%;
 }
 .box {
   align-self: flex-end;

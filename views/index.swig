@@ -154,9 +154,9 @@
         <script src="/angular/filters/filters.js"></script>
         <script src="/angular/directives/cargoBubbles.js"></script>
         <script src="/angular/directives/cargoLoc.js"></script>
-        <script src="/angular/factories/cargosLoaderFactory.js"></script>
-        <script src="/angular/factories/cargosFactory.js"></script>
-        <script src="/angular/factories/presetsFactory.js"></script>
+        {# <script src="/angular/factories/cargosLoaderFactory.js"></script> #}
+        {# <script src="/angular/factories/cargosFactory.js"></script> #}
+        {# <script src="/angular/factories/presetsFactory.js"></script> #}
 
         {# VISUALIZATIONS #}
         <script src="/angular/Visualizations/v1/controller.js"></script>
