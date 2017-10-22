@@ -2,16 +2,16 @@
 
 /* Controllers */
 angular.module('cargoApp.controllers')
-  .controller('mainController', function($rootScope, $scope, cargosFactory) { 
-    
+  .controller('mainController', function($rootScope, $scope, cargosFactory) {
+
     $scope.filter = window.__embedData.filter;
     $scope.autoPersons = [];
     $scope.activePersons = [];
     $scope.estado = "";
-    
 
 
-    
+
+
     var onDataLoaded = function() {
 
       $rootScope.estado = "Motor de Visualizacion";
@@ -28,8 +28,9 @@ angular.module('cargoApp.controllers')
           $scope.lightAdd(cargosFactory.autoPersons[id], id);
         };
         data = $scope.activePersons;
-        
-        reloadCargoTimeline($scope.filter);
+
+
+        // reloadCargoTimeline($scope.filter);
 
       } else {
         $rootScope.estado = "No hemos cargar tu linea de tiempo :-(";
@@ -52,13 +53,13 @@ angular.module('cargoApp.controllers')
 
     $scope.filterLine = function(f) {
       $scope.filter = f;
-      reloadCargoTimeline(f);
+      // reloadCargoTimeline(f);
     }
 
 
     cargosFactory.load($scope, onDataLoaded, $rootScope);
 
-    
+
     $scope.fullUrl = function(){
       var locations = window.location.href.split('/');
 
@@ -67,5 +68,5 @@ angular.module('cargoApp.controllers')
       var instance = locations[3].indexOf('embed') > 0 ? '' : locations[3] + '';
       return locations[0] + "//" + locations[2] + "/"  + instance + parameters;
     }
-    
+
 });

@@ -74,7 +74,6 @@ angular.module('cargoApp.controllers')
 
 
     $scope.load = function(params, hideAfterClick) {
-
       processParameters(params);
       //light add all persons from url
       if (parsedParams) {
@@ -168,7 +167,12 @@ angular.module('cargoApp.controllers')
         $scope.showPresets = false;
         $scope.search = true;
         $scope.filterAdvance.name = q;
+        console.log("scope.filterAdvance",$scope.filterAdvance);
         $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance);
+        console.log("AUTO PERSONS");
+        console.log($scope.autoPersons);
+        console.log("cargosFactory AUTOPERSONS");
+        console.log(cargosFactory.autoPersons);
         $scope.showResult = true;
       } else {
         $scope.autoPersons = [];
@@ -356,11 +360,17 @@ angular.module('cargoApp.controllers')
     };
 
     $scope.refreshAllVisualizations = function() {
+
+
       //TODO: This should all go to observers.
       $scope.hallOfShame = cargosFactory.getHallOfShame($scope.activePersons);
       // $scope.redrawPoderometro();
       data = $scope.activePersons;
-      // reloadCargoTimeline($scope.filter);
+      console.log("data");
+      console.log(data);
+      console.log("$scope.filter");
+      console.log($scope.filter);
+      reloadCargoTimeline($scope.filter);
       //Updates Url
       updateTheUrl();
     }
@@ -368,7 +378,7 @@ angular.module('cargoApp.controllers')
 
     $scope.filterLine = function(f) {
       $scope.filter = f;
-      // reloadCargoTimeline(f);
+      reloadCargoTimeline(f);
       updateTheUrl();
     }
 

@@ -1,3 +1,15 @@
+//distinct objects for javascript
+var distinctOrganizations = []
+var distinctMemberships = []
+var distinctRoles = []
+var distinctYears = []
+
+//distinct objects fot angular scope
+//$scope.distinctRoles
+//$scope.distinctTerritories
+//$scope.distinctOrganizations
+
+
 function searchModule(option,parameter,callback) {
   if(option === 'name'){
         var url = "https://quienesquienapi.herokuapp.com/v1/persons?name=/" + parameter + "/i"
@@ -201,11 +213,10 @@ angular.module('cargoApp.factories', [])
                 .then(function(res){
                 $rootScope.estado = "Representatividad";
                 factory.weight = res.data;
-              });
+                });
               $http.get(currentDataSource[0])
                  .then(function(res){
                   $rootScope.estado = "Personas";
-                  factory.persons = res.data;
                     for (var i = 0; i < res.data.length; i++) {
                       //Search Index
                       var item = res.data[i]
@@ -223,15 +234,37 @@ angular.module('cargoApp.factories', [])
 
                       factory.mapId[item.popitID] = i;
                       factory.autoPersons.push(item);
+                      factory.persons = res.data;
                     };
+                    distinctPersons = factory.persons;
+                    $scope.distinctPersons = distinctPersons
               }).then(function(){
                   $http.get(currentDataSource[2])
                     .then(function(res){
                       $rootScope.estado = "Organizaciones";
                       factory.organizations = res.data;
+                      distinctOrganizations = factory.organizations
+                      $scope.distinctOrganizations = factory.organizations
                       //TODO: Why is this here? Shouldn't go to organization level attribute?
                       //nivel: res.data[i].name === 'Argentina' ? 'nacional' : 'provincial'
-                  }).then(callback);
+                      })
+                  })
+                  .then(function(){
+                  $http.get(currentDataSource[1])
+                    .then(function(res){
+                      $rootScope.estado = "Memberships";
+                      distinctMemberships = res.data
+                      distinctMemberships.map(function(el){
+                        distinctRoles.push(el.role)
+                        factory.distinctRoles.push(el.role)
+                      })
+                      distinctRoles = _.unique(distinctRoles)
+                      $scope.distinctRoles = distinctRoles
+                  })
+                  .then(function(){
+                    $scope.distinctTerritories = factory.getTerritories()
+                  })
+                  .then(callback);
                 });
   };
 
@@ -317,7 +350,6 @@ angular.module('cargoApp.factories', [])
   f.extractArea = function(m){
 
     if(m.area === undefined){
-      console.log('No area found: memberships',m.id);
         m.area ={
           id: "AREA-NOT-FOUND",
           name: "AREA-NOT-FOUND",
@@ -374,10 +406,6 @@ angular.module('cargoApp.factories', [])
 });
 
 
-'use strict';
-
-/* Filters */
-
 angular.module('cargoApp.factories')
 	.factory('cargosFactory', function($http, $filter, cargoLoaderFactory) {
     var factory ={};
@@ -387,23 +415,22 @@ angular.module('cargoApp.factories')
     factory.memberships= [];
     factory.territories= [];
     factory.organizations= [];
+    factory.distinctRoles= [];
+    factory.distinctYears= [];
     factory.weight= [];
     factory.autoPersons=[];
 
 //------------------------------------------------------------------------------
     factory.getFullPerson = function(id){
-      console.log("ID",id);
-      var p = this.persons.popitID[id];
-      console.log("P",p);
-      console.log("this.persons",this.persons);
-      if (!p.full){
+      // var p = this.persons.popitID[id];
+      if (!id.full){
 
-        p.periods = this.getPeriods(p);
-        p.summary = this.getSummary(p);
-        p.full = true;
-        p.weight = this.setWeight(p)
+        id.periods = this.getPeriods(id);
+        id.summary = this.getSummary(id);
+        id.full = true;
+        id.weight = this.setWeight(id)
       }
-      return p;
+      return id;
     }
 //------------------------------------------------------------------------------
     factory.setWeight = function(person){
@@ -438,8 +465,6 @@ angular.module('cargoApp.factories')
     }
 //------------------------------------------------------------------------------
     factory.getAutoPersonsAdvance = function(filter,name){
-			console.log("filter",filter);
-			console.log("name",name);
         var search = false;
         var autoPersonsResult = this.autoPersons;
         if( filter.name !== undefined && filter.name !== null) {
@@ -637,18 +662,18 @@ angular.module('cargoApp.factories')
 								//allTerritories.push(m.area.name);
 							//}
 							if(m.area){
-								allTerritories.push(m.area);
+								allTerritories.push(m.area.name);
 							}else{
 								if(m.organization){
 									if(m.organization.area){
-										allTerritories.push(m.organization.area);
+										allTerritories.push(m.organization.area.name);
 									}
 								}
 							}
 						});
 
 				});
-				factory.territories = _.unique(allTerritories);
+        factory.territories = _.unique(allTerritories);
 			}
 		return factory.territories;
 	}
@@ -672,7 +697,7 @@ angular.module('cargoApp.factories')
                 allOrganizations.push(organization.name);
             }
         });
-
+        console.log(allOrganizations);
         return _.unique(allOrganizations);
     }
 //------------------------------------------------------------------------------

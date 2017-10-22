@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="cargoApp" ng-controller="homeController">
+{# <html ng-app="cargoApp" ng-controller="homeController"> #}
+<html ng-app="cargoApp">
     <head>
         <script>
             window.customization = {{JSON.stringify(customization)}};
@@ -129,8 +130,14 @@
         'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address"><i class="fa fa-envelope-o"></i></a> </li> <li> <a href="#"><i class="fa fa-cog"></i></a> </li> </ul>
         </div> </div> </header> #}
 
-        <div class="main">
+        {# <div class="main">
           <div ng-view id="cargoContainer"></div>
+        </div> #}
+
+        <div class="main" >
+          <div style="height:100%">
+              <div ng-view id="cargoContainer"></div>
+          </div>
         </div>
 
 
@@ -138,10 +145,10 @@
             window.customization = {{JSON.stringify(customization)}};
         </script>
 
-        <script src="/js/lib/v4/plugins/cargo.memberships.js"></script>
-        <script src="/js/lib/v4/plugins/cargo.territory.js"></script>
-        <script src="/js/lib/v4/cargo-timeline.js"></script>
-        <script src="/js/lib/v2/cargo-bubbles.js"></script>
+        <script src="/angular/visualizations/v4/plugins/cargo.memberships.js"></script>
+        <script src="/angular/visualizations/v4/plugins/cargo.territory.js"></script>
+        <script src="/angular/visualizations/v4/cargo-timeline.js"></script>
+        {# <script src="/js/lib/v2/cargo-bubbles.js"></script> #}
 
         <script src="/js/remove-diacritics.js"></script>
 

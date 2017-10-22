@@ -304,9 +304,10 @@ align-items: center;
   padding-right: 0.3em;
 }
 .search-row{
-    padding-bottom: 0.5em;
-    display: flex;
-    flex-direction: column;
+  padding-top: 1rem;
+    padding-bottom: 1rem;
+    /*display: flex;
+    flex-direction: column;*/
     background: #222222;
     min-height: 5.125rem;
 }
@@ -314,7 +315,7 @@ align-items: center;
   background: #222222;
   border: none;
     border-bottom: 1px solid gray;
-    margin: 1rem 2rem 1rem 0;
+    margin: 1rem auto;
     width: 270px;
     height: 33px;
     color: #ffffff;
@@ -461,7 +462,7 @@ margin: 0 20px;
 }
 .input-container svg{
   position: relative;
-    left: -4rem;
+    left: -2rem;
     top: 0.35rem;
 }
 

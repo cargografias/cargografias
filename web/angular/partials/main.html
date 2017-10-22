@@ -1,5 +1,4 @@
-<div class="module" ng-controller="loaderController">
-
+<div class="module">
 	<div class="col-xs-12
 			col-sm-12
 			col-md-12
@@ -17,6 +16,17 @@
 			<a href="/"><img src="/img/v2/about2.png" alt="">ACERCA DE</a>
 		</div>
 	</div>
+</div>
+<div ng-controller="loaderController"  ng-include="'/angular/partials/loader.html'">
+</div>
+<div ng-show="ready" style="flex:1">
+	<div ng-show="showPresetsView" id="presets" ng-include="'/angular/partials/presets.html'"></div>
+	<div ng-show="showPresetsView" ng-include="'/angular/partials/footer.html'"></div>
+	<div ng-show="showFilterView" id="filter-container" ng-include="'/angular/partials/filter.html'"></div>
+	<div ng-show="showVisualizationView" ng-include="'/angular/partials/onVisualization.html'"></div>
+</div>
+
+
 		<!-- <div class="search-bar-3">
 			<div id="burger" data-activates="slide-out" class="button-collapse">
 				<span></span>
@@ -89,42 +99,3 @@
 			</ul>
 		</div>
 	</div> -->
-
-</div>
-
-
-<div ng-show="showPresetsView" id="presets" ng-include="'/angular/partials/presets.html'"></div>
-<div ng-show="showPresetsView" ng-include="'/angular/partials/footer.html'"></div>
-<div ng-show="showFilterView" id="filter-container" ng-include="'/angular/partials/filter.html'"></div>
-<div ng-show="showVisualizationView" ng-include="'/angular/partials/onVisualization.html'"></div>
-
-
-<script type="text/javascript">
-	$('#burger').click(function() {
-		$(this).toggleClass('open');
-	});
-	$(".button-collapse").sideNav();
-
-
-	$('.button-collapse').sideNav({
-		menuWidth: 444,
-		edge: 'right',
-		closeOnClick: true,
-		draggable: true,
-		onOpen: function(el) {}, // A function to be called when sideNav is opened
-		onClose: function(el) {}, // A function to be called when sideNav is closed
-	});
-</script>
-<!-- <div class="module timeline">
-	<div class="description">
-		<h3><i class="fa fa-tasks"></i>{{customization.timeline}}</h3>
-	</div>
-<div ng-show="ready" ng-include="'/angular/partials/linea.html'"></div>
-</div>
-<div class="module">
-	<div class="description">
-		<h3><i class="fa fa-bar-chart"></i>{{customization.stats}}</h3>
-	</div>
-	<div ng-show="ready" ng-include="'/angular/partials/hall-of-shame.html'"></div>
-	<div ng-show="ready" ng-include="'/angular/partials/stats.html'"></div>
-</div> -->

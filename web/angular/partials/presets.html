@@ -1,33 +1,25 @@
-<div  id="main-visualization" class="view1" ng-controller="loaderController">
-    <div >
+<div id="main-visualization" class="view1" ng-controller="loaderController">
+    <div>
         <br>
         <div class="row">
             <div class="col-xs-12
-              col-sm-12
-              col-md-12
-              col-lg-12
               child-container">
                 <h3>
                   {{customization.presets ? customization.presets : 'Undefined'}}
                 </h3>
 
-              <div class="">
-              <i class="right"></i>
-              <i class="left"></i>
-              </div>
-
-
+                <div class="">
+                    <i class="right"></i>
+                    <i class="left"></i>
+                </div>
             </div>
         </div>
-        <br><br>
+        <br>
+        <br>
         <div class="row child-container">
-
-            <div class="col-xs-12
-                col-md-3" ng-repeat="preset in presets">
-
-                    <img ng-src="{{preset.imagen}}" ng-click="loadMyPresets($index);refreshAllVisualizations();showVisualizationFunction()">
-
-                <button type="button" name="button" ng-click="loadMyPresets($index);refreshAllVisualizations();showVisualizationFunction()" >{{preset.nombre}} </button>
+            <div class="col-xs-12 col-sm-3" ng-repeat="preset in presets">
+                <img ng-src="{{preset.imagen}}" ng-click="loadMyPresets($index);refreshAllVisualizations();showVisualizationFunction()">
+                <button type="button" name="button" ng-click="loadMyPresets($index);refreshAllVisualizations();showVisualizationFunction()">{{preset.nombre}} </button>
                 <!-- <p><a ng-href="preset.valores">{{preset.nombre}}</a></p> -->
             </div>
         </div>

@@ -1,9 +1,16 @@
-var elem= document.getElementById("selected-wrapper-2");
-elem.addEventListener('build', function (e) {
-   console.log('REFRESH VISUALIZATION',e);
 
-  runViz(e);
-}, false);
+var informationVis = {
+  init : function(){
+    //el elemento visualizaciones porque es el div al cual se le dispara el evento cuando
+    //cambia de personas, pasa una sola vez
+    var elem= document.getElementById("visualizaciones");
+    elem.addEventListener('build',informationVis.refresh, false);
+    //refresh llama a la funcion cada vez qeu se dispare el evento
+  },
+  refresh : function (e) {
+    runViz(e);
+  }
+}
 
 var datas = [4, 8, 15, 16, 23, 42];
 

@@ -1,15 +1,29 @@
 <script type="text/javascript">
 
-var elem= document.getElementById("selected-wrapper-2");
 
-elem.addEventListener('build', function (e) {
-  console.log('REFRESH VISUALIZATION')
-  var visPersons = e.detail
-  for (var i = 0; i < visPersons.length; i++) {
-    console.log(visPersons[i].simple);
-    document.getElementById("nuevodiv").innerHTML += visPersons[i].simple + '<br/>'
+
+//addEventListener se ejecuta una vez
+//
+var informationVis = {
+  init : function(){
+    //el elemento visualizaciones porque es el div al cual se le dispara el evento cuando
+    //cambia de personas, pasa una sola vez
+    var elem= document.getElementById("visualizaciones");
+    elem.addEventListener('build',informationVis.refresh, false);
+    //refresh llama a la funcion cada vez qeu se dispare el evento
+  },
+  refresh : function (e) {
+    console.log('REFRESH VISUALIZATION TINCHO')
+    console.log(e);
+    var visPersons = e.detail
+    console.log("visPersons Detail",visPersons);
+    for (var i = 0; i < visPersons.length; i++) {
+      console.log(visPersons[i].name);
+      document.getElementById("nuevodiv").innerHTML = '<li>' + visPersons[i].name + '</li>'
+    }
   }
-}, false);
+}
+informationVis.init()
 
 </script>
 

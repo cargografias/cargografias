@@ -533,8 +533,7 @@ function refreshGraph() {
                 return d.role; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
               }
               else {
-
-		              return d.area; //TODO: uncomment after sinar test
+		              return d.area.name; //TODO: uncomment after sinar test
                 //return d.area.name ; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
               }
         })
