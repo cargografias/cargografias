@@ -524,7 +524,6 @@ function refreshGraph() {
         .attr("dx", ".66em")
         .attr('dy','1.2em')
         .text(function(d) {
-          console.log(d);
               //if (d.)
               if (controls.height == "memberships"){
                 return '' //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
@@ -694,7 +693,6 @@ function refreshGraph() {
 
 //In order to isolate order/filtering this method will execute everthing
 function reloadCargoTimeline(o){
-  console.log("data",data);
 
   setControls(o);
   reloadTimeline();
@@ -804,7 +802,6 @@ function showInfoBox(e, i, j) {
     }
     info += "<p class='title'>" + politician.name + "</p>";
     info += "<p class='mid'>" + membership.role  + "</p>";
-    //console.log(membership);
     if(membership.organization){
         info += "<p class='sub'>" + membership.organization.name  + "</p>";
     }

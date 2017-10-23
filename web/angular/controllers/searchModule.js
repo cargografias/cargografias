@@ -167,7 +167,6 @@ function searchModule(option,parameter,callback) {
         }
         xmlHttp.open("GET", url, true); // true for asynchronous
         xmlHttp.send(null);
-
   }
 
   if(option === 'role'){
@@ -188,7 +187,6 @@ function searchModule(option,parameter,callback) {
 }
 
 'use strict';
-
 /* Filters */
 
 angular.module('cargoApp.factories', [])
@@ -223,7 +221,6 @@ angular.module('cargoApp.factories', [])
                       res.data[i].index = i;
                       f.processImages(item);
                       f.setInitials(item);
-                      //TODO: This should come 100% from data. Remove in the future
                       try{
                         f.setShareableID(item);
                         f.processMemberships(item);
@@ -231,7 +228,6 @@ angular.module('cargoApp.factories', [])
                       catch(e){
                         console.log("Loading error", e, res.data[i].name, res.data[i].id_sha1);
                       }
-
                       factory.mapId[item.popitID] = i;
                       factory.autoPersons.push(item);
                       factory.persons = res.data;
@@ -245,8 +241,6 @@ angular.module('cargoApp.factories', [])
                       factory.organizations = res.data;
                       distinctOrganizations = factory.organizations
                       $scope.distinctOrganizations = factory.organizations
-                      //TODO: Why is this here? Shouldn't go to organization level attribute?
-                      //nivel: res.data[i].name === 'Argentina' ? 'nacional' : 'provincial'
                       })
                   })
                   .then(function(){

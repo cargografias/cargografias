@@ -303,6 +303,11 @@ align-items: center;
   content: "|";
   padding-right: 0.3em;
 }
+#lupa {
+  position: relative;
+    top: 0;
+    left: -1.5rem;
+}
 .search-row{
   padding-top: 1rem;
     padding-bottom: 1rem;

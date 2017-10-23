@@ -10,14 +10,8 @@ var informationVis = {
     //refresh llama a la funcion cada vez qeu se dispare el evento
   },
   refresh : function (e) {
-    console.log('REFRESH VISUALIZATION TINCHO')
-    console.log(e);
     var visPersons = e.detail
-    console.log("visPersons Detail",visPersons);
     reloadCargoTimeline(e.visOptions);
-    console.log("distinctOrganizations", distinctOrganizations);
-    console.log("distinctMemberships", distinctMemberships);
-    console.log("distinctRoles", distinctRoles);
   }
 }
 informationVis.init()

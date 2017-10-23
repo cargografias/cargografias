@@ -425,7 +425,7 @@ angular.module('cargoApp.controllers')
 
     $scope.lightAdd = function(autoPersona, id) {
       if (!autoPersona || autoPersona.agregada) {
-            console.log("ya esta agregada");
+            // console.log("ya esta agregada");
             return;
         } else {
             //SI UTILIZAMOS QQW
