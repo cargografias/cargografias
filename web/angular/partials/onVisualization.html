@@ -15,7 +15,7 @@ $('#openResults').toggle();
 <div class="filter-container gray" ng-controller="filterController">
         <div id="footleft" class="search-row-vis row">
           <div class="col-xs-12 col-sm-6">
-            <input id='link' ng-click="" class="openSearch search-row-nombre" type="search" placeholder="{{customization.searchByName ? customization.searchByName : 'Undefined'}}" ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
+            <input id='link' ng-click="" class="openSearch search-row-nombre" type="search" placeholder="{{customization.searchByName ? customization.searchByName : 'Buscar por Nombre'}}" ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <svg width="20px" height="23px" viewBox="0 0 20 23" version="1.1">
                 <defs></defs>
@@ -58,7 +58,7 @@ $('#openResults').toggle();
                       </g>
                   </g>
               </svg>
-              {{customization.shareButton ? customization.shareButton : 'Undefined'}}</button>
+              {{customization.shareButton ? customization.shareButton : 'Compartir'}}</button>
             <button id="editSelection" type="button" name="button" ng-click="showFilterFunction()">
               <?xml version="1.0" encoding="UTF-8" standalone="no"?>
               <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1">
@@ -76,7 +76,7 @@ $('#openResults').toggle();
                       </g>
                   </g>
               </svg>
-              {{customization.editSelectionButton ? customization.editSelectionButton : 'Undefined'}}
+              {{customization.editSelectionButton ? customization.editSelectionButton : 'Editar'}}
             </button>
 
           </div>
@@ -119,11 +119,11 @@ $('#openResults').toggle();
 
 <div class="row visualization-bar" id="timeline-nondisplay" ng-controller="filterController">
     <ul>
-        <li><img src="/img/v2/linetime.png" alt=""><a href="#" style="color:#000">{{customization.timeline ? customization.timeline : 'Undefined'}}</a></li>
-        <li><a href="#">{{customization.name ? customization.name : 'Undefined'}}</a></li>
-        <li><a href="#">{{customization.role ? customization.role : 'Undefined'}}</a></li>
-        <li><a href="#">{{customization.territory ? customization.territory : 'Undefined'}}</a></li>
-        <li><a href="#">{{customization.career ? customization.career : 'Undefined'}}</a></li>
+        <li><img src="/img/v2/linetime.png" alt=""><a href="#" style="color:#000">{{customization.timeline ? customization.timeline : 'Linea de Tiempo'}}</a></li>
+        <li><a href="#">{{customization.name ? customization.name : 'Nombre'}}</a></li>
+        <li><a href="#">{{customization.role ? customization.role : 'Rol'}}</a></li>
+        <li><a href="#">{{customization.territory ? customization.territory : 'Territorio'}}</a></li>
+        <li><a href="#">{{customization.career ? customization.career : 'Carrera'}}</a></li>
     </ul>
     <div class="menuVisualization">
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
