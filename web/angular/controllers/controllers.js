@@ -140,7 +140,8 @@ angular.module('cargoApp.controllers')
             // }
 
             //SI UTILIZAMOS CSV
-            $scope.load($scope.presets[preset].valores); //Default load 1st preset
+            var p = $scope.presets[preset].valores.split('-');
+            $scope.load(p); //Default load 1st preset
         }
     }
 
