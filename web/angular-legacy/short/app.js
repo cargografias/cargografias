@@ -4,9 +4,8 @@ angular.module('cargoApp.controllers', []);
 angular.module('cargoApp.directives', []);
 
 // Declare app level module which depends on filters, and services
-var cargoApp = angular.module('cargoApp', [
+var cargoApp =angular.module('cargoApp', [
   'ngRoute',
-  'cargoApp.filters',
   'cargoApp.factories',
   'cargoApp.directives',
   'cargoApp.controllers',
@@ -14,11 +13,7 @@ var cargoApp = angular.module('cargoApp', [
   'ngCookies'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/:ids?', {templateUrl: '/angular`/partials/main.html', controller: 'homeController'});
-  // $routeProvider.when('/:ids?', {templateUrl: '/angular/partials/main.html'});
-
+  $routeProvider.when('/', {templateUrl: '/angular-legacy/short/partials/main.html',
+  	controller: 'mainController'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
-cargoApp.run(function(){
-	new WOW().init();
-})

@@ -14,8 +14,8 @@ var cargoApp = angular.module('cargoApp', [
   'ngCookies'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/:ids?', {templateUrl: '/angular`/partials/main.html', controller: 'homeController'});
-  // $routeProvider.when('/:ids?', {templateUrl: '/angular/partials/main.html'});
+  $routeProvider.when('/:ids?', {templateUrl: '/angular-legacy/partials/main.html', controller: 'homeController'});
+  // $routeProvider.when('/:ids?', {templateUrl: '/angular-legacy/partials/main.html'});
 
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

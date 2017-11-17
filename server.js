@@ -57,7 +57,13 @@ function instanceRouteHandler(req, res) {
             console.log(err);
         } else {
             if(instances.length > 0){
-                res.render('index', instances[0])
+                if (req.params.instanceName.toLowerCase() === 'cargografias'){
+                    res.render('index', instances[0])    
+                }
+                else {
+                    res.render('legacy', instances[0])
+                }
+                
             }else{
                 res.status(404).render('instancenotfound');
             }

@@ -1,0 +1,50 @@
+<script type="text/javascript">
+//addEventListener se ejecuta una vez
+//
+var informationVis = {
+  init : function(){
+    //el elemento visualizaciones porque es el div al cual se le dispara el evento cuando
+    //cambia de personas, pasa una sola vez
+    var elem= document.getElementById("visualizaciones");
+    elem.addEventListener('build',informationVis.refresh, false);
+    //refresh llama a la funcion cada vez qeu se dispare el evento
+  },
+  refresh : function (e) {
+    var visPersons = e.detail
+    reloadCargoTimeline(e.visOptions);
+  }
+}
+informationVis.init()
+
+</script>
+<div class="timeline-filter" ng-show="activePersons.length > 0">
+<ul>
+    <li ng-click="filterLine('name')" ng-class="filter === 'name' ? 'active' : '' ">
+          <a id="ordenNombre" href="" >
+            <i class="fa fa-user"></i>
+          {{customization.name}}</a>
+        </li>
+    <li class="" ng-click="filterLine('memberships')" ng-class="filter === 'memberships' ? 'active' : '' ">
+      <a id="ordenCargo" href="" >
+        <i class="fa fa-briefcase"></i>{{customization.role}}</a>
+    </li>
+    <li ng-click="filterLine('territory')" class="" ng-class="filter === 'territory' ? 'active' : '' ">
+      <a id="ordenCargo" href="" >
+        <i class="fa fa-flag"></i>{{customization.territory}}</a>
+    </li>
+    <li  ng-click="filterLine('career')" class="" ng-class="filter === 'career' ? 'active' : '' ">
+      <a id="ordenNombre" href="">
+        <i class="fa fa-tasks"></i>{{customization.career}}</a>
+    </li>
+
+ </ul>
+</div>
+
+
+<div id="linea-de-tiempo">
+	<div class="visualizacion">
+      <div id="svgdataurl"></div>
+		</div>
+  <div class="vis"></div>
+  <div id="infobox">  </div>
+</div>
