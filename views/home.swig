@@ -68,7 +68,7 @@ Cargografías
     <p>Cargografías es una línea de tiempo que muestra los cargos públicos que tuvo cada funcionario a lo largo de su vida. </p>
     <div class="about-us">
       <img src="/img/v2/about.png" alt="">
-      <button type="button" name="button">ACERCA DE</button>
+      <a target="_blank" href="https://medium.com/@Cargografias/como-nace-cargografias-e82510388040">ACERCA DE </a>
     </div>
     </div>
   </div>
@@ -84,9 +84,7 @@ Cargografías
         col-lg-4
         column-1">
       <ul>
-          <li>
-              <a href="#"><img src="/img/v2/facebook.png" alt=""></a>
-          </li>
+
           <li>
               <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&region=follow_link&screen_name=Cargografias&tw_p=followbutton&variant=2.0" target="_blank"><img src="/img/v2/twitter.png" alt=""></a>
           </li>

@@ -38,7 +38,6 @@
                     <a ng-click="add(item,item.index)" class="resultados-item" ng-class="item.styles">
                       {{item.name}}
                   </a>
-<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -82,57 +81,22 @@
                     </g>
                 </svg>
                 {{customization.editSelectionButton ? customization.editSelectionButton : 'Editar'}}
-=======
               </div>
           </div>
           </div>
-          <div class="col-xs-12 col-sm-6 visualization-nav-2">
-            <button id="shareButton" type="button" name="button" ng-click="">
-              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-              <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
-                  <defs></defs>
-                  <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="3--Visualizaciones" transform="translate(-973.000000, -111.000000)" fill-rule="nonzero" fill="#888888">
-                          <g id="Group-16">
-                              <g id="Group-5" transform="translate(973.000000, 111.000000)">
-                                  <g id="iconmonstr-share-1">
-                                      <path d="M4.16666667,5.83333333 C6.4675,5.83333333 8.33333333,7.69916667 8.33333333,10 C8.33333333,12.3008333 6.4675,14.1666667 4.16666667,14.1666667 C1.86583333,14.1666667 0,12.3008333 0,10 C0,7.69916667 1.86583333,5.83333333 4.16666667,5.83333333 Z M13.435,15.8875 C13.3741667,16.1383333 13.3333333,16.3966667 13.3333333,16.6666667 C13.3333333,18.5075 14.8258333,20 16.6666667,20 C18.5075,20 20,18.5075 20,16.6666667 C20,14.8258333 18.5075,13.3333333 16.6666667,13.3333333 C15.6958333,13.3333333 14.83,13.755 14.2208333,14.4175 L9.6475,11.9783333 C9.45583333,12.5083333 9.19,13.0025 8.86166667,13.4483333 L13.435,15.8875 L13.435,15.8875 Z M20,3.33333333 C20,1.4925 18.5075,-1.77635684e-15 16.6666667,-1.77635684e-15 C14.8258333,-1.77635684e-15 13.3333333,1.4925 13.3333333,3.33333333 C13.3333333,3.60333333 13.3741667,3.86166667 13.435,4.1125 L8.86166667,6.55166667 C9.19083333,6.9975 9.45583333,7.49083333 9.6475,8.02166667 L14.2208333,5.5825 C14.83,6.245 15.6958333,6.66666667 16.6666667,6.66666667 C18.5075,6.66666667 20,5.17416667 20,3.33333333 Z" id="Shape"></path>
-                                  </g>
-                              </g>
-                          </g>
-                      </g>
-                  </g>
-              </svg>
-              {{customization.shareButton ? customization.shareButton : 'Compartir'}}</button>
-            <button id="editSelection" type="button" name="button" ng-click="showFilterFunction()">
-              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-              <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1">
-                  <defs></defs>
-                  <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="3--Visualizaciones" transform="translate(-1138.000000, -112.000000)">
-                          <g id="Group-16">
-                              <g id="Group-15" transform="translate(1117.000000, 100.000000)">
-                                  <g id="ic_edit_black_24px" transform="translate(18.000000, 9.000000)">
-                                      <path d="M3,17.25 L3,21 L6.75,21 L17.81,9.94 L14.06,6.19 L3,17.25 Z M20.71,7.04 C21.1,6.65 21.1,6.02 20.71,5.63 L18.37,3.29 C17.98,2.9 17.35,2.9 16.96,3.29 L15.13,5.12 L18.88,8.87 L20.71,7.04 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
-                                      <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
-                                  </g>
-                              </g>
-                          </g>
-                      </g>
-                  </g>
-              </svg>
-              {{customization.editSelectionButton ? customization.editSelectionButton : 'Editar'}}
->>>>>>> nuevocargoV1
-            </button>
-        </div>
-        <div class="col-xs-12 visualization-nav-2">
 
-            <div class="col-xs-12 sharing buttons wow fadeIn" ng-show="showSharing">
+        <div class="col-xs-12 visualization-nav-2 light" style="    border-bottom: 2px solid #222222;">
+
+            <div class="col-xs-12 sharing light buttons wow fadeIn" ng-show="showSharing">
+              <div class="col-xs-12 display-flex">
                 <p><a ng-click="tweetThis()"><i class="fa fa-twitter"></i>{{customization.twitterLine}}</a></p>
                 <p><a href=""><i class="fa fa-link"></i>{{customization.copyLink}}</a></p>
                 <input class="openSearch search-row-nombre" style="width:100%" type="text" value="{{currentLink()}}" />
+              </div>
+              <div class="col-xs-12 display-flex">
                 <p><a href=""><i class="fa fa-globe"></i>{{customization.addLink}}</a></p>
                 <input class="openSearch search-row-nombre" style="width:100%" type="text" value="{{embedIframe()}}" />
+              </div>
             </div>
         </div>
 
@@ -239,15 +203,15 @@
         <div class="description">
             <h3><i class="fa fa-tasks"></i>{{customization.timeline}}</h3>
         </div>
-        <div ng-show="ready" ng-include="'/angular-legacy/partials/linea.html'"></div>
+        <div ng-show="ready" ng-include="'/angular/partials/linea.html'"></div>
+    </div>
+    <!-- <div class="col-xs-6">
+      <div ng-include="'/angular/visualizations/v2/template-angular.html'"></div>
     </div>
     <div class="col-xs-6">
-      <div ng-include="'/angular-legacy/visualizations/v2/template-angular.html'"></div>
+      <div ng-include="'/angular/visualizations/v2/template-js.html'"></div>
     </div>
     <div class="col-xs-6">
-      <div ng-include="'/angular-legacy/visualizations/v2/template-js.html'"></div>
-    </div>
-    <div class="col-xs-6">
-      <div ng-include="'/angular-legacy/visualizations/v1/estaEnPoder.html'"></div>
-    </div>
+      <div ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
+    </div> -->
 </div>
