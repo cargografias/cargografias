@@ -3,7 +3,7 @@ Cargografias
 =================
 ### La línea de tiempo de Funcionarios Polícitcos
 
-Version v.4  
+Version v.6
 
 <img src="http://40.media.tumblr.com/71df2704f63865f5d42697631e73d4f5/tumblr_nfmcfzeGMG1qeky8ko1_1280.jpg">
 
@@ -61,12 +61,17 @@ $ npm install
 ```
  en la carpeta principal del repositorio.  
 
-* Bajate la base de datos de tu instancia.
+* Bajate la base de datos de tu instancia con el cargografias-loader
 
-```bash
-$  node getInstanceData.js cargo2 
-```
+https://github.com/cargografias/cargografias-loader
+
+
 * Crea un archivo .env en tu root, Podes utilizar .env.example como guia.
+```text
+MONGO_URL=mongodb://localhost/cargo
+PORT=3001
+BASE_STATIC_PATH=//localhost:3002
+```
 
 * Inicia el servidor nodejs utilizando el comando
 
@@ -102,17 +107,15 @@ PLANES FUTUROS
 
 Active Collaborators
 =======
-* [Martín Rabaglia] 
 * [Andres Snitcofsky] 
-* [Daniel Calligaro]
+* [Martín Rabaglia @ Genosha] 
+* [Manu Paiva @ Genosha]
+* [Ezequiel Romero @ Genosha]
+
 
 Past Collaborators
 =========
 * [Palamago]
-
-
-
-
-
+* [Daniel Calligaro]
 
 
