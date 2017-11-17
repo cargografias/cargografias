@@ -26,15 +26,18 @@ informationVis.init()
         </li>
     <li class="" ng-click="filterLine('memberships')" ng-class="filter === 'memberships' ? 'active' : '' ">
       <a id="ordenCargo" href="" >
-        <i class="fa fa-briefcase"></i>{{customization.role}}</a>
+        <i class="fa fa-briefcase"></i>
+      {{customization.role ? customization.role : 'Rol'}}</a>
     </li>
     <li ng-click="filterLine('territory')" class="" ng-class="filter === 'territory' ? 'active' : '' ">
       <a id="ordenCargo" href="" >
-        <i class="fa fa-flag"></i>{{customization.territory}}</a>
+        <i class="fa fa-flag"></i>
+      {{customization.territory ? customization.territory : 'Territorio'}}</a>
     </li>
     <li  ng-click="filterLine('career')" class="" ng-class="filter === 'career' ? 'active' : '' ">
       <a id="ordenNombre" href="">
-        <i class="fa fa-tasks"></i>{{customization.career}}</a>
+        <i class="fa fa-tasks"></i>
+      {{customization.carrer ? customization.carrer : 'Carrera'}}</a>
     </li>
 
  </ul>
