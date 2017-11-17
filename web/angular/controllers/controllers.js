@@ -92,6 +92,7 @@ angular.module('cargoApp.controllers')
             for (var i = 0; i < parsedParams.length; i++) {
                 var index = parsedParams[i];
                 var id = cargosFactory.mapId[index];
+                console.log(cargosFactory.autoPersons[id]);
                 $scope.lightAdd(cargosFactory.autoPersons[id], id);
             };
             for (var i = 0; i < parsedParams.length; i++) {
@@ -100,7 +101,6 @@ angular.module('cargoApp.controllers')
               $scope.filterAutoPersons(parsedParams[i])
               $scope.lightAdd($scope.autoPersons[0], id);
             }
-            $scope.refreshAllVisualizations();
             $scope.autoPersons = $scope.activePersons
             $scope.search = true;
             $scope.showPresets = hideAfterClick ? false : $scope.showPresets;

@@ -50,14 +50,7 @@ Cargografías
                 <a href="/uruguay"><img src="/img/v2/uruguay.png" alt="">
                     <br>Uruguay</a>
             </li>
-            <li>
-                <a href="/mexico"><img src="/img/v2/mexico.png" alt="">
-                    <br>Mexico</a>
-            </li>
-            <li>
-                <a href="/venezuela"><img src="/img/v2/venezuela.png" alt="">
-                    <br>Venezuela</a>
-            </li>
+
             <li>
                 <a href="/paraguay"><img src="/img/v2/paraguay.png" alt="">
                     <br>Paraguay</a>
