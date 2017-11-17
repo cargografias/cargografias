@@ -1,0 +1,14 @@
+<div>
+	<div>
+		<div>
+			<h3><i class="fa fa-users"></i>Año 
+				 <select ng-model="activeYear" id="years" ng-change="redrawPoderometro()">
+				  <option ng-repeat="o in poderometroYears" ng-selected="{{o==activeYear}}" value="{{o}}">
+        			{{o}}
+    				</option>
+				</select>
+			</h3>
+		</div>
+    <div ng-cargobubbles></div>
+	</div>
+</div>
