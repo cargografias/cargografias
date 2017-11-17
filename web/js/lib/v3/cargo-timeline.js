@@ -9,7 +9,7 @@ var totals = {};
 var maxYear, minYear = 0;
 var vis;
 var padding = { top: 40, right: 30, bottom: 30, left: 240 }
-var barHeight = 10; 
+var barHeight = 10;
 var defaultPopPercent = .08;
 var boxHeight = 35;
 var totalmemberships = 0 ;
@@ -30,15 +30,20 @@ function setVisSize() {
 
   $(".vis").attr("width", wid).attr("height", hei);
   $(".vis .background").attr("width", wid).attr("height", hei);
-    
+
 }
 
-$(window).resize(reloadTimeline);
+// $(window).resize(reloadTimeline);
 
 function reloadTimeline(callback){
-  started = true;
-  setBasicsParams();
-  setVisSize();
+  if (!started){
+    setVisSize();
+    setBasicsParams();
+    started = true;
+  }
+  // started = true;
+  // setBasicsParams();
+  // setVisSize();
   // process data for scales, etc.
   processData();
   drawstarting();
@@ -49,20 +54,20 @@ function reloadTimeline(callback){
       setControl($("#controls #layoutControls #layout-timeline"), "display", "timeline", false);
       setControl($("#controls #heightControls #height-area"), "height", "contiguous", true);
       setControl($("#controls #groupControls #group-name"), "group", "name", true);
-  };  
+  };
   if (!callback){
     callback = defaultFilterCallback;
   }
-    
+
 
   setTimeout(callback, 500);
-  
+
 
 }
 
 
 function setBasicsParams(){
-  
+
   //remove old svg
   //TODO: is it another way of doing this?
   d3.select("div.vis svg").remove();
@@ -70,23 +75,23 @@ function setBasicsParams(){
   vis = d3.select("div.vis")
     .append("svg:svg")
     .attr("class", "vis");
-  
+
   totals.area = d3.sum(data, function(d) { return d3.sum(d.memberships, function(p){ return p.Land_area_million_km2; }) });
   totals.population = d3.sum(data, function(d) { return d3.sum(d.memberships, function(p){ return p.Estimated_Population; }) });
-  
-  totals.popPercent = d3.sum(data, function(d) { 
+
+  totals.popPercent = d3.sum(data, function(d) {
     if (isNaN(d.Percent_World_Population)) return defaultPopPercent;
-    else return d.Percent_World_Population; 
+    else return d.Percent_World_Population;
     });
-  //Append Fonts! 
+  //Append Fonts!
   vis
     .append('def')
     .append('style')
     .attr("type", "text/css")
     .text('@import url(http://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic);')
 
-    
-    
+
+
 }
 
 
@@ -98,13 +103,13 @@ function setBasicsParams(){
 
 function processData() {
 
-    
+
     maxYear = d3.max(data, function(d) {  return d3.max(d.memberships, function(inner) {  return inner.end    }) });
     minYear = d3.min(data, function(d) {  return d3.min(d.memberships, function(inner) {  return inner.start; }) });
     scales.years = d3.scale.linear()
       .domain([ minYear,maxYear])
       .range([ padding.left, wid - padding.right ]);
-    
+
 
 
     totalmemberships = d3.sum(data, function(d){return d.memberships.length});
@@ -116,7 +121,7 @@ function processData() {
         hei = (totalmemberships* boxHeight) + 100;
     }
     else{
-        
+
         hei = (data.length * boxHeight)+100;
     }
 
@@ -134,7 +139,7 @@ function processData() {
     scales.politicians = function(a) {
       return barHeight ;
     }
-      
+
     scales.areas = function(a) {
       var percentage = a / totals.area;
       var range = hei - padding.top - padding.bottom;
@@ -171,11 +176,11 @@ function processData() {
     var y_popPercent = padding.top;
     for(i = 0; i < data.length; i++) {
       data[i].position = i;
-      //Check sort by date 
+      //Check sort by date
       d = data[i].memberships = data[i].memberships.sort(function(a, b){ return d3.ascending(a.start, b.start); });
       for (var j = 0; j < d.length; j++) {
         d[j].area_y = y_area;
-        
+
         y_area += scales.areas(d[j].Land_area_million_km2);
 
         d[j].popPercent_y = y_popPercent;
@@ -205,7 +210,7 @@ function processData() {
 
     }
 
-    
+
 
 
 }
@@ -244,13 +249,13 @@ function drawstarting() {
         var memberships = d3.select(this)
         .selectAll('g')
         .data(politician.memberships);
-        
+
         memberships.enter()
         .append("svg:g")
         .attr("class", "barGroup")
         .attr("index", function(d, i) { return j; })
         .attr("membership", function(d, i) { return i; })
-        
+
         .attr("transform", function(d, i) { return "translate(" + (i*100) + ", " + (j*barHeight) + ")"; })
         .append("svg:rect")
         .attr("class", function(d) {
@@ -263,7 +268,7 @@ function drawstarting() {
         // .attr("rx", 10)
         .attr("width", function(d) { return scales.years(d.end) - scales.years(d.start); })
         .attr("height", barHeight)
-         // peak lines    
+         // peak lines
         .selectAll("g.barGroup")
         .append("svg:line")
         .attr("class", "peakLine")
@@ -272,11 +277,11 @@ function drawstarting() {
         //.attr("x2", function(d) { return scales.years(d.Peak) - scales.years(d.start); })
         .attr("x1", function(d) { return scales.years(d.start) - scales.years(d.start); })
         .attr("x2", function(d) { return scales.years(d.start) - scales.years(d.start); })
-        
+
         .attr("y1", 0)
         .attr("y2", barHeight);
 
-      
+
 
         d3.select(this)
           .append('svg:text')
@@ -294,12 +299,12 @@ function drawstarting() {
       });
 
 
-  
+
   // bar labels
   vis.selectAll("g.barGroup")
     .append("svg:text")
       .attr("class", "barLabel")
-      .attr("x", function(d) { 
+      .attr("x", function(d) {
         return scales.years(d.start); })
       .attr("y", 0);
 
@@ -317,9 +322,9 @@ function drawstarting() {
       .attr("text-anchor", "middle")
       .text(function(d) { return formatYear(d); });
 
-  
 
-  //axis y dimension. This can be done with any posible feed!  
+
+  //axis y dimension. This can be done with any posible feed!
   var heightMemberships = (hei - padding.top - padding.bottom) / memberships.length;
   vis.selectAll('text.membershipLabel')
     .data(memberships)
@@ -334,7 +339,7 @@ function drawstarting() {
     });
 
 
-    
+
 }
 
 /************************************************************
@@ -353,12 +358,12 @@ function redraw() {
   if (controls.height == "memberships")
   {
      if(memberships.length > 3){
-      hei = (totalmemberships * boxHeight/2)+75 ;  
-     
+      hei = (totalmemberships * boxHeight/2)+75 ;
+
      }else {
       hei = (totalmemberships* boxHeight) +75;
     }
-      
+
   }
   else{
      if(data.length > 3){
@@ -377,15 +382,15 @@ function redraw() {
     .attr('height', hei);
 
 
-  
-  
+
+
 
   // year ticks
   vis.selectAll("line.tickLine")
     .transition()
       .duration(transitionDuration)
       .style("opacity", function(d) {
-        //On CarreerMeter hide years. 
+        //On CarreerMeter hide years.
         if (controls.display == "aligned")  return 0;
         else return 1;
       })
@@ -406,15 +411,15 @@ function redraw() {
 
 
 
- 
+
 
   // empire containers
   vis.selectAll("g.barGroup")
     .transition()
       .duration(transitionDuration)
-      .style("fill-opacity", function(d) { 
+      .style("fill-opacity", function(d) {
         //if (controls.height == "population" && isNaN(d.Percent_World_Population)) return .4;
-        //else 
+        //else
         return 1;
       })
       .attr("transform", function(d, i) {
@@ -424,31 +429,31 @@ function redraw() {
         if (controls.display == "timeline") tx = scales.years(d.start);
         //TODO: What we should do with Peaks
         //else if (controls.display == "centered") tx = visCenter - (scales.years(d.Peak) - scales.years(d.start));
-        else if (controls.display == "centered") 
+        else if (controls.display == "centered")
           tx = visCenter - (scales.years(d.start) - scales.years(d.start));
-        
+
 
         //Carreer comparsion
         else if (controls.display == "aligned") {
           var first = scales.years.ticks()[0];
           if (d.position=== 0) tx = padding.left;
           else {
-            
-            
-            
-            tx = d.pre.tx + 
+
+
+
+            tx = d.pre.tx +
             //width of the previous
-            (scales.years(d.pre.end)- scales.years(d.pre.start)) +  
+            (scales.years(d.pre.end)- scales.years(d.pre.start)) +
             //distance between previous
             (scales.years(d.start) - scales.years(d.pre.end))
           }
         }
-        
-        
-        
 
-          
-        if (controls.height == "memberships") { 
+
+
+
+
+        if (controls.height == "memberships") {
             barHeight = (hei - padding.top - padding.bottom) / memberships.length;
             //Overwrites years
             //depends on total of type of memberships
@@ -466,29 +471,29 @@ function redraw() {
                 .range([ padding.top, hei - padding.bottom - barHeight]);
           if (controls.height == "contiguous")  ty = scales.indexes(d.parent);
           else if (controls.height == "area") ty = d.area_y;
-          else if (controls.height == "population") ty = d.popPercent_y; 
-          else ty = scales.indexes(i);  
+          else if (controls.height == "population") ty = d.popPercent_y;
+          else ty = scales.indexes(i);
         }
-         
 
 
-        
+
+
 
 
         d.tx = tx;
         d.ty = ty;
-        return "translate(" + tx + ", " + ty + ")"; 
+        return "translate(" + tx + ", " + ty + ")";
       });
 
 
 
-  // bars height! 
+  // bars height!
   vis.selectAll("g.barGroup rect.bar")
     .transition()
       .duration(transitionDuration)
-      .style("fill-opacity", function(d) { 
+      .style("fill-opacity", function(d) {
         //if (controls.height == "population" && isNaN(d.Percent_World_Population)) return .25;
-        //else 
+        //else
         return 1;
       })
       .style('fill', function(d){
@@ -501,17 +506,17 @@ function redraw() {
         }
       })
       .attr("height", function(d) {
-        if (controls.height == "contiguous") { 
+        if (controls.height == "contiguous") {
           return scales.politicians(d.parent);
-        } 
-        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2); 
-        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population); 
+        }
+        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2);
+        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population);
         else return barHeight;
       });
 
     vis.selectAll("svg image")
-        .attr("xlink:href",function(d){ 
-          
+        .attr("xlink:href",function(d){
+
           if (controls.height == "memberships"){ return '';}
           else return d.image;
         })
@@ -519,20 +524,20 @@ function redraw() {
         .attr('height', 75)
         .attr("x", padding.left / 7)
         .attr("y", function(d,i) {return (i)*barHeight/2;})
-  
+
     vis.selectAll('svg text.itemLabel')
           .attr("x", padding.left / 7)
           .attr("y", function(d,i) {return (i)*barHeight + (barHeight/2) + padding.top;})
           .text(function(d,i) {
             if (controls.height == "memberships"){ return '';}
-            else{ return d.name;} 
+            else{ return d.name;}
           });
 
     vis.selectAll('text.membershipLabel')
           .attr("y", function(d,i) {return (i)*barHeight + (barHeight/2) + padding.top;})
           .text(function(d,i) {
             if (controls.height == "memberships"){ return d;}
-            else{ return '';} 
+            else{ return '';}
           });
 
 
@@ -542,22 +547,22 @@ function redraw() {
   vis.selectAll("g.barGroup")
     .selectAll("svg text")
       .attr("class", "barLabel")
-      .attr("x", function(d) { 
+      .attr("x", function(d) {
         return 0; })
       .attr("y", 0)
       .attr("dx", ".66em")
       .attr("dy", ".33em")
       .style("fill", function(d) { if (d.Contiguous === false) return "#0ff"; })
-      .text(function(d) { 
+      .text(function(d) {
         //if (d.)
         if (controls.height == "memberships"){
-          return d.politician.name; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;   
+          return d.politician.name; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
         }
         else {
-          return d.role; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;   
+          return d.role; //TODO: when do we add the years? + "(" + d.start + "-"+ d.end + ")"  ;
         }
       });
-  
+
 
 
   // bar labels
@@ -566,14 +571,14 @@ function redraw() {
     .transition()
       .duration(transitionDuration)
       .attr("y", function(d) {
-        if (controls.height == "contiguous") { 
-          return scales.politicians(d.parent)/2; 
-        } 
-        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2)/2 - labelHeight; 
-        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population)/2 - labelHeight; 
-        else return barHeight/2;      
+        if (controls.height == "contiguous") {
+          return scales.politicians(d.parent)/2;
+        }
+        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2)/2 - labelHeight;
+        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population)/2 - labelHeight;
+        else return barHeight/2;
       });
-  
+
 
 
 
@@ -582,30 +587,30 @@ function redraw() {
     .transition()
       .duration(transitionDuration)
       .attr("y2", function(d) {
-        if (controls.height == "contiguous") { 
-          return scales.areas(d.Land_area_million_km2); 
-        } 
-        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2); 
-        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population); 
-        else return barHeight;      
+        if (controls.height == "contiguous") {
+          return scales.areas(d.Land_area_million_km2);
+        }
+        else if (controls.height == "area") return scales.areas(d.Land_area_million_km2);
+        else if (controls.height == "population") return scales.popPercents(d.Percent_World_Population);
+        else return barHeight;
       });
-      
+
   // tick labels
   vis.selectAll("text.rule")
     .transition()
       .duration(transitionDuration)
       .style("opacity", function(d) {
-        //On CarreerMeter hide years. 
+        //On CarreerMeter hide years.
         if (controls.display == "aligned")  return 0;
         else return 1;
       }).attr("x", function(d) {
         if (controls.display == "timeline") return scales.years(d);
         else if (controls.display == "centered") return visCenter;
-        else return padding.left;     
+        else return padding.left;
       })
       .attr("y", 20)
       .attr("dy", 0);
-      
+
 }
 
 /************************************************************
@@ -614,17 +619,17 @@ function redraw() {
 function addInteractionEvents() {
 
   // bar group hover
-  $("g.barGroup").hover(function(e) { 
-    showInfoBox( e, $(this).attr("index"),  $(this).attr("membership")  ); 
+  $("g.barGroup").hover(function(e) {
+    showInfoBox( e, $(this).attr("index"),  $(this).attr("membership")  );
     }
   );
-  $(".vis .background, .vis .mouseLine").hover(function(e) { 
-    showInfoBox( e, null); 
+  $(".vis .background, .vis .mouseLine").hover(function(e) {
+    showInfoBox( e, null);
   });
 
 
 
-  
+
 }
 
 /************************************************************
@@ -640,7 +645,7 @@ function showInfoBox(e, i, j) {
     //TODO: Can we move this to angular?
     var politician = data[i];
     var membership = politician.memberships[j];
-    
+
 
 
     var info = "<span class='title'>" + politician.name + "</span>";
@@ -649,17 +654,17 @@ function showInfoBox(e, i, j) {
     info += "<br />" + membership.role ;
     info += "<br />" + membership.organization.name ;
     info += "<br />" + formatYear(membership.start) + " - " + formatYear(membership.end);
-    
+
 
     //Initial pos;
     var infoPos;
     if (i <= data.length/2) infoPos = { left: e.pageX, top: e.pageY };
     else infoPos = { left: e.pageX-200, top: e.pageY-80 };
-    
+
     var classes = "bar " + membership.post.cargotipo.toLowerCase()  + " " + membership.organization.level.toLowerCase() + " " + membership.role.toLowerCase();
     //clear all clases
     document.getElementById('infobox').className = '';
-    
+
     $("#infobox")
       .addClass(classes)
       .html(info)
@@ -677,7 +682,7 @@ function setControlFix(o){
   else {
     cb();
   }
-  
+
 }
 
 function getFilterCallback(o){
@@ -736,4 +741,3 @@ function formatYear(y) {
   if (y <= 0) return y*-1 + " BCE";
   else return y;
 }
-

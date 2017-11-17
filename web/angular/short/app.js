@@ -13,11 +13,7 @@ var cargoApp =angular.module('cargoApp', [
   'ngCookies'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: '/angular/short/partials/main.html', 
+  $routeProvider.when('/', {templateUrl: '/angular/short/partials/main.html',
   	controller: 'mainController'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
-
-
-
-

@@ -1,0 +1,34 @@
+<script type="text/javascript">
+
+
+
+//addEventListener se ejecuta una vez
+//
+var informationVis = {
+  init : function(){
+    //el elemento visualizaciones porque es el div al cual se le dispara el evento cuando
+    //cambia de personas, pasa una sola vez
+    var elem= document.getElementById("visualizaciones");
+    elem.addEventListener('build',informationVis.refresh, false);
+    //refresh llama a la funcion cada vez qeu se dispare el evento
+  },
+  refresh : function (e) {
+    console.log('REFRESH VISUALIZATION TINCHO')
+    console.log(e);
+    var visPersons = e.detail
+    console.log("visPersons Detail",visPersons);
+    for (var i = 0; i < visPersons.length; i++) {
+      console.log(visPersons[i].name);
+      document.getElementById("nuevodiv").innerHTML = '<li>' + visPersons[i].name + '</li>'
+    }
+  }
+}
+informationVis.init()
+
+</script>
+
+<div class="" style="background: gray;min-height:10rem;margin-bottom: 1rem">
+    <h1>information</h1>
+    <div id="nuevodiv">
+    </div>
+</div>

@@ -15,7 +15,7 @@ function getFiles(instanceName) {
 
   files.forEach(function(file) {
     var filename = instanceName + file;
-    var url = "http://static-beta.cargografias.org/datasets/" + filename;
+    var url = "http://static.cargografias.org/datasets/" + filename;
     console.log("Getting:", url);
     request({
       url: url,

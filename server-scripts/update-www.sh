@@ -1,4 +1,4 @@
-ssh admin@104.131.56.5 "
+ssh admin@104.131.103.212 "
     cd /opt/www
     pm2 stop www
     git pull
