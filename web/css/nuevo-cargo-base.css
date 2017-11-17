@@ -18,6 +18,11 @@ html,body{
 .gray{
   background: #222222;
 }
+.display-flex{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #cargoContainer{
   height: 100%;
 display: flex;
