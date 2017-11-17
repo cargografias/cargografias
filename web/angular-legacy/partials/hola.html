@@ -1,0 +1,20 @@
+<div id="hola" ng-show="showSlides">
+	<div class="row" id="filtro">
+		<div class="accordion-group">
+	  		<div class="row">
+				<div id="slides" class="">
+					<div class="item" ng-repeat="slide in slides">
+				        <h1 class="title"> {{slide.titulo}} </h1>
+				        <h4>{{slide.subtitulo}}</h4>
+				        <h5>{{slide.texto}}</h5>
+        	
+					</div>
+				</div>
+			</div>
+			<div class="">
+			   	<div class="btn btn-large btn-success" ng-click="closeSlides()">Comenzar!</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 

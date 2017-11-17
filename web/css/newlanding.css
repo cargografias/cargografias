@@ -1,0 +1,144 @@
+html,body {
+height: 100%;
+}
+body{
+  width: 100%;
+}
+#home-container{
+  display: flex;
+flex-direction: column;
+height: 100%;
+}
+#home-1{
+  flex: 1;
+  text-align: center;
+}
+#home-1 p{
+  font-weight: 300;
+}
+.choise-place{
+  color: #999999;
+}
+.logotype img{
+  max-width: 12.1875rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4.25rem 0 2.75rem 0;
+}
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+.text p {
+  max-width: 33rem;
+  margin: 5rem;
+  color: #222222;
+  text-align: center;
+}
+.about-us{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-us img{
+  max-width: 1.5rem;
+}
+.text button{
+  border: none;
+  background: #ffffff;
+  color: #222222;
+  outline: none;
+  BORDER: NONE;
+}
+
+
+.choise-places {
+    margin: 0 auto;
+}
+.choise-places ul, .column-1 ul, .column-2 ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
+    overflow: hidden;
+    margin: 0;
+}
+.choise-places li, .column-1 li, .column-2 li {
+      display:inline-block;
+}
+.choise-places li {
+    padding: 1.25rem 1rem 0 1rem;
+}
+
+.choise-places a {
+  text-decoration: none;
+  color: #B2B2B2;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+.choise-places a img{
+  max-width: 3.75rem;
+  padding: 0;
+}
+.footer {
+  background: #000000;
+padding:1rem 0;
+color: #ffffff;
+}
+.column-1 li {
+  margin: 0.5rem;
+}
+
+.column-2 li {
+  margin: 0.3rem;
+}
+
+/*.column-2 p {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin: 0 0 2rem 0;
+}*/
+
+.column-3 {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+.column-3 a {
+  border: 1px solid #444444;
+  border-radius: 0.1875rem;
+  width: 100%;
+
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+.column-3 img {
+  max-width: 1.375rem;
+  vertical-align: middle;
+}
+.column-3 a p{
+  color: #ffffff;
+  text-decoration: none;
+  display: inline;
+  padding: 1rem;
+
+}
+a:hover, a:active {
+    text-decoration: none;
+}
+
+
+@media only screen
+and (max-device-width : 667px)  {
+  .footer {
+    background: #000000;
+    padding:4rem 0 4rem 0;
+    margin-top: 3rem;
+    position: relative;
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="" ng-controller="compareResultadosCtrl" style="background: #222222;min-height:10rem;margin-bottom: 1rem;margin-top:2rem">
+
+    <button type="button" name="button" ng-click="estaEnElPoder2();logInformation2()">Comparar resultados</button>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h1 style="color:white;text-align:center">¿Está en el poder?</h1>
+        <div class="col-xs-12" ng-repeat="inPower in estaenElPoder2" style="padding:1rem">
+            <div class="" style="background:#222222;text-align:center;color:white;">
+                {{inPower.name}}
+                <h1>{{inPower.remainsInPower}}</h1>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <h1 style="color:white;text-align:center">Información</h1>
+        <div class="col-xs-12" ng-repeat="inform in information2" style="padding:1rem">
+            <div class="" style="background:#222222;text-align:center;color:white;padding:1rem">
+                <h1 style="margin:0">{{inform.name}}</h1>
+                {{inform.memberships}}
+            </div>
+        </div>
+      </div>
+    </div>
+
+</div>

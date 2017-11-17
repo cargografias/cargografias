@@ -1,10 +1,10 @@
-  
+
 
 /*
 black:  color: rgb(33, 33, 33);
 grey: color: rgb(232, 232, 232);
 darker: color: rgb(116, 116, 116);
-darkbrown: color: #5D4037;
+darkbrown: color: #EEEEEE;
 brown: color: #795548;
 lightbrown: color: #8d6e63;
 lightishbrown: color: #BCAAA4;
@@ -15,13 +15,16 @@ p {	padding: 0; margin:0;}
 /* Main */
 html
 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: normal;
+}
+ul{
+  font-weight: 500;
 }
 
 body{
 	color: white;
-	background-color: rgb(116, 116, 116);	
+
 	margin:0;
 }
 header, footer {
@@ -39,7 +42,7 @@ header .row{
 	padding-right: 1em;
   	vertical-align: middle;
   	padding-bottom: 0.25em;
-  	
+
 }
 
 header div.logo img{
@@ -70,7 +73,7 @@ header ul {
 header ul > li{
 	text-transform: uppercase;
 	padding-top: 0.5em;
-	padding-bottom: 0.5em; 
+	padding-bottom: 0.5em;
 }
 
 header ul > li, header ul > li a{
@@ -93,12 +96,12 @@ header div.items{
 }
 
 a{
-	color: #5D4037;
+	color: #222222;
 	font-weight: bold;
 }
 
 a:hover{
-	color: #8d6e63;
+	color: #888888;
 
 }
 
@@ -120,11 +123,15 @@ header li a:hover{
  	display: block;
  }
 
-div.main{
+/*div.main{
 	color:rgb(32, 32, 32);
   	margin-top: 0;
   	margin-left: 10px;
   	margin-right: 10px;
+}*/
+
+div.main{
+	color:rgb(32, 32, 32);
 }
 div.main div.loader {
 	margin-top:100px;
@@ -149,7 +156,7 @@ div.main div.loader h3 .fa{
 	font-size: 1em;
 }
 
-div.main div.module{
+/*div.main div.module{
   margin-top: 2.5px;
   background-color: white;
   margin-bottom: 5px;
@@ -159,14 +166,17 @@ div.main div.module{
   padding-right: 0.8em;
   padding-top: 0.4em;
 
+}*/
+div.main div.module{
+
 }
 div.main div.module.full-version{
 	  text-align: center;
 }
-div.main div.module.timeline{	
+div.main div.module.timeline{
 	background-color: #f5f5f5;
 }
-div.main div.module > div.description{	
+div.main div.module > div.description{
 	color: rgb(116, 116, 116);
 	border-bottom: 1px solid rgb(116, 116, 116);
 	margin-bottom: 0.5em;
@@ -182,7 +192,7 @@ div.main div.module div.filter ul{
 	padding: 0;
 }
 div.main div.module div.filter li p{
-	
+
 	text-decoration:  underline;;
 	font-size: 14px;
 }
@@ -190,7 +200,7 @@ div.main div.module div.filter li p{
 
 html h3, body h3 {
   display: block;
-   -webkit-margin-before: 0em; 
+   -webkit-margin-before: 0em;
    -webkit-margin-after: 0;
    font-size: 0.9em;
    font-weight: normal;
@@ -253,7 +263,7 @@ div.main div.module div.timeline-filter ul > li.active,
 div.main div.module div.timeline-filter ul > li:hover,
 div.main div.module div.timeline-filter ul > li a:hover{
 	color: white;
-	background-color: #5D4037;	
+	background-color: #EEEEEE;
 
 }
 div.main div.module div.timeline-filter ul > li.active a  {
@@ -272,14 +282,28 @@ div.main div.module div#linea-de-tiempo div#infobox p.med{
 	font-size: 0.9em;
 	text-transform: capitalize;
 }
-div.main div.module div.filter-container div#resultadosBusqueda {
+/*div.main div.module div.filter-container div#resultadosBusqueda {
 	position: relative;
 	padding: 5px 9px 12px 9px;
 	background-color: #F5F5F5;
 	margin-top: 10px;
 	border: 1px silver solid;
 	border-radius: 5px;
+}*/
+div.main div.module div.filter-container div#resultadosBusqueda {
+	padding: 5px 9px 12px 9px;
+	background-color: #F5F5F5;
+  position: absolute;
+  margin-top: 2rem;
+  z-index: 2;
 }
+/*div.main div.module div.filter-container div#resultadosBusqueda div.close{
+	position: absolute;
+	float:right;
+	top:0;
+	right:0;
+	padding: 0.5em;
+}*/
 div.main div.module div.filter-container div#resultadosBusqueda div.close{
 	position: absolute;
 	float:right;
@@ -287,15 +311,20 @@ div.main div.module div.filter-container div#resultadosBusqueda div.close{
 	right:0;
 	padding: 0.5em;
 }
+/*div.main div.module div.filter-container div#resultadosBusqueda div.close i{
+	margin-right: 3px
+}*/
 div.main div.module div.filter-container div#resultadosBusqueda div.close i{
 	margin-right: 3px
 }
-
+/*div.main div.module div.filter-container div#resultadosBusqueda h3{
+	color:#757575;
+	font-size: 0.8em;
+}*/
 div.main div.module div.filter-container div#resultadosBusqueda h3{
 	color:#757575;
 	font-size: 0.8em;
 }
-
 div.main div.module div.filter-container div.opciones-busqueda{
 	margin-top: 7px;
 }
@@ -327,7 +356,7 @@ div.main div.module div.filter-container div.sharing{
 div.main div.module div.filter-container div.sharing input{
 
   width: 80%;
-  height: 30px;  
+  height: 30px;
   border-radius: 8px;
   padding-left: 12px;
 }
@@ -458,7 +487,7 @@ a.boton{
 }
 a.boton:hover{
 	color: white;
-	background-color: #5D4037;	
+	background-color: #EEEEEE;
 }
 
 
@@ -503,7 +532,7 @@ a.boton:hover{
 	header ul{
 		font-size: 1em;
 		line-height: 27px;
-  	
+
 	}
 
 	header li a, header li a:visited, header li a:link{
@@ -518,17 +547,20 @@ a.boton:hover{
 	  	display: inline-flex;
 	  	line-height: 20px;
 	}
-	div.main{
+	/*div.main{
   		margin-top: 0;
   		margin-left: 20px;
   		margin-right: 20px;
-	}
+	}*/
+  div.main{
+      margin-top: 0;
+  }
 
 	div.main div.module div.timeline-filter ul > li {
 		width: 15%;
 		font-size: 1em;
 	}
-	
+
 	div.main div.module div.filter-container select {
   		  width: 21%;
 
@@ -537,10 +569,10 @@ a.boton:hover{
 	div.main div.module div.filter-container div.results{
 		font-size: 0.8em;
 	}
-	
+
 	div.main div.module div#resultadosBusqueda{
-		  width: 380px;
-	
+		  width: 394px;
+
 	}
 
 	div.main div.module div.opciones-busqueda{
@@ -558,14 +590,14 @@ a.boton:hover{
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 	}
-	div.main div.module div.search-row{
+	/*div.main div.module div.search-row{
 		  padding-bottom: 0.5em;
-	}
+	}*/
 
     .hideOnMobile{
     	display: inherit;
     }
-    
+
     div.main div.module div.hall-of-shame .shame {
 		padding: 1em;
 		text-align: center;
@@ -575,5 +607,3 @@ a.boton:hover{
 		width: 25%;
 	}
 }
-
-

@@ -1,0 +1,253 @@
+<script type="text/javascript">
+    $('html').click(function() {
+        $('#openResults').hide();
+    })
+
+    $('#footleft').click(function(e) {
+        e.stopPropagation();
+    });
+
+    $('#link').click(function(e) {
+        $('#openResults').toggle();
+    });
+</script>
+<div class="filter-container gray" ng-controller="filterController">
+    <div id="footleft" class="search-row-vis row">
+        <div class="col-xs-12 col-sm-6">
+            <input id='link' ng-click="" class="openSearch search-row-nombre" type="search" placeholder="{{customization.searchByName ? customization.searchByName : 'Buscar por Nombre'}}" ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+            <svg id="lupa" width="20px" height="23px" viewBox="0 0 20 23" version="1.1">
+                <defs></defs>
+                <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="2--Carrito-de-Funcionarios" transform="translate(-411.000000, -107.000000)">
+                        <g id="Group-2" transform="translate(120.000000, 107.000000)">
+                            <g id="search" transform="translate(291.000000, 0.000000)">
+                                <g>
+                                    <path d="M9.45306613,18.9061323 C4.23228187,18.9061323 0,14.6738504 0,9.45306613 C0,4.23228187 4.23228187,0 9.45306613,0 C14.6738504,0 18.9061323,4.23228187 18.9061323,9.45306613 C18.9061323,14.6738504 14.6738504,18.9061323 9.45306613,18.9061323 Z M9.45306613,16.9061323 C13.5692809,16.9061323 16.9061323,13.5692809 16.9061323,9.45306613 C16.9061323,5.33685137 13.5692809,2 9.45306613,2 C5.33685137,2 2,5.33685137 2,9.45306613 C2,13.5692809 5.33685137,16.9061323 9.45306613,16.9061323 Z"
+                                        id="icon" fill="#888888"></path>
+                                    <path d="M14,16 L19,22" id="Path-7" stroke="#888888" stroke-width="2"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            </input>
+            <div id="openResults">
+                <div class="" ng-repeat="item in autoPersons">
+                    <a ng-click="add(item,item.index)" class="resultados-item" ng-class="item.styles">
+                      {{item.name}}
+                  </a>
+<<<<<<< HEAD
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 visualization-nav-2">
+            <button id="shareButton" type="button" name="button" ng-click="switchSharing(true)">
+                <!-- <a ng-click="switchSharing()" ng-hide="showSharing || activePersons.length == 0"></i>SHARE</a> -->
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+                    <defs></defs>
+                    <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="3--Visualizaciones" transform="translate(-973.000000, -111.000000)" fill-rule="nonzero" fill="#888888">
+                            <g id="Group-16">
+                                <g id="Group-5" transform="translate(973.000000, 111.000000)">
+                                    <g id="iconmonstr-share-1">
+                                        <path d="M4.16666667,5.83333333 C6.4675,5.83333333 8.33333333,7.69916667 8.33333333,10 C8.33333333,12.3008333 6.4675,14.1666667 4.16666667,14.1666667 C1.86583333,14.1666667 0,12.3008333 0,10 C0,7.69916667 1.86583333,5.83333333 4.16666667,5.83333333 Z M13.435,15.8875 C13.3741667,16.1383333 13.3333333,16.3966667 13.3333333,16.6666667 C13.3333333,18.5075 14.8258333,20 16.6666667,20 C18.5075,20 20,18.5075 20,16.6666667 C20,14.8258333 18.5075,13.3333333 16.6666667,13.3333333 C15.6958333,13.3333333 14.83,13.755 14.2208333,14.4175 L9.6475,11.9783333 C9.45583333,12.5083333 9.19,13.0025 8.86166667,13.4483333 L13.435,15.8875 L13.435,15.8875 Z M20,3.33333333 C20,1.4925 18.5075,-1.77635684e-15 16.6666667,-1.77635684e-15 C14.8258333,-1.77635684e-15 13.3333333,1.4925 13.3333333,3.33333333 C13.3333333,3.60333333 13.3741667,3.86166667 13.435,4.1125 L8.86166667,6.55166667 C9.19083333,6.9975 9.45583333,7.49083333 9.6475,8.02166667 L14.2208333,5.5825 C14.83,6.245 15.6958333,6.66666667 16.6666667,6.66666667 C18.5075,6.66666667 20,5.17416667 20,3.33333333 Z"
+                                            id="Shape"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                {{customization.shareButton ? customization.shareButton : 'Undefined'}}
+            </button>
+            <button id="editSelection" type="button" name="button" ng-click="showFilterFunction()">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1">
+                    <defs></defs>
+                    <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="3--Visualizaciones" transform="translate(-1138.000000, -112.000000)">
+                            <g id="Group-16">
+                                <g id="Group-15" transform="translate(1117.000000, 100.000000)">
+                                    <g id="ic_edit_black_24px" transform="translate(18.000000, 9.000000)">
+                                        <path d="M3,17.25 L3,21 L6.75,21 L17.81,9.94 L14.06,6.19 L3,17.25 Z M20.71,7.04 C21.1,6.65 21.1,6.02 20.71,5.63 L18.37,3.29 C17.98,2.9 17.35,2.9 16.96,3.29 L15.13,5.12 L18.88,8.87 L20.71,7.04 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                                        <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                {{customization.editSelectionButton ? customization.editSelectionButton : 'Undefined'}}
+=======
+              </div>
+          </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 visualization-nav-2">
+            <button id="shareButton" type="button" name="button" ng-click="">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1">
+                  <defs></defs>
+                  <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="3--Visualizaciones" transform="translate(-973.000000, -111.000000)" fill-rule="nonzero" fill="#888888">
+                          <g id="Group-16">
+                              <g id="Group-5" transform="translate(973.000000, 111.000000)">
+                                  <g id="iconmonstr-share-1">
+                                      <path d="M4.16666667,5.83333333 C6.4675,5.83333333 8.33333333,7.69916667 8.33333333,10 C8.33333333,12.3008333 6.4675,14.1666667 4.16666667,14.1666667 C1.86583333,14.1666667 0,12.3008333 0,10 C0,7.69916667 1.86583333,5.83333333 4.16666667,5.83333333 Z M13.435,15.8875 C13.3741667,16.1383333 13.3333333,16.3966667 13.3333333,16.6666667 C13.3333333,18.5075 14.8258333,20 16.6666667,20 C18.5075,20 20,18.5075 20,16.6666667 C20,14.8258333 18.5075,13.3333333 16.6666667,13.3333333 C15.6958333,13.3333333 14.83,13.755 14.2208333,14.4175 L9.6475,11.9783333 C9.45583333,12.5083333 9.19,13.0025 8.86166667,13.4483333 L13.435,15.8875 L13.435,15.8875 Z M20,3.33333333 C20,1.4925 18.5075,-1.77635684e-15 16.6666667,-1.77635684e-15 C14.8258333,-1.77635684e-15 13.3333333,1.4925 13.3333333,3.33333333 C13.3333333,3.60333333 13.3741667,3.86166667 13.435,4.1125 L8.86166667,6.55166667 C9.19083333,6.9975 9.45583333,7.49083333 9.6475,8.02166667 L14.2208333,5.5825 C14.83,6.245 15.6958333,6.66666667 16.6666667,6.66666667 C18.5075,6.66666667 20,5.17416667 20,3.33333333 Z" id="Shape"></path>
+                                  </g>
+                              </g>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+              {{customization.shareButton ? customization.shareButton : 'Compartir'}}</button>
+            <button id="editSelection" type="button" name="button" ng-click="showFilterFunction()">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1">
+                  <defs></defs>
+                  <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="3--Visualizaciones" transform="translate(-1138.000000, -112.000000)">
+                          <g id="Group-16">
+                              <g id="Group-15" transform="translate(1117.000000, 100.000000)">
+                                  <g id="ic_edit_black_24px" transform="translate(18.000000, 9.000000)">
+                                      <path d="M3,17.25 L3,21 L6.75,21 L17.81,9.94 L14.06,6.19 L3,17.25 Z M20.71,7.04 C21.1,6.65 21.1,6.02 20.71,5.63 L18.37,3.29 C17.98,2.9 17.35,2.9 16.96,3.29 L15.13,5.12 L18.88,8.87 L20.71,7.04 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                                      <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                  </g>
+                              </g>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+              {{customization.editSelectionButton ? customization.editSelectionButton : 'Editar'}}
+>>>>>>> nuevocargoV1
+            </button>
+        </div>
+        <div class="col-xs-12 visualization-nav-2">
+
+            <div class="col-xs-12 sharing buttons wow fadeIn" ng-show="showSharing">
+                <p><a ng-click="tweetThis()"><i class="fa fa-twitter"></i>{{customization.twitterLine}}</a></p>
+                <p><a href=""><i class="fa fa-link"></i>{{customization.copyLink}}</a></p>
+                <input class="openSearch search-row-nombre" style="width:100%" type="text" value="{{currentLink()}}" />
+                <p><a href=""><i class="fa fa-globe"></i>{{customization.addLink}}</a></p>
+                <input class="openSearch search-row-nombre" style="width:100%" type="text" value="{{embedIframe()}}" />
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- <div id="personas-seleccionadas-box" ng-show="activePersons.length > 0">
+    <div class="full-width persons light">
+        <div class="photo-box-wrapper wow slideInLeft" ng-repeat="active in activePersons">
+            <div class="photo-box">
+                <a ng-click="remove(active)" class="crucecita">-</i></a>
+                <a ng-href="{{generateUrlProfile(active)}}" target="_blank">
+                    <div class="photo-frame" ng-style="{'background-image':'url(' +active.image +')'}">
+
+                    </div>
+                </a>
+            </div>
+            <p>{{active.name}}</p>
+        </div>
+    </div>
+</div> -->
+<div id="selected-wrapper-2" class="col-xs-12 light" ng-show="activePersons.length > 0">
+    <div class="results1 photo-box-wrapper-selected" ng-hide="autoPersons.length == 0 && showBusAvanzado">
+        <div class="refreshvisualizations item wow slideInLeft" ng-repeat="item in activePersons">
+            <div class="photo-box" ng-style="{'background-image':'url(' +item.image +')'}">
+                <a ng-click="remove(item)" class="crucecita">-</i></a>
+                <a ng-href="{{generateUrlProfile(item)}}" target="_blank">
+                    <div class="photo-frame" ng-style="{'background-image':'url(' +selected.image +')'}">
+                    </div>
+                </a>
+            </div>
+            <a class="resultados-item" ng-class="item.styles">
+                   {{item.name}}
+                </a>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row visualization-bar" id="timeline-nondisplay">
+    <ul>
+        <li><img src="/img/v2/linetime.png" alt=""><a href="#" style="color:#000">{{customization.timeline ? customization.timeline : 'Linea de Tiempo'}}</a></li>
+        <li><a href="#">{{customization.name ? customization.name : 'Nombre'}}</a></li>
+        <li><a href="#">{{customization.role ? customization.role : 'Rol'}}</a></li>
+        <li><a href="#">{{customization.territory ? customization.territory : 'Territorio'}}</a></li>
+        <li><a href="#">{{customization.career ? customization.career : 'Carrera'}}</a></li>
+    </ul>
+    <div class="menuVisualization">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <svg width="4px" height="16px" viewBox="0 0 4 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>ic_more_vert_black_24px</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="3--Visualizaciones" transform="translate(-1286.000000, -307.000000)">
+                    <g id="Group-13" transform="translate(20.000000, 288.000000)">
+                        <g id="ic_more_vert_black_24px" transform="translate(1256.000000, 15.000000)">
+                            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                            <path d="M12,8 C13.1,8 14,7.1 14,6 C14,4.9 13.1,4 12,4 C10.9,4 10,4.9 10,6 C10,7.1 10.9,8 12,8 Z M12,10 C10.9,10 10,10.9 10,12 C10,13.1 10.9,14 12,14 C13.1,14 14,13.1 14,12 C14,10.9 13.1,10 12,10 Z M12,16 C10.9,16 10,16.9 10,18 C10,19.1 10.9,20 12,20 C13.1,20 14,19.1 14,18 C14,16.9 13.1,16 12,16 Z"
+                                id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>ic_fullscreen_black_24px</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="3--Visualizaciones" transform="translate(-1329.000000, -308.000000)">
+                    <g id="Group-13" transform="translate(20.000000, 288.000000)">
+                        <g id="ic_fullscreen_black_24px" transform="translate(1304.000000, 15.000000)">
+                            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                            <path d="M7,14 L5,14 L5,19 L10,19 L10,17 L7,17 L7,14 Z M5,10 L7,10 L7,7 L10,7 L10,5 L5,5 L5,10 Z M17,17 L14,17 L14,19 L19,19 L19,14 L17,14 L17,17 Z M14,5 L14,7 L17,7 L17,10 L19,10 L19,5 L14,5 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <svg width="12px" height="8px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="3--Visualizaciones" transform="translate(-1378.000000, -311.000000)">
+                    <g id="Group-13" transform="translate(20.000000, 288.000000)">
+                        <g id="ic_expand_less_black_24px" transform="translate(1352.000000, 15.000000)">
+                            <polygon id="Shape" fill="#000000" fill-rule="nonzero" points="12 8 6 14 7.41 15.41 12 10.83 16.59 15.41 18 14"></polygon>
+                            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+</div> -->
+
+{{customization.name}}
+
+<div id="visualizaciones">
+    <div class="module timeline col-xs-12">
+        <div class="description">
+            <h3><i class="fa fa-tasks"></i>{{customization.timeline}}</h3>
+        </div>
+        <div ng-show="ready" ng-include="'/angular/partials/linea.html'"></div>
+    </div>
+    <div class="col-xs-6">
+      <div ng-include="'/angular/visualizations/v2/template-angular.html'"></div>
+    </div>
+    <div class="col-xs-6">
+      <div ng-include="'/angular/visualizations/v2/template-js.html'"></div>
+    </div>
+    <div class="col-xs-6">
+      <div ng-include="'/angular/visualizations/v1/estaEnPoder.html'"></div>
+    </div>
+</div>

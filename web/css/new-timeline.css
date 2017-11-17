@@ -35,10 +35,10 @@ svg text{
 
 .fa{ /*iconitos!*/
   font-size: 14px;
-  margin-right: 7px;
+  margin: 4px;
 }
 
-.persona-seleccionada p{
+/*.persona-seleccionada p{
   font-size: 12px;
   line-height: 12px;
   width: 100%;
@@ -47,9 +47,22 @@ svg text{
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 78px;
-}
+}*/
+.persona-seleccionada p{
+  font-size: 12px;
+  line-height: 12px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 78px;
+  position: absolute;
+  left: 110%;
+  bottom: 0;
+  color: #888888;
 
-.persona-seleccionada {   
+}
+/*.persona-seleccionada {
   width: 80px;
   margin: 0.2em;
   float: left;
@@ -58,9 +71,21 @@ svg text{
   list-style: none;
   margin-bottom: 0em;
   margin-top: 0em;
+}*/
+
+.persona-seleccionada {
+  width: 64px;
+  height: 64px;
+  /*margin: 0.2em;*/
+  float: left;
+  display: inline-table;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 0em;
+  margin-top: 0em;
+  background: #ffffff;
+  border-radius: 4px
 }
-
-
 .persona-seleccionada div.photo-frame {
   overflow: hidden;
   max-height: 60px;
@@ -113,23 +138,23 @@ badge:hover{
     stroke: #ccc;
     stroke-width: 2px;
   }
-  
-  div.tooltip {   
-    position: absolute;           
-    text-align: center;           
-    width: 200px;                  
-    height: 50px;                 
-    padding: 2px;             
-    font: 12px sans-serif;        
-    background: lightsteelblue; 
-    border: 0px;      
-    border-radius: 8px;           
-    pointer-events: none;         
+
+  div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 div.box img {
-   max-height: 200px; 
-  
+   max-height: 200px;
+
 }
 
 .row.centered{
@@ -148,9 +173,10 @@ a.hand{
 
 #nombre{
   width: 100%; /*para mobiles*/
-  height: 30px;
+  max-width: 480px;
+  height: 42px;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   padding-left: 12px;
   color: rgb(76, 61, 57);
 }
@@ -197,9 +223,22 @@ div.main{
   background-color: #79CEDF;
 }
 
-.full-width {
+/*.full-width {
   width: 100%;
   background-color: rgb(232, 232, 232);
+  max-width: 100%;
+  display: inline-flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}*/
+.full-width {
+  width: 100%;
+  background-color: #222222;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
   max-width: 100%;
   display: inline-flex;
   overflow-x: auto;
@@ -208,6 +247,11 @@ div.main{
 }
 .full-width .persons{
     padding-top: 1em;
+}
+.selection{
+  flex: 1;
+display: flex;
+justify-content: flex-end;
 }
 .label.full-width{
   width: 100%;
@@ -280,7 +324,7 @@ margin-bottom: 15px;
 box-shadow: inset 0 0 7px #8F8F8F;
 }
 
- 
+
 .vis {
   border: none;
   background: #FFF
@@ -379,7 +423,7 @@ text {
 text.rule {
   fill: #BABABA;
   font-size: 0.9em;
-  
+
 }
 
 
@@ -401,7 +445,7 @@ text.boxLabel tspan.sub{
   font-size: 0.8em;
 }
 text.itemLabel, text.membershipLabel, text.territoryLabel{
- fill: #000; 
+ fill: #000;
  font-size: 0.75em;
 }
 
@@ -415,13 +459,13 @@ svg text.itemLabel{
 
 svg text.otemLabel{
   cursor: pointer;
-  fill:red; 
+  fill:red;
   color:red;
 }
 
 path.bezier{
   stroke-width: 2px;
-  stroke-opacity: 1;  
+  stroke-opacity: 1;
 }
 line.tickLine {
   stroke: rgba(51, 51, 51, 0.1);
@@ -545,13 +589,13 @@ html h3, body h3 {
   -moz-transition: background-color 250ms linear;
   -o-transition: background-color 250ms linear;
   -ms-transition: background-color 250ms linear;
-  transition: background-color 250ms linear; 
+  transition: background-color 250ms linear;
 
   -webkit-transition: display 250ms linear;
   -moz-transition: display 250ms linear;
   -o-transition: display 250ms linear;
   -ms-transition: display 250ms linear;
-  transition: display 250ms linear; 
+  transition: display 250ms linear;
 }
 
 
@@ -572,17 +616,17 @@ div.timeline ul.nav-pills li {
 
 div.timeline ul.nav-pills li a{
   background: #000;
-  
+
 }
 
 
-div.vis g.barGroup{ 
-    
+div.vis g.barGroup{
+
 transition: opacity 300ms;
   -webkit-transition: opacity 300ms;/* Safari */
 
 }
-path.curves.bezier{   
+path.curves.bezier{
   transition: opacity 300ms;
   -webkit-transition: opacity 300ms;/* Safari */
 
@@ -627,7 +671,7 @@ div.persona-seleccionada{
   color: white;
   font-weight: bold;
   text-decoration: none;
-  
+
 }
 
 div.chequeado {
@@ -663,18 +707,24 @@ div.persona-seleccionada {
   float: left;
 }
 
-div.persona-seleccionada a.crucecita{
+/*div.persona-seleccionada a.crucecita{
   position: absolute;
   right: 0px;
   background-color: #D7CCC8;
   border-radius: 4px;
+}*/
+div.persona-seleccionada a.crucecita{
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  background-color: #666666;
+  border-radius: 4px;
 }
-
 div.persona-seleccionada a.crucecita:hover{
   background-color: #795548;
   border-radius: 4px;
   color:#D7CCC8;
-  
+
 }
 
 div.persona-seleccionada a.crucecita i{
@@ -687,7 +737,8 @@ div.persona-seleccionada a.crucecita i{
 }
 
 .full-width.persons{
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;
+  height: 106px*/
 }
 
 .stats{
@@ -706,7 +757,7 @@ div.persona-seleccionada a.crucecita i{
  .stats-container{
     width: 135%;
     font-size:1em;
-  } 
+  }
   .stats-container table{
     width: 100%;
   }

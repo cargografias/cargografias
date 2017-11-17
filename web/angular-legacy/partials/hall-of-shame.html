@@ -1,0 +1,9 @@
+
+  <div class="hall-of-shame">  
+    <div class="shame" ng-repeat="item in hallOfShame">
+      <span><i class="fa fa-trophy"></i>{{item.titulo}}</span><br>
+      <h1>{{item.cantidad  | number:0}} <small>{{item.medida}}</small></h1>
+      <span ng-show="activePersons.length > 1">{{item.nombre}}</span>
+    </div>
+    <div class="clearfix"></div>
+  </div>
