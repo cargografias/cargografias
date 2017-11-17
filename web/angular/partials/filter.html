@@ -1,7 +1,7 @@
 <!-- <div class="search-row" ng-controller="loaderController"> -->
   <div class="search-row row" style="" ng-controller="loaderController">
     <div class="input-container">
-      <input class="openSearch search-row-nombre" type="search" placeholder="{{customization.searchByName ? customization.searchByName : 'Undefined'}}" ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
+      <input class="openSearch search-row-nombre" type="search" placeholder="{{customization.searchByName ? customization.searchByName : 'Buscar por Nombre'}}" ng-model="filterAdvance.name" ng-change="filterAutoPersons(filterAdvance.name)" autocomplete="off">
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
       <svg width="20px" height="23px" viewBox="0 0 20 23" version="1.1">
           <defs></defs>
@@ -22,47 +22,21 @@
       </input>
     </div>
     <select ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'" class="openSearch search-row-nombre" >
-        <option value="">{{customization.selectPosition ? customization.selectPosition : 'Undefined'}}</option>
+        <option value="">{{customization.selectPosition ? customization.selectPosition : 'Puesto'}}</option>
     </select>
     <select ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="
         decade.key as decade.label for decade in getDecades()" class="openSearch search-row-nombre">
-        <option value="">{{customization.selectDecade ? customization.selectDecade : 'Undefined'}} </option>
+        <option value="">{{customization.selectDecade ? customization.selectDecade : 'Decada'}} </option>
     </select>
     <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory | lowercase for territory in getTerritories() | orderBy:'toString()' " class="openSearch search-row-nombre" >
-         <option value="">{{customization.selectTerritory.name ? customization.selectTerritory.name : 'Undefined'}}</option>
+         <option value="">{{customization.selectTerritory.name ? customization.selectTerritory.name : 'Territorio'}}</option>
      </select>
-     <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" name="repeatSelect1" class="openSearch search-row-nombre" >
-       <option value="" disabled selected>{{customization.searchByTerritory ? customization.searchByTerritory : 'Undefined'}}</option>
-       <option ng-repeat="option in territories" value="{{option.name}}" ng-model="filterAdvance.territory">{{option}}</option>
-     </select> -->
-
-     <!-- <select ng-model="filterAdvance.territory" ng-change="filterAutoPersonsAdvance()" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'">
-         <option value="">{{customization.selectTerritory}}</option>
-     </select> -->
-
-
-     <!-- <select class="openSearch search-row-nombre" ng-model="filterAdvance.jobTitle" ng-change="filterAutoPersonsAdvance()" ng-options="jobTitle as jobTitle.role | lowercase for jobTitle in getJobTitle() | orderBy:'toString()'">
-         <option value="">{{customization.selectPosition}}</option>
-     </select> -->
-
-     <!-- <select class="openSearch search-row-nombre" name="repeatSelect1" ng-model="filterAdvance.role">
-       <option  value="" disabled selected>{{customization.searchByRole ? customization.searchByRole : 'Undefined'}}</option>
-       <option  ng-repeat="option in role" value="{{option._id}}">{{option.role}}</option>
-     </select> -->
-
-
-     <!-- SI UTILIZAMOS QQW -->
-     <!-- <select class="openSearch search-row-nombre" ng-model="filterTerritory" ng-change="selectArtist(filterTerritory)" ng-options="territory as territory for territory in getTerritories() | orderBy:'toString()'"></select>
-     <select class="openSearch search-row-nombre" ng-model="filterRole" ng-change="selectGenre(filterRole)" ng-options="jobTitle as jobTitle.role for jobTitle in getJobTitle() | orderBy:'toString()'"></select>
-     <select class="openSearch last-search-row-nombre" name="" ng-model="filterAdvance.decade" ng-change="filterAutoPersonsAdvance()" ng-options="decade.key as decade.label for decade in getDecades()">
-         <option value="" disabled selected>{{customization.searchByDecade ? customization.searchByDecade : 'Undefined'}}</option>
-     </select> -->
 </div>
 
 <div id="resultadosBusqueda" ng-controller="loaderController">
     <div id="addAllButton" class="col-xs-12">
-        <h4><span class="resultadosBusquedaNumber">{{autoPersons.length}}</span>{{customization.searchResults ? customization.searchResults : 'Undefined'}}</h4>
-        <div id="resultadosBusquedaInfo" ng-click="addAll(autoPersons)"><span class "button">+</span>{{customization.addAllButton ? customization.addAllButton : 'Undefined'}}</div>
+        <h4><span class="resultadosBusquedaNumber">{{autoPersons.length}}</span>{{customization.searchResults ? customization.searchResults : 'Resultados'}}</h4>
+        <div id="resultadosBusquedaInfo" ng-click="addAll(autoPersons)"><span class "button">+</span>{{customization.addAllButton ? customization.addAllButton : 'Agregar'}}</div>
     </div>
     <div id="selected-wrapper" class="col-xs-12">
         <div class="results1 photo-box-wrapper" ng-hide="autoPersons.length == 0 && showBusAvanzado">
@@ -87,8 +61,8 @@
 
 <div id="selected-active-wrapper" class="col-xs-12" ng-controller="loaderController">
     <div id="deleteAllButton" class="col-xs-12">
-        <h4><span>{{activePersons.length}}</span> {{customization.selectedPeople ? customization.selectedPeople : 'Undefined'}}</h4>
-        <div id="deleteAllButtonInfo" ng-click="clearAll(activePersons)"><span>-</span>{{customization.deleteAllButton ? customization.deleteAllButton : 'Undefined'}}</div>
+        <h4><span>{{activePersons.length}}</span> {{customization.selectedPeople ? customization.selectedPeople : 'Personas Elegidas'}}</h4>
+        <div id="deleteAllButtonInfo" ng-click="clearAll(activePersons)"><span>-</span>{{customization.deleteAllButton ? customization.deleteAllButton : 'Borrar Todos'}}</div>
         <div class="selection">
             <button class="redraw" type="button" name="button" ng-click="showVisualizationFunction()" ng-disabled="activePersons.length == 0">
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -110,7 +84,7 @@
                         </g>
                     </g>
                 </svg>
-                {{customization.compareSelectionButton ? customization.compareSelectionButton : 'Undefined'}}</button>
+                {{customization.compareSelectionButton ? customization.compareSelectionButton : 'Comparar'}}</button>
         </div>
     </div>
 
