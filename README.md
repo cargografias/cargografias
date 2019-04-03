@@ -42,79 +42,23 @@ Requerimientos
 
 Antes de empezar, asegurate tener los siguientes programas instalados.
 * [Node.js]
+* []
 
 
 Setup
 =========
 
+ ### Como empezar?
 
-### Node.Js - /server
-### MongoDB 
-
-### Como empezar?
-
-* Instala todas las librerias. Utilizando el comando
-
+Instala http-server ! 
 ```bash
-$ npm install
+$  npm install -g http-server 
 ```
- en la carpeta principal del repositorio.  
-
-* Bajate la base de datos de tu instancia con el cargografias-loader
-
-https://github.com/cargografias/cargografias-loader
-
-
-* Crea un archivo .env en tu root, Podes utilizar .env.example como guia.
-```text
-MONGO_URL=mongodb://localhost/cargo
-PORT=3001
-BASE_STATIC_PATH=//localhost:3002
-```
-
-* Inicia el servidor nodejs utilizando el comando
-
+Inicia http-server en tu carpeta local! 
 ```bash
-$  node server.js 
+$  http-server ./ -c-1
 ```
 
-* En otra consola, inicia el servidor de archivos estaticos 
-
-```bash
-$  node static-local.js
-```
-
-* Abri tu navegador en 'http://localhost:3001' y navega.
-
-
-
-PLANES FUTUROS 
-========================
-
-- Mejorar la interfase y la performance del sitio 
-- Sumar otras fuentes de datos (DDJJ de La Nacion Data, por ej) 
-- Conseguir financiación para pagar gastos (hosting, galletitas, horas de programadores) 
-- Mostrar las Bio de los funcionarios (fechas, foto, CV) 
-- Relacionar los cargos por bloques y votaciones (Década Votada) 
-- Visualizar los partidos y frentes políticos 
-- Liberar nuestros datos, y hacer una API de consulta 
- -Permitir al visitante corregir datos o aportar nuevos facilmente 
-
-[¿Tenés mas ideas? ¿Ganas de sumarte? Contactanos aqui]
-(https://docs.google.com/forms/d/1NoOYENvhHXqpLO3WpB8l6R8ofJkJiShLlx2A_DfrNd0/viewform)
-
-
-Active Collaborators
-=======
-* [Andres Snitcofsky] 
-* [Martín Rabaglia @ Genosha] 
-* [Manu Paiva @ Genosha]
-* [Ezequiel Romero @ Genosha]
-
-
-Past Collaborators
-=========
-* [Palamago]
-* [Daniel Calligaro]
+* Abri tu navegador en 'http://localhost:8080' y navega.
 
 
