@@ -91,7 +91,7 @@ angular.module('cargoApp.controllers')
         if (parsedParams) {
             for (var i = 0; i < parsedParams.length; i++) {
                 var index = parsedParams[i];
-                var id = cargosFactory.mapId[index];
+                var id = cargosFactory.mapId[parseInt(index)];
                 console.log(cargosFactory.autoPersons[id]);
                 $scope.lightAdd(cargosFactory.autoPersons[id], id);
             };
@@ -111,33 +111,7 @@ angular.module('cargoApp.controllers')
     // Presets
     $scope.loadMyPresets = function(preset) {
         if ($scope.presets.length) {
-          //SI UTILIZAMOS QQW
-            // for (var i = 0; i < $scope.presets[preset].valores.length; i++) {
-            //     if ($scope.presets[preset].valores[i].length > 3) {
-            //         searchModule('toActivePerson', $scope.presets[preset].valores[i], function(res) {
-            //           $scope.autoPersons.unshift(res)
-            //           $scope.showPresets = false;
-            //           $scope.search = true;
-            //           $scope.filterAdvance.name = $scope.presets[preset].valores[i]
-            //               // $scope.autoPersons = cargosFactory.getAutoPersonsAdvance($scope.filterAdvance.decade);
-            //           $scope.showResult = true;
-            //           document.getElementById('resultadosBusqueda').style.display = 'block';
-            //           $scope.addAll(res.data)
-            //           console.log("roles distintos");
-            //           console.log(distinctRoles);
-            //           $scope.distinctRoles = distinctRoles
-            //           $scope.distinctYears = distinctYears
-            //           $scope.distinctOrganizations = distinctOrganizations
-            //           $scope.distinctTerritories = distinctTerritories
-            //           console.log(distinctYears);
-            //           console.log(distinctOrganizations);
-            //           console.log(distinctTerritories);
-            //         })
-            //     } else {
-            //         $scope.autoPersons = [];
-            //         $scope.search = false;
-            //     }
-            // }
+          
 
             //SI UTILIZAMOS CSV
             var p = $scope.presets[preset].valores.split('-');
