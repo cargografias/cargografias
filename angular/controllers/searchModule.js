@@ -195,10 +195,8 @@ angular.module('cargoApp.factories', [])
 
     var cargografiasSources = [];
 
-    var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').replace('.html','');
-    instanceName = instanceName.split('/')[0];
-    instanceName = instanceName || 'cargografias';
-
+    var instanceName = window.__config.instanceName;
+    
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-persons.json' + '?v=' + window.__config.lastUpdate);
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-memberships.json' + '?v=' + window.__config.lastUpdate);
     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-organizations.json' + '?v=' + window.__config.lastUpdate);

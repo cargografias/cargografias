@@ -8,8 +8,7 @@
 //
 //     var cargografiasSources = [];
 //
-//     var instanceName = window.location.pathname.replace(/\/$/, '').replace(/^\//, '').replace('.html','');
-//     instanceName = instanceName.split('/')[0];
+//         var instanceName = window.__config.instanceName;
 //     instanceName = instanceName || 'cargografias';
 //
 //     cargografiasSources.push(window.__config.baseStaticPath + '/datasets/' + instanceName + '-persons.json' + '?v=' + window.__config.lastUpdate);
