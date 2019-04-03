@@ -1,0 +1,973 @@
+[{
+  "name": "Senado de la Nación",
+  "id": 706877075695
+}, {
+  "name": "Camara de Diputados de la Nación",
+  "id": 362801021754
+}, {
+  "name": "Partido de Monte Hermoso",
+  "id": 953459975067
+}, {
+  "name": "Legislatura de Jujuy",
+  "id": 735425023259
+}, {
+  "name": "Legislatura de Chaco",
+  "id": 487677869927
+}, {
+  "name": "Legislatura de Formosa",
+  "id": 530897393032
+}, {
+  "name": "Partido de Pinamar",
+  "id": 636640165600
+}, {
+  "name": "Legislatura de la Provincia de Cordoba",
+  "id": 637595998475
+}, {
+  "name": "Ministerio De Agricultura Y Ganadería",
+  "id": 690385012272
+}, {
+  "name": "Bolsa De Comercio De Buenos Aires",
+  "id": 352334456131
+}, {
+  "name": "Directorio Supremo",
+  "id": 296666060531
+}, {
+  "name": "Ministerio De Defensa",
+  "id": 651808402289
+}, {
+  "name": "Comisión Nacional De Valores",
+  "id": 703966224026
+}, {
+  "name": "Partido de La Plata",
+  "id": 676062154850
+}, {
+  "name": "Municipio de La Plata",
+  "id": 381380481190
+}, {
+  "name": "Partido de Del Pilar",
+  "id": 865888073406
+}, {
+  "name": "Camara De Senadores De La Provincia De Buenos Aires",
+  "id": 356622178714
+}, {
+  "name": "Poder Legislativo De La Provincia De Santa Cruz",
+  "id": 917199147912
+}, {
+  "name": "Legislatura de la Ciudad Autonoma De Buenos Aires",
+  "id": 696808976860
+}, {
+  "name": "Legislatura de Chubut",
+  "id": 925539581470
+}, {
+  "name": "Partido de General Villegas",
+  "id": 627466488787
+}, {
+  "name": "Partido de Salto",
+  "id": 188845439319
+}, {
+  "name": "Nacion Argentina",
+  "id": 819940280268
+}, {
+  "name": "Partido de Villa Gesell",
+  "id": 924523457991
+}, {
+  "name": "Partido de Rojas",
+  "id": 506423988596
+}, {
+  "name": "Partido de Necochea",
+  "id": 959717584697
+}, {
+  "name": "Legislatura de la Provincia de La Pampa",
+  "id": 118417796711
+}, {
+  "name": "Ministerio De Agricultura, Ganadería, Pesca Y Alimentos",
+  "id": 493101286056
+}, {
+  "name": "Gobierno de la Provincia de Tucumán",
+  "id": 641737779301
+}, {
+  "name": "Partido de Adolfo Gonzales Chaves",
+  "id": 222040164869
+}, {
+  "name": "Partido de Capitán Sarmiento",
+  "id": 770348034040
+}, {
+  "name": "Partido de Guamini",
+  "id": 405526091830
+}, {
+  "name": "Partido de Tres Lomas",
+  "id": 631613878900
+}, {
+  "name": "Partido de Avellaneda",
+  "id": 741841359107
+}, {
+  "name": "Municipio de Avellaneda",
+  "id": 988306606179
+}, {
+  "name": "Segundo Triunvirato",
+  "id": 593253583310
+}, {
+  "name": "Gobierno de Buenos Aires (historico)",
+  "id": 963796013086
+}, {
+  "name": "Partido de Coronel Pringles",
+  "id": 492301039525
+}, {
+  "name": "Poder Legislativo De La Provincia De Tdf",
+  "id": 507864939695
+}, {
+  "name": "Partido de Carlos Casares",
+  "id": 529555894723
+}, {
+  "name": "Partido de Exaltación De La Cruz",
+  "id": 328203029117
+}, {
+  "name": "Partido de Arrecifes",
+  "id": 773824979604
+}, {
+  "name": "Partido de General Rodríguez",
+  "id": 770233748426
+}, {
+  "name": "Partido de Villarino",
+  "id": 564066481394
+}, {
+  "name": "Partido de General Pueyrredón",
+  "id": 900723782725
+}, {
+  "name": "Partido de Tres Arroyos",
+  "id": 414704282990
+}, {
+  "name": "Ministerio De Salud Y Acción Social",
+  "id": 546589536010
+}, {
+  "name": "Partido de General Arenales",
+  "id": 795480187593
+}, {
+  "name": "Partido de Monte",
+  "id": 596533014675
+}, {
+  "name": "Partido de Patagones",
+  "id": 268987290779
+}, {
+  "name": "Partido de Adolfo Alsina",
+  "id": 374058980798
+}, {
+  "name": "Ministerio De Agricultura",
+  "id": 300406936977
+}, {
+  "name": "Partido de Brandsen",
+  "id": 205384659914
+}, {
+  "name": "Partido de Hipólito Irigoyen",
+  "id": 703413232265
+}, {
+  "name": "Partido de Trenque Lauquen",
+  "id": 543043712182
+}, {
+  "name": "Partido de Cañuelas",
+  "id": 198953262329
+}, {
+  "name": "Partido de Zárate",
+  "id": 194456110490
+}, {
+  "name": "Partido de General La Madrid",
+  "id": 690668699033
+}, {
+  "name": "Ministerio De Desarrollo Social",
+  "id": 634621387421
+}, {
+  "name": "Ministerio De Desarrollo Social De La Provincia De Buenos Aires",
+  "id": 933058269449
+}, {
+  "name": "Partido de Puán",
+  "id": 533052160591
+}, {
+  "name": "Partido de General Belgrano",
+  "id": 928171597577
+}, {
+  "name": "Partido de Balcarce",
+  "id": 483209010023
+}, {
+  "name": "Partido de Salliqueló",
+  "id": 842891481805
+}, {
+  "name": "Partido de Ramallo",
+  "id": 812734040060
+}, {
+  "name": "Partido de Azul",
+  "id": 395231100968
+}, {
+  "name": "Partido de San Pedro",
+  "id": 164969318735
+}, {
+  "name": "Partido de Chivilcoy",
+  "id": 680571245192
+}, {
+  "name": "Ministerio De Bienestar Social",
+  "id": 102159542423
+}, {
+  "name": "Partido de Carmen De Areco",
+  "id": 751050867556
+}, {
+  "name": "Partido de Chacabuco",
+  "id": 261586765511
+}, {
+  "name": "Gobierno de la Provincia de Jujuy",
+  "id": 935873399281
+}, {
+  "name": "Partido de General Viamonte",
+  "id": 523773872347
+}, {
+  "name": "Partido de Nueve De Julio",
+  "id": 518806725811
+}, {
+  "name": "Gobierno de la Provincia de La Rioja",
+  "id": 464457907005
+}, {
+  "name": "Partido de Bahía Blanca",
+  "id": 899952616832
+}, {
+  "name": "Cancilleria",
+  "id": 343389806680
+}, {
+  "name": "Municipio de Rosario",
+  "id": 337109252607
+}, {
+  "name": "Gobierno de la Provincia de Santa Fe",
+  "id": 370926124469
+}, {
+  "name": "Gobierno de la Provincia de Formosa",
+  "id": 780334992549
+}, {
+  "name": "Embajada de Argentina en Paraguay",
+  "id": 724461364309
+}, {
+  "name": "Partido de Roque Pérez",
+  "id": 756854964217
+}, {
+  "name": "Partido de Veinticinco De Mayo",
+  "id": 263154235891
+}, {
+  "name": "Partido de Maipú",
+  "id": 634229819771
+}, {
+  "name": "Centro De Profesionales Por Los Derechos Humanos",
+  "id": 647096454473
+}, {
+  "name": "Municipio de S.F del V. de Catamarca",
+  "id": 572295659347
+}, {
+  "name": "Gobierno de la Provincia de Catamarca",
+  "id": 714779571045
+}, {
+  "name": "Partido de General San Martín",
+  "id": 770536289901
+}, {
+  "name": "Partido de General Pinto",
+  "id": 881016844102
+}, {
+  "name": "Partido de Bolívar",
+  "id": 806772083432
+}, {
+  "name": "Partido de Rivadavia",
+  "id": 818006182695
+}, {
+  "name": "Gobierno de la Provincia de Buenos Aires",
+  "id": 869125659901
+}, {
+  "name": "Partido de General Las Heras",
+  "id": 885108052527
+}, {
+  "name": "Municipio de Quilmes",
+  "id": 556653464726
+}, {
+  "name": "Partido de San Antonio De Areco",
+  "id": 322283170202
+}, {
+  "name": "Secretaria De Comercio Exterior",
+  "id": 345749670099
+}, {
+  "name": "Partido de Ayacucho",
+  "id": 356377508447
+}, {
+  "name": "Gobierno de la Provincia de Chaco",
+  "id": 505868783196
+}, {
+  "name": "Partido de Ensenada",
+  "id": 483560266186
+}, {
+  "name": "Partido de Magdalena",
+  "id": 628902130065
+}, {
+  "name": "Municipio de Malvinas Argentinas",
+  "id": 441247815838
+}, {
+  "name": "Partido de San Nicolás",
+  "id": 624362238067
+}, {
+  "name": "Partido de Daireaux",
+  "id": 103739136689
+}, {
+  "name": "Partido de General Paz",
+  "id": 944788417504
+}, {
+  "name": "Gobierno de la Provincia de Salta",
+  "id": 391587295633
+}, {
+  "name": "Partido de Baradero",
+  "id": 830354228376
+}, {
+  "name": "Partido de Colon",
+  "id": 271323491124
+}, {
+  "name": "Partido de Navarro",
+  "id": 435228011248
+}, {
+  "name": "Camara De Diputados De La Provincia De Buenos Aires",
+  "id": 397827983313
+}, {
+  "name": "Partido de Tornquist",
+  "id": 853573388470
+}, {
+  "name": "Movimiento Barrios De Pie",
+  "id": 642071487257
+}, {
+  "name": "Asistencia Comunitaria Del Ministerio De Desarrollo Social De La Nación",
+  "id": 392164715614
+}, {
+  "name": "Subsecretaría De Organización Y Capacitación Popular Del Ministerio De Desarrollo Social De La Nación",
+  "id": 772244407604
+}, {
+  "name": "Partido de General Alvear",
+  "id": 417500841339
+}, {
+  "name": "Partido de Pila",
+  "id": 763015677513
+}, {
+  "name": "Primer Triunvirato",
+  "id": 572850786095
+}, {
+  "name": "Gobierno de la Provincia de Misiones",
+  "id": 675682550763
+}, {
+  "name": "Gobierno de la Provincia de Mendoza",
+  "id": 776574096346
+}, {
+  "name": "Partido de Tapalqué",
+  "id": 433143211802
+}, {
+  "name": "Partido de Punta Indio",
+  "id": 658716178545
+}, {
+  "name": "Municipio de Mercedes",
+  "id": 269055483091
+}, {
+  "name": "Gobierno de la Provincia de Corrientes",
+  "id": 428554446052
+}, {
+  "name": "Secretaria De Comercio Interior",
+  "id": 828492482719
+}, {
+  "name": "Partido de Leandro N. Alem",
+  "id": 250414108494
+}, {
+  "name": "Partido de Saavedra",
+  "id": 851424147511
+}, {
+  "name": "Partido de Bragado",
+  "id": 754970152206
+}, {
+  "name": "Partido de Coronel Dorrego",
+  "id": 120782363643
+}, {
+  "name": "Municipio de Vicente Lopez",
+  "id": 125964635408
+}, {
+  "name": "Partido de Marcos Paz",
+  "id": 538817112490
+}, {
+  "name": "Ministerio De Estado De La Vivienda De San Luis",
+  "id": 253182205810
+}, {
+  "name": "Ministerio De Gobierno, Justicia Y Culto De San Luis",
+  "id": 857586561880
+}, {
+  "name": "Gobierno de la Provincia de Chubut",
+  "id": 147834126388
+}, {
+  "name": "Secretario General De La Central De Trabajadores Argentinos (Cta)",
+  "id": 162286633917
+}, {
+  "name": "Partido de La Costa",
+  "id": 983099817890
+}, {
+  "name": "",
+  "id": 673935910802
+}, {
+  "name": "Gobierno de la Provincia de Córdoba",
+  "id": 676701873744
+}, {
+  "name": "Aerolíneas Argentinas",
+  "id": 196232311679
+}, {
+  "name": "Coordinacion General De Asuntos Tecnicos Y Politicos De La Unidad Presidente",
+  "id": 530949401509
+}, {
+  "name": "Presidencia de la Nacion",
+  "id": 794342627940
+}, {
+  "name": "Partido de Suipacha",
+  "id": 659358278599
+}, {
+  "name": "Partido de Campana",
+  "id": 124358971047
+}, {
+  "name": "Partido de Chascomús",
+  "id": 426774659260
+}, {
+  "name": "Municipio de Ituzaingó",
+  "id": 559454283907
+}, {
+  "name": "Partido de San Vicente",
+  "id": 273071589319
+}, {
+  "name": "Instituto De Previsión Social De La Provincia De Buenos Aires",
+  "id": 406560323191
+}, {
+  "name": "Instituto Nacional De La Juventud, Ministerio De Salud Y Acción Social De La Nación",
+  "id": 129004826430
+}, {
+  "name": "Ministerio Del Interior De La Nación",
+  "id": 499240814649
+}, {
+  "name": "Gobierno De La Ciudad De Chacabuco",
+  "id": 479731494150
+}, {
+  "name": "Ministerio De Obras Y Servicios Públicos De La Provincia De Buenos Aires",
+  "id": 878263524824
+}, {
+  "name": "Jefatura De Gabinete De Ministros De La Nacion",
+  "id": 105103764038
+}, {
+  "name": "Ministerio De Defensa De La Nación",
+  "id": 943689219869
+}, {
+  "name": "Ministerio De Agricultura, Ganadería Y Pesca De La Nación",
+  "id": 692149302337
+}, {
+  "name": "Partido de General Lavalle",
+  "id": 431751606555
+}, {
+  "name": "Municipio de Lomas de Zamora",
+  "id": 730381478887
+}, {
+  "name": "Partido de Castelli",
+  "id": 681417811043
+}, {
+  "name": "Partido de Lobos",
+  "id": 971397560582
+}, {
+  "name": "Partido de Olavarría",
+  "id": 134348797093
+}, {
+  "name": "Concejo Deliberante De La Matanza",
+  "id": 964265163180
+}, {
+  "name": "Municipalidad De La Matanza",
+  "id": 583697409774
+}, {
+  "name": "Partido de Rauch",
+  "id": 661558237140
+}, {
+  "name": "Partido de Pellegrini",
+  "id": 468838112839
+}, {
+  "name": "Partido de Dolores",
+  "id": 845905409327
+}, {
+  "name": "Partido de Lujan",
+  "id": 690143613925
+}, {
+  "name": "Comisión de Presupuesto de la Cámara de Senadores de la provincia de Buenos Aires",
+  "id": 817276070207
+}, {
+  "name": "Bloque del Movimiento Peronista en la Cámara de Senadores de la provincia de Buenos Aires",
+  "id": 853915079946
+}, {
+  "name": "Concejo Deliberante de Florencio Varela",
+  "id": 397357133047
+}, {
+  "name": "Concejo Deliberante de Quilmes",
+  "id": 221101291636
+}, {
+  "name": "Ministerio De Trabajo De La Provincia De Buenos Aires",
+  "id": 919968209684
+}, {
+  "name": "Departamento De Trabajo",
+  "id": 903365004206
+}, {
+  "name": "Producción De La Nación",
+  "id": 440311177447
+}, {
+  "name": "Ministerio De Justicia, Seguridad Y Derechos Humanos De La Nación",
+  "id": 859374308661
+}, {
+  "name": "Quilmes Atlético Fútbol",
+  "id": 839924272086
+}, {
+  "name": "Confederación Argentina De Hockey",
+  "id": 418635416563
+}, {
+  "name": "Partido de Lincoln",
+  "id": 468849370572
+}, {
+  "name": "Partido de Tordillo",
+  "id": 767371007971
+}, {
+  "name": "Partido de Saladillo",
+  "id": 760410150711
+}, {
+  "name": "Partido de Lobería",
+  "id": 348009133778
+}, {
+  "name": "Partido de Laprida",
+  "id": 522192918801
+}, {
+  "name": "Partido de Alberti",
+  "id": 281330968159
+}, {
+  "name": "Partido de General Guido",
+  "id": 850369778864
+}, {
+  "name": "Partido de Benito Juárez",
+  "id": 531845985303
+}, {
+  "name": "Partido de Florentino Ameghino",
+  "id": 223420474761
+}, {
+  "name": "Partido de San Cayetano",
+  "id": 670621395157
+}, {
+  "name": "Ministerio De Seguridad",
+  "id": 921119758087
+}, {
+  "name": "Partido de Las Flores",
+  "id": 995765107260
+}, {
+  "name": "Partido de San Andrés De Giles",
+  "id": 482755591104
+}, {
+  "name": "Partido de Carlos Tejedor",
+  "id": 393006211374
+}, {
+  "name": "Secretaría De Estado De Agricultura Y Ganadería",
+  "id": 727077968544
+}, {
+  "name": "Agrupación Nacional De Estudiantes Universitarios (Aneu)",
+  "id": 352625488472
+}, {
+  "name": "Juventud Peronista San Juan",
+  "id": 134529386807
+}, {
+  "name": "Gobernador De San Juan \"Eloy Camus\"",
+  "id": 498648485325
+}, {
+  "name": "Instituto Provincial De La Vivienda",
+  "id": 786387123247
+}, {
+  "name": "Camara De Diputados De La Provincia De San Juan",
+  "id": 603529709042
+}, {
+  "name": "Gobierno de la Provincia de San Juan",
+  "id": 257932515413
+}, {
+  "name": "Partido de Coronel Rosales",
+  "id": 877139397561
+}, {
+  "name": "Partido de Mercedes",
+  "id": 270477421769
+}, {
+  "name": "Municipio de Almirante Brown",
+  "id": 146940179559
+}, {
+  "name": "Partido de Escobar",
+  "id": 568514690303
+}, {
+  "name": "Municipio de Ezeiza",
+  "id": 165233653396
+}, {
+  "name": "Partido de Pergamino",
+  "id": 902767156403
+}, {
+  "name": "Sindicato La Fraternidad",
+  "id": 288865217991
+}, {
+  "name": "Partido de Mar Chiquita",
+  "id": 725364506269
+}, {
+  "name": "Partido de General Alvarado",
+  "id": 535046310168
+}, {
+  "name": "Gobierno de la Provincia de Santa Cruz",
+  "id": 742165407613
+}, {
+  "name": "Municipalidad De Lomas De Zamora",
+  "id": 734841204367
+}, {
+  "name": "Camara de Diputados",
+  "id": 597472983733
+}, {
+  "name": "Municipio de Jose C. Paz",
+  "id": 459618631225
+}, {
+  "name": "Municipio de Malargue",
+  "id": 294279412766
+}, {
+  "name": "Partido de Berisso",
+  "id": 351284535089
+}, {
+  "name": "Siderar S.a.",
+  "id": 331412937026
+}, {
+  "name": "Secretaria De Política Económica Y Planificación Del Desarrollo",
+  "id": 292734447261
+}, {
+  "name": "Ypf S.a.",
+  "id": 984733389151
+}, {
+  "name": "Ministerio De Economía Y Finanzas Publicas.",
+  "id": 487801647134
+}, {
+  "name": "Dirección General Impositiva",
+  "id": 395402630922
+}, {
+  "name": "Control De Empresas Públicas De La Presidencia De La Nación",
+  "id": 949053185140
+}, {
+  "name": "Ministerio de Desarrollo Social",
+  "id": 625155024570
+}, {
+  "name": "Ministerio de ASuntos Sociales de la Pcia de Santa Cruz",
+  "id": 130205542767
+}, {
+  "name": "Secretaria de Promocion Social Municipalidad de Rio Gallegos",
+  "id": 978755956457
+}, {
+  "name": "Municipio de Rio Gallegos",
+  "id": 751552386725
+}, {
+  "name": "Partido de General Madariaga",
+  "id": 643951982913
+}, {
+  "name": "Relevamientos Y Dragados De La Dirección Nacional De Construcciones Portuarias Y Vías Navegables En Mar Del Plata, Quequén Y Bahía Blanca",
+  "id": 371585433420
+}, {
+  "name": "Secretaria De Obras Y Servicios Publicos De Bahia Blanca",
+  "id": 957019466611
+}, {
+  "name": "Concejo Deliberante De Bahia Blanca",
+  "id": 385838966757
+}, {
+  "name": "Gobierno De La Ciudad De Bahia Blanca",
+  "id": 105399669979
+}, {
+  "name": "Gobierno Nacional",
+  "id": 146899404560
+}, {
+  "name": "Universidad De Buenos Aires",
+  "id": 861579044971
+}, {
+  "name": "Corte Suprema De Justicia De La Nación",
+  "id": 955037088371
+}, {
+  "name": "Ministerio De Obras Y Servicios Publicos",
+  "id": 248293061368
+}, {
+  "name": "Banco Central De La Republica Argentina",
+  "id": 917271433762
+}, {
+  "name": "Banco De La Provincia De Buenos Aires",
+  "id": 548365829883
+}, {
+  "name": "Ministerio De La Producción De La Provincia De Buenos Aires",
+  "id": 592556569404
+}, {
+  "name": "Partido de Tandil",
+  "id": 802807744236
+}, {
+  "name": "Sideco Americana S.a.",
+  "id": 420503598366
+}, {
+  "name": "Sideco Construcciones",
+  "id": 868960866630
+}, {
+  "name": "Socma",
+  "id": 834062756908
+}, {
+  "name": "Sideco",
+  "id": 408491391912
+}, {
+  "name": "Sevel",
+  "id": 123193197181
+}, {
+  "name": "Club Atlético Boca Juniors",
+  "id": 152188181425
+}, {
+  "name": "Fundación Creer Y Crecer",
+  "id": 441699488751
+}, {
+  "name": "Gobierno De La Ciudad Autonoma De Buenos Aires",
+  "id": 753801330479
+}, {
+  "name": "Municipio de Santa Rosa",
+  "id": 444786747289
+}, {
+  "name": "Gobierno de la Provincia de La Pampa",
+  "id": 442362112468
+}, {
+  "name": "Partido de Pehuajó",
+  "id": 377130158233
+}, {
+  "name": "Anses",
+  "id": 399613051328
+}, {
+  "name": "Municipio De Tigre",
+  "id": 809732504839
+}, {
+  "name": "Ministerio De Salud",
+  "id": 116772956235
+}, {
+  "name": "Partido de Junín",
+  "id": 517941652461
+}, {
+  "name": "Partido de Coronel Suárez",
+  "id": 115884087095
+}, {
+  "name": "Municipio de Berazategui",
+  "id": 923727749296
+}, {
+  "name": "Municipio de Santa Fe (Ciudad)",
+  "id": 649867305561
+}, {
+  "name": "Municipio de Merlo",
+  "id": 168663656569
+}, {
+  "name": "Municipio de Florencio Varela",
+  "id": 227817115853
+}, {
+  "name": "Banco Galicia",
+  "id": 479185222503
+}, {
+  "name": "Editorial Atlántida",
+  "id": 479405966048
+}, {
+  "name": "Federación Gráfica Bonaerense",
+  "id": 881440677987
+}, {
+  "name": "Municipio de Lanús",
+  "id": 584384539206
+}, {
+  "name": "Congreso Pj Porteño",
+  "id": 793472770909
+}, {
+  "name": "Partido de Presidente Perón",
+  "id": 781294444619
+}, {
+  "name": "Municipio de San Miguel",
+  "id": 261993758478
+}, {
+  "name": "Gobierno de la Provincia de Tierra del Fuego",
+  "id": 107671986251
+}, {
+  "name": "Políticas Sociales De La Secretaría De Desarrollo Social",
+  "id": 802428351160
+}, {
+  "name": "Pami",
+  "id": 849509975351
+}, {
+  "name": "Partido Compromiso Para El Cambio",
+  "id": 657126079334
+}, {
+  "name": "Jefatura De Gabinete De Ministros De Caba",
+  "id": 640624369763
+}, {
+  "name": "Camara De Diputados De La Provincia De San Luis",
+  "id": 374622420126
+}, {
+  "name": "Gobierno de la Provincia de San Luis",
+  "id": 896896213484
+}, {
+  "name": "Secretaría General De La Presidencia De La Nación",
+  "id": 512088969408
+}, {
+  "name": "Primera Junta De Gobierno",
+  "id": 720548210915
+}, {
+  "name": "Bloque De Frepaso En Concejo Deliberante",
+  "id": 442358198781
+}, {
+  "name": "Municipalidad De Moron",
+  "id": 517524445701
+}, {
+  "name": "Autoridad Federal De Servicios De Comunicación Audiovisual (Afsca)",
+  "id": 657245847354
+}, {
+  "name": "Municipalidad De La Ciudad De Salta",
+  "id": 433278130859
+}, {
+  "name": "Municipio de Gral Roca",
+  "id": 577311838578
+}, {
+  "name": "Gobierno de la Provincia de Río Negro",
+  "id": 769259152203
+}, {
+  "name": "Despacho De La Diputada Nacional Elisa Carrió",
+  "id": 338028290588
+}, {
+  "name": "Coalición Cívica- Ari",
+  "id": 485072415745
+}, {
+  "name": "Bloque De Diputados Nacionales Ari",
+  "id": 847469797091
+}, {
+  "name": "Despacho Diputada Nacional Laura Musa",
+  "id": 859319474195
+}, {
+  "name": "Despacho Diputada Nacional Elisa Carrió",
+  "id": 268670266485
+}, {
+  "name": "Asamblea Nacional De La Coalición Cívica, Ari",
+  "id": 205038926625
+}, {
+  "name": "Planeamiento Estratégico De La Ciudad",
+  "id": 703675290797
+}, {
+  "name": "Administración Y Recursos Humanos En La Dirección Nacional De Migraciones",
+  "id": 343378865958
+}, {
+  "name": "Banco De La Ciudad De Buenos Aires",
+  "id": 673548503494
+}, {
+  "name": "Bloque Juntos Por Buenos Aires",
+  "id": 997295189087
+}, {
+  "name": "Buenos Aires En Red",
+  "id": 845650224247
+}, {
+  "name": "Ministerio De Ambiente Y Espacio Público De La Ciudad Autónoma De Buenos Aires",
+  "id": 351151521774
+}, {
+  "name": "Representantes Del Consejo Directivo Uba",
+  "id": 498738572800
+}, {
+  "name": "Subsecretaría Para La Reforma Institucional Y Fortalecimiento De La Democracia",
+  "id": 799882864886
+}, {
+  "name": "Juventud De La Unión Cívica Radical",
+  "id": 889617696457
+}, {
+  "name": "Cátedra De Derecho Público En La Universidad Nacional De Cuyo",
+  "id": 201388431687
+}, {
+  "name": "Comité Nacional De La Juventud De La Unión Cívica Radical Por La Provincia De Mendoza",
+  "id": 943191670832
+}, {
+  "name": "Unión Cívica Radical En El Departamento De San Rafael",
+  "id": 209352388295
+}, {
+  "name": "Municipalidad De San Rafael",
+  "id": 645256154074
+}, {
+  "name": "Comité Nacional De La Unión Cívica Radical",
+  "id": 815089708550
+}, {
+  "name": "Consejo De La Magistratura De La Nación",
+  "id": 721994942726
+}, {
+  "name": "Gobierno de la Provincia de Neuquén",
+  "id": 814370774760
+}, {
+  "name": "Secretaría de Deporte (e interino de Secretaría de Turismo)",
+  "id": 744889516026
+}, {
+  "name": "Secretaría de Turismo y Deporte",
+  "id": 473205313411
+}, {
+  "name": "Ministerio De Asuntos Agrarios De La Provincia De Buenos Aires",
+  "id": 972085470450
+}, {
+  "name": "Secretaría de Agricultura, Ganadería y Pesca",
+  "id": 607602880149
+}, {
+  "name": "Subsecretaría de Agricultura, Ganadería y Pesca",
+  "id": 705237002575
+}, {
+  "name": "Secretaría de Agricultura, Pesca y Alimentación",
+  "id": 432012018922
+}, {
+  "name": "Acción Social Y Minoridad De La Municipalidad De Morón",
+  "id": 729846352147
+}, {
+  "name": "Gobierno de la Provincia de Entre Ríos",
+  "id": 107255092743
+}, {
+  "name": "Intendencia De General Campos",
+  "id": 387893190100
+}, {
+  "name": "Camara De Diputados De La Provincia De Entre Rios",
+  "id": 370545423987
+}, {
+  "name": "Comisión Administradora Para El Fondo Especial De Salto Grande",
+  "id": 260890006181
+}, {
+  "name": "Ministerio De Gobierno, Justicia, Educación, Obras Y Servicios Públicos De La Pcia De Entre Rios",
+  "id": 947619384650
+}, {
+  "name": "Ministerio de Relaciones Exteriores y Culto",
+  "id": 904327166273
+}, {
+  "name": "Ledesma & Asociados",
+  "id": 719094646123
+}, {
+  "name": "ANSES",
+  "id": 645671783377
+}, {
+  "name": "Subsecretaría de Políticas Sociales de la Nación",
+  "id": 464093966973
+}, {
+  "name": "Sistemas de Información, Evaluación y Monitoreo de Programas Sociales (Siempro)",
+  "id": 469784549970
+}, {
+  "name": "Instituto de Servicios Sociales para Jubilados y Pensionados (PAMI)",
+  "id": 287364425499
+}, {
+  "name": "Área de Desarrollo Social y Equidad de la Fundación Grupo Sophia",
+  "id": 691076576979
+}, {
+  "name": "Fundación Grupo Sophia",
+  "id": 469839514055
+}, {
+  "name": "Comisión Mujer, Infancia, Adolescencia y Juventud",
+  "id": 900585031246
+}, {
+  "name": "Desarrollo Social",
+  "id": 423853513007
+}, {
+  "name": "Municipio de Santiago del Estero (Ciudad)",
+  "id": 308809765439
+}, {
+  "name": "Gobierno de la Provincia de Santiago del Estero",
+  "id": 482291878355
+}, {
+  "name": "Cels",
+  "id": 930170539164
+}, {
+  "name": "Municipalidad De Rio Gallegos",
+  "id": 207268140312
+}, {
+  "name": "Camara De Diputados De La Provincia De Santa Cruz",
+  "id": 870180079154
+}, {
+  "name": "Secretaria Legal Y Técnica De La Presidencia De La Nacion",
+  "id": 321398673569
+}]
