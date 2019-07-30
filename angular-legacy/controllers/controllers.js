@@ -282,7 +282,7 @@ angular.module('cargoApp.controllers')
 
         var urlToShorten = window.location.origin + embedUrl;
         $scope.embedUrl = urlToShorten;
-        $http.post('/createShortUrl', {url: urlToShorten}).success(function(result){
+
 
 
           var prefix = data[0].name;
@@ -292,7 +292,7 @@ angular.module('cargoApp.controllers')
             +  result.shortUrl );
             base += "&url='" + encodeURIComponent(result.shortUrl);
            window.open(base,'twitter-share-dialog');
-        })
+
       });
     };
 
