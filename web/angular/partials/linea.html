@@ -16,10 +16,17 @@ var informationVis = {
 }
 informationVis.init()
 
+//Agrego esto para corregir que no se ve la linea de timpo cuando carga si entra directo
+$( document ).ready(function() {
+  $( "#fname" ).trigger( "click" );
+  console.log('pol');
+});
+//////////////////////
+
 </script>
 <div class="timeline-filter" ng-show="activePersons.length > 0">
 <ul>
-    <li ng-click="filterLine('name')" ng-class="filter === 'name' ? 'active' : '' ">
+    <li id="fname" ng-click="filterLine('name')" ng-class="filter === 'name' ? 'active' : '' ">
           <a id="ordenNombre" href="" >
             <i class="fa fa-user"></i>
             {{customization.name ? customization.name : 'Nombre'}}
@@ -30,11 +37,15 @@ informationVis.init()
         <i class="fa fa-briefcase"></i>
       {{customization.role ? customization.role : 'Rol'}}</a>
     </li>
+
+
     <li ng-click="filterLine('territory')" class="" ng-class="filter === 'territory' ? 'active' : '' ">
       <a id="ordenCargo" href="" >
         <i class="fa fa-flag"></i>
-      {{customization.territory ? customization.territory : 'Territorio'}}</a>
+      {{customization.territory ? customization.territory : 'Organización'}}</a>
     </li>
+
+
     <li  ng-click="filterLine('career')" class="" ng-class="filter === 'career' ? 'active' : '' ">
       <a id="ordenNombre" href="">
         <i class="fa fa-tasks"></i>

@@ -149,6 +149,7 @@ angular.module('cargoApp.controllers')
 
     var onDataLoaded = function() {
           //Load initial ids from the url
+          console.log($location.search().iframe);
           if ($routeParams.ids) {
             $scope.showVisualizationFunction()
             processParameters($routeParams.ids);
@@ -288,9 +289,12 @@ angular.module('cargoApp.controllers')
 
           var prefix = data[0].name;
            var base ="https://twitter.com/intent/tweet?text=";
+            // base += encodeURIComponent("Aca está línea de tiempo de "
+            // + prefix +  " via @cargografias "
+            // +  result.shortUrl );
             base += encodeURIComponent("Aca está línea de tiempo de "
             + prefix +  " via @cargografias "
-            +  result.shortUrl );
+            + location.href);
             base += "&url='" + encodeURIComponent(result.shortUrl);
            window.open(base,'twitter-share-dialog');
         })
@@ -328,7 +332,9 @@ angular.module('cargoApp.controllers')
     }
     $scope.embedIframe = function(){
 
-      var iframe = '<iframe width="560" height="315" src="' + $scope.embedUrl + '" frameborder="0" ></iframe>'
+      // var iframe = '<iframe pato="7" width="560" height="315" src="' + $scope.embedUrl + '" frameborder="0" ></iframe>'
+      // return iframe;
+      var iframe = '<iframe id="sigue1" width="100%" height="500" src="' + location.href + '" frameborder="0" ></iframe>'
       return iframe;
     }
 
