@@ -109,6 +109,9 @@ svg text{
   pointer-events: none;
   cursor: default;
   }
+#openResults > .ng-scope > .badge-selected {
+  display: none;
+}
 
 badge{
   transition: opacity 0.5s ease;
